@@ -1,0 +1,745 @@
+{
+ "displayFieldName": "name",
+ "fieldAliases": {
+  "objectid": "OBJECTID",
+  "code1": "Код станції",
+  "name": "Назва станції",
+  "globalid": "globalid станції",
+  "line": "Лінія",
+  "halls_cnt": "Кількість вестибюлів",
+  "halls_open": "Кількість діючих вестибюлів",
+  "open_max": "Час відкриття (макс.)",
+  "close_min": "Час закриття (мін.)"
+ },
+ "fields": [
+  {
+   "name": "objectid",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID"
+  },
+  {
+   "name": "code1",
+   "type": "esriFieldTypeString",
+   "alias": "Код станції",
+   "length": 10
+  },
+  {
+   "name": "name",
+   "type": "esriFieldTypeString",
+   "alias": "Назва станції",
+   "length": 254
+  },
+  {
+   "name": "globalid",
+   "type": "esriFieldTypeString",
+   "alias": "globalid станції",
+   "length": 38
+  },
+  {
+   "name": "line",
+   "type": "esriFieldTypeString",
+   "alias": "Лінія",
+   "length": 254
+  },
+  {
+   "name": "halls_cnt",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Кількість вестибюлів"
+  },
+  {
+   "name": "halls_open",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Кількість діючих вестибюлів"
+  },
+  {
+   "name": "open_max",
+   "type": "esriFieldTypeString",
+   "alias": "Час відкриття (макс.)",
+   "length": 10
+  },
+  {
+   "name": "close_min",
+   "type": "esriFieldTypeString",
+   "alias": "Час закриття (мін.)",
+   "length": 10
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "objectid": 1408,
+    "code1": "mb17_226",
+    "name": "Іподром",
+    "globalid": "{2cd14ab2-b74c-4650-a597-a9c638059d25}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:55",
+    "close_min": "22:24"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1392,
+    "code1": "mb01_210",
+    "name": "Героїв Дніпра",
+    "globalid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:25",
+    "close_min": "22:22"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1393,
+    "code1": "mb02_211",
+    "name": "Мінська",
+    "globalid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:27",
+    "close_min": "22:24"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1394,
+    "code1": "mb03_212",
+    "name": "Оболонь",
+    "globalid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:29",
+    "close_min": "22:26"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1395,
+    "code1": "mb04_213",
+    "name": "Почайна",
+    "globalid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:32",
+    "close_min": "22:28"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1396,
+    "code1": "mb05_214",
+    "name": "Тараса Шевченка",
+    "globalid": "{efd663ad-266a-45e9-8a46-8632b0fa912e}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:34",
+    "close_min": "22:34"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1397,
+    "code1": "mb06_215",
+    "name": "Контрактова площа",
+    "globalid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:37",
+    "close_min": "22:33"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1398,
+    "code1": "mb07_216",
+    "name": "Поштова площа",
+    "globalid": "{badf8bd0-4d9d-4134-905b-bc6dcca6942f}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:38",
+    "close_min": "22:38"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1399,
+    "code1": "mb08_217",
+    "name": "Майдан Незалежності",
+    "globalid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:38",
+    "close_min": "22:38"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1400,
+    "code1": "mb09_218",
+    "name": "Площа Українських Героїв",
+    "globalid": "{f54ca771-e70f-4bd2-80fd-e454729be7b2}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:37",
+    "close_min": "22:39"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1401,
+    "code1": "mb10_219",
+    "name": "Олімпійська",
+    "globalid": "{e4ca329c-019b-4042-90c3-c1924ac237c9}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:35",
+    "close_min": "22:38"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1402,
+    "code1": "mb11_220",
+    "name": "Палац «Україна»",
+    "globalid": "{82e72f9c-d253-4709-8b61-2783dd567bb9}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:33",
+    "close_min": "22:36"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1403,
+    "code1": "mb12_221",
+    "name": "Либідська",
+    "globalid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:45",
+    "close_min": "22:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1404,
+    "code1": "mb13_222",
+    "name": "Деміївська",
+    "globalid": "{7b6d81a2-6cb6-4b48-842b-5a5201f8e2bc}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:48",
+    "close_min": "22:34"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1405,
+    "code1": "mb14_223",
+    "name": "Голосіївська",
+    "globalid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:52",
+    "close_min": "22:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1406,
+    "code1": "mb15_224",
+    "name": "Васильківська",
+    "globalid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:53",
+    "close_min": "22:29"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1407,
+    "code1": "mb16_225",
+    "name": "Виставковий центр",
+    "globalid": "{95410970-a9c3-49a9-a872-9df9ab5e0839}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:56",
+    "close_min": "22:28"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1409,
+    "code1": "mb18_227",
+    "name": "Теремки",
+    "globalid": "{f0005dd0-8e02-4523-a495-d29e7e56ae8e}",
+    "line": "Оболонсько-Теремківська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:50",
+    "close_min": "22:22"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1410,
+    "code1": "mg01_310",
+    "name": "Сирець",
+    "globalid": "{9233b80a-b40c-467c-b693-766b41fefb51}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:52",
+    "close_min": "22:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1411,
+    "code1": "mg02_311",
+    "name": "Дорогожичі",
+    "globalid": "{84ada966-ff1d-4139-b2b6-2f0d759d4bbf}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:29",
+    "close_min": "22:22"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1413,
+    "code1": "mg04_314",
+    "name": "Золоті Ворота",
+    "globalid": "{6c243faf-8a61-4102-8e1f-4b292a49142a}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:38",
+    "close_min": "22:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1414,
+    "code1": "mg05_315",
+    "name": "Палац спорту",
+    "globalid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:42",
+    "close_min": "22:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1415,
+    "code1": "mg06_316",
+    "name": "Кловська",
+    "globalid": "{8c1d7924-4208-41dc-8518-168d3289e690}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:45",
+    "close_min": "22:37"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1416,
+    "code1": "mg07_317",
+    "name": "Печерська",
+    "globalid": "{8ca71d40-5de0-45bf-a101-494d4e93e49f}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:44",
+    "close_min": "22:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1417,
+    "code1": "mg08_318",
+    "name": "Звіринецька",
+    "globalid": "{f8940903-aca5-47a8-8938-42268515426d}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:44",
+    "close_min": "22:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1418,
+    "code1": "mg09_319",
+    "name": "Видубичі",
+    "globalid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:44",
+    "close_min": "22:38"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1419,
+    "code1": "mg10_321",
+    "name": "Славутич",
+    "globalid": "{bd37e469-380b-4853-a0e7-7e6c018f12c3}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:37",
+    "close_min": "22:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1420,
+    "code1": "mg11_322",
+    "name": "Осокорки",
+    "globalid": "{dbc2817a-1957-4f4e-a749-2a1813853d07}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:37",
+    "close_min": "22:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1421,
+    "code1": "mg12_323",
+    "name": "Позняки",
+    "globalid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:33",
+    "close_min": "22:28"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1422,
+    "code1": "mg13_324",
+    "name": "Харківська",
+    "globalid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:30",
+    "close_min": "22:24"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1423,
+    "code1": "mg14_325",
+    "name": "Вирлиця",
+    "globalid": "{689d2828-851a-43bb-b5d1-3391850eb43a}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:27",
+    "close_min": "22:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1424,
+    "code1": "mg15_326",
+    "name": "Бориспільська",
+    "globalid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 2,
+    "halls_open": 1,
+    "open_max": "05:26",
+    "close_min": "22:23"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1425,
+    "code1": "mg16_327",
+    "name": "Червоний хутір",
+    "globalid": "{16048cd2-361b-48f3-a3b5-2c08de8810a2}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:52",
+    "close_min": "22:20"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1426,
+    "code1": "mr01_110",
+    "name": "Академмістечко",
+    "globalid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:46",
+    "close_min": "22:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1427,
+    "code1": "mr02_111",
+    "name": "Житомирська",
+    "globalid": "{c3a1cb27-d237-486e-90a5-8e4353b6af87}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 1,
+    "open_max": "05:45",
+    "close_min": "22:27"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1428,
+    "code1": "mr03_112",
+    "name": "Святошин",
+    "globalid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:35",
+    "close_min": "22:27"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1429,
+    "code1": "mr04_113",
+    "name": "Нивки",
+    "globalid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:37",
+    "close_min": "22:29"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1430,
+    "code1": "mr05_114",
+    "name": "Берестейська",
+    "globalid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:38",
+    "close_min": "22:33"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1431,
+    "code1": "mr06_115",
+    "name": "Шулявська",
+    "globalid": "{2ec76936-19ff-49af-a897-07b830dde005}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:37",
+    "close_min": "22:32"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1432,
+    "code1": "mr07_116",
+    "name": "Політехнічний інститут",
+    "globalid": "{f6d8fbff-a9f8-4c19-b289-4d4db7ff0000}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:41",
+    "close_min": "22:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1433,
+    "code1": "mr08_117",
+    "name": "Вокзальна",
+    "globalid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:44",
+    "close_min": "22:38"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1434,
+    "code1": "mr09_118",
+    "name": "Університет",
+    "globalid": "{9100122b-e375-4656-b1ba-9dbff148e5a7}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:44",
+    "close_min": "22:38"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1435,
+    "code1": "mr10_119",
+    "name": "Театральна",
+    "globalid": "{3bfbcac5-3dc7-4712-a556-2e8f4155d415}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:45",
+    "close_min": "22:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1436,
+    "code1": "mr11_120",
+    "name": "Хрещатик",
+    "globalid": "{318177c9-7653-48d7-a6f6-a5a2ae32aea0}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 3,
+    "halls_open": 3,
+    "open_max": "05:40",
+    "close_min": "22:33"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1437,
+    "code1": "mr12_121",
+    "name": "Арсенальна",
+    "globalid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:38",
+    "close_min": "22:33"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1438,
+    "code1": "mr13_122",
+    "name": "Дніпро",
+    "globalid": "{d5db8459-5150-4631-8db6-b1e635b77f46}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:41",
+    "close_min": "22:36"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1439,
+    "code1": "mr14_123",
+    "name": "Гідропарк",
+    "globalid": "{a3dbd9c9-fe09-4894-a54e-94d87133df8c}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 1,
+    "open_max": "05:39",
+    "close_min": "22:34"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1440,
+    "code1": "mr15_124",
+    "name": "Лівобережна",
+    "globalid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:35",
+    "close_min": "22:29"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1441,
+    "code1": "mr16_125",
+    "name": "Дарниця",
+    "globalid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:33",
+    "close_min": "22:26"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1442,
+    "code1": "mr17_126",
+    "name": "Чернігівська",
+    "globalid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:31",
+    "close_min": "22:24"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1412,
+    "code1": "mg03_312",
+    "name": "Лук'янівська",
+    "globalid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "line": "Сирецько-Печерська",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "05:36",
+    "close_min": "22:27"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1443,
+    "code1": "mr18_127",
+    "name": "Лісова",
+    "globalid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "line": "Святошинсько-Броварська",
+    "halls_cnt": 2,
+    "halls_open": 2,
+    "open_max": "05:28",
+    "close_min": "22:25"
+   }
+  }
+ ]
+}

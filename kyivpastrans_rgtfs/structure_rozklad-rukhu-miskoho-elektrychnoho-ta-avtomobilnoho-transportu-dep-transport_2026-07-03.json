@@ -1,0 +1,519 @@
+{
+  "dataset": {
+    "dataset_id": "7b958c05-43ba-4ae5-b541-01904d658030",
+    "dataset_title": "Розклад руху міського електричного та автомобільного транспорту",
+    "dataset_description": "Набір містить дані про суб’єктів господарювання, що надають послуги пасажирського автомобільного транспорту, дані про маршрути громадського транспорту та кінцеві точки API для отримання даних про міський електричний та автомобільний транспорт.     \r\nНабір містить такі ресурси:    \r\n**GTFSStatic** – кінцева точка API (посилання) для отримання даних про розклад руху міського електричного та автомобільного транспорту КП «Київпастранс» у стандарті GTFS Static;   \r\n**stopsInterchangeKyivCityExpress** – кінцева точка API (посилання) для отримання даних про зупинки/станції, пересадки Київської кільцевої електрички;   \r\n**stopsKyivCityExpress** – кінцева точка API (посилання) для отримання даних про унікальні ідентифікатори, коди та назви станцій (платформ) Київської міської електрички;   \r\n**routeTaxi** – кінцева точка API (посилання) для отримання даних про геометрію, ідентифікатори зупинки початку/кінця сегменту маршруту, напрямок руху по автобусних маршрутах регулярних перевезень, які працюють в режимі маршрутного таксі;    \r\n**routes** – таблиця містить назву, опис, тип транспортних засобів, а також ідентифікатори перевізників, що обслуговують автобусні маршрути регулярних перевезень;    \r\n**stopTimesKyivCityExpress** – кінцева точка API (посилання) для отримання даних про коди та назви станцій (платформ) Київської міської електрички, назви та напрямки маршрутів, а також час прибуття та відправлення поїздів;    \r\n**kyivCityExpress** – кінцева точка API (посилання) для отримання даних про схему Київської кільцевої електрички, зокрема, назви, коди та ідентифікатори зупинок початку та зупинок кінця сегментів маршруту, а також про напрями її маршрутів;    \r\n**stopsInterchangeKyivFunicular** – кінцева точка API (посилання) для отримання даних про ідентифікатори, назви, коди станцій Київського фунікулеру та інформацію про зупинки/станції пересадки;   \r\n**timePeriodKyivFunicular** – кінцева точка API (посилання) для отримання даних про погодинні інтервали руху Київського фунікулера в робочі та вихідні дні;   \r\n**stopTimesKyivFunicular** – кінцева точка API (посилання) для отримання даних про коди та назви станцій Київського фунікулера, напрямки маршрутів, а також час прибуття та відправлення першого та останнього поїздів;    \r\n**calendarKyivFunicular** – кінцева точка API (посилання) для отримання даних про час роботи Київського фунікулера (відкриття та закриття), а також про кількість його вестибюлів;     \r\n**kyivFunicular** – кінцева точка API (посилання) для отримання даних про схему Київського фунікулера, зокрема назви, коди та ідентифікатори зупинок початку та зупинок кінця сегментів маршруту, а також про напрями його маршрутів;    \r\n**stopsInterchangeUnderground** – кінцева точка API (посилання) для отримання даних про ідентифікатори, назви, коди станцій Київського метрополітену та інформацію про зупинки/станції пересадки;   \r\n**timePeriodUnderground** – кінцева точка API (посилання) для отримання даних про погодинні інтервали руху поїздів Київського метрополітену в робочі та вихідні дні;  \r\n**stopTimesUnderground** – кінцева точка API (посилання) для отримання даних про коди та назви станцій Київського метрополітену, а також час відправлення першого та останнього поїзда;  \r\n**calendarUnderground** – кінцева точка API (посилання) для отримання даних про час роботи Київського метрополітену (відкриття та закриття), а також про кількість його вестибюлів;    \r\n**underground** – кінцева точка API (посилання) для отримання даних про схеми руху Київського метрополітену, в тому числі інформацію про ідентифікатори та коди складових сегментів маршруту, назви маршрутів, їх напрямок та порядок слідування;    \r\n**agency** – таблиця містить назви, ідентифікатори та контактні дані суб’єктів господарювання, що надають послуги пасажирського автомобільного транспорту у місті Києві. \r\n\r\n",
+    "collection_basis": "Наказ Міністерства транспорту та зв'язку України від 07.05.2010 № 278 «Про затвердження Порядку розроблення та затвердження паспорта автобусного маршруту», Наказ Міністерства інфраструктури України від 15.07.2013 № 480 «Про затвердження Порядку організації перевезень пасажирів та багажу автомобільним транспортом»",
+    "language": "Українська",
+    "dataset_created": "2026-03-10T15:04:52",
+    "dataset_modified": "2026-06-11T14:29:07",
+    "data_period": "-",
+    "update_frequency": "Більш як один раз на день",
+    "keywords": [
+      "автобус",
+      "графік",
+      "маршрут",
+      "метро",
+      "перевізники",
+      "транспорт"
+    ],
+    "dataset_url": "https://data.kyivcity.gov.ua/dataset/rozklad-rukhu-miskoho-elektrychnoho-ta-avtomobilnoho-transportu-dep-transport",
+    "structure_url": "https://data.kyivcity.gov.ua/dataset/rozklad-rukhu-miskoho-elektrychnoho-ta-avtomobilnoho-transportu-dep-transport/structure/download",
+    "organization_title": "Департамент транспортної інфраструктури",
+    "organization_edrpou": "37405284",
+    "organization_katottg": "UA80000000000093317",
+    "organization_email": "transport@kyivcity.gov.ua",
+    "organization_phone": "+380443666305",
+    "responsible_person": "Олександра Кравчук",
+    "responsible_person_email": "oleksandra.kravchuk@kyivcity.gov.ua",
+    "creator_email": "olena.pastushenko@kyivcity.gov.ua",
+    "license": "Безкоштовно назавжди для особистого або комерційного використання відповідно до ліцензії Open Data Licence",
+    "resources_count": 18
+  },
+  "resources": [
+    {
+      "resource_id": "58f0c3d0-9409-4de9-92c8-de4afa035efd",
+      "resource_name": "GTFSStatic",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про розклад руху міського електричного та автомобільного транспорту КП «Київпастранс» у стандарті GTFS Static. Дані надаються у форматі TXT, значення розділені комою. \r\nІнформація систематизована в наступні таблиці (ресурси):  \r\n1. **agency** – дані про суб’єктів господарювання, що надають послуги громадського транспорту;   \r\n2. **stops** – дані про контрольні точки, по яких побудовано розклад руху громадського транспорту;    \r\n3. **routes** – дані про маршрути громадського транспорту;     \r\n4. **trips** – дані про рейси громадського транспорту;    \r\n5. **stopTimes** – графік відбуття та прибуття транспорту до та від контрольних точок; В атрибуті **stopSequence** вказується порядковий номер зупинки на рейсі. Перша зупинка (відправлення) має номер 10, друга – 20, третя – 30 і так далі.    \r\n6. **calendar** – варіанти тижневих графіків роботи громадського транспорту;    \r\n7. **calendarDates** – перелік винятків до тижневих графіків;   \r\n8. **shapes** – геопросторові дані про маршрути громадського транспорту. В атрибуті **sequence** вказується послідовність, у якій точки траєкторії з’єднуються для утворення форми. Значення кратні 10.\r\n\r\nВиди транспорту, що обслуговує КП «Київпастранс» мають такі коди: 1 – трамвай, 2 – тролейбус, 3 – автобус.\r\n",
+      "format": "TXT",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T15:16:26",
+      "resource_modified": "2026-03-30T14:18:04",
+      "data_period": "-",
+      "source": "Автоматизована система диспетчерського управління",
+      "data_owners": [
+        "Комунальне підприємство «Київпастранс»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "http://193.23.225.211:8002/export-gtfs-static",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "4b2dec17-7553-4317-a361-3f23be3b300f",
+      "resource_name": "stopsInterchangeKyivCityExpress",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про ідентифікатори, назви, коди станцій Київської кільцевої електрички та інформацію про зупинки/станції пересадки. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T15:58:10",
+      "resource_modified": "2026-03-10T15:59:45",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "-"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/21/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=json",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "294c28b3-b32d-4957-ba59-b8f866140324",
+      "resource_name": "stopsKyivCityExpress",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про унікальні ідентифікатори, коди та назви станцій (платформ) Київської міської електрички. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі GeoJSON.",
+      "format": "GeoJSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T15:59:45",
+      "resource_modified": "2026-03-10T16:02:53",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "-"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/10/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Meter&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=geojson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "77325f5c-57d0-4f79-844a-cc73675f9743",
+      "resource_name": "routeTaxi",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про геометрію, ідентифікатори зупинки початку/кінця сегменту маршруту, напрямок руху по автобусних маршрутах регулярних перевезень, які працюють в режимі маршрутного таксі. Дані оприлюднені з ІАС «Майно». Дані надаються у форматі GeoJSON.",
+      "format": "GeoJSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T16:02:53",
+      "resource_modified": "2026-03-10T22:36:47",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальна служба перевезень"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/1/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Meter&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=geojson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "e9d7590e-55ff-4d5d-8b5a-251900ef1967",
+      "resource_name": "routes",
+      "resource_description": "Таблиця містить назву, опис, тип транспортних засобів, а також ідентифікатори перевізників, що обслуговують автобусні маршрути регулярних перевезень, які працюють в режимі маршрутного таксі на підставі Договорів про організацію перевезень пасажирів на міському автобусному маршруті загального користування м. Києва. Кожним записом в таблиці є транспортний засіб, на якому виконує перевезення один перевізник.",
+      "format": "CSV",
+      "resource_code": "routes",
+      "resource_created": "2026-03-10T21:08:52",
+      "resource_modified": "2026-06-11T14:29:07",
+      "data_period": "? — 2026-06-11",
+      "source": "-",
+      "data_owners": [
+        "Комунальна служба перевезень"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://data.kyivcity.gov.ua/uploads/versions/version_ed7e0599_v1.1.csv",
+      "resource_versions": [
+        {
+          "name": "v1.2",
+          "url": "https://data.kyivcity.gov.ua/uploads/versions/version_7f090d76_v1.2.csv"
+        },
+        {
+          "name": "v1.1",
+          "url": "https://data.kyivcity.gov.ua/uploads/versions/version_ed7e0599_v1.1.csv"
+        },
+        {
+          "name": "v1.0",
+          "url": "https://data.kyivcity.gov.ua/dataset/7b958c05-43ba-4ae5-b541-01904d658030/resource/e9d7590e-55ff-4d5d-8b5a-251900ef1967/download/routes.csv"
+        }
+      ],
+      "api_available": false,
+      "schema": [
+        {
+          "name": "uid",
+          "title": "Ідентифікатор маршруту",
+          "description": "Унікальний ідентифікатор маршруту громадського транспорту. Ідентифікатором може бути номер маршруту. Наприклад: 23А",
+          "datatype": "string",
+          "required": true
+        },
+        {
+          "name": "agencyId",
+          "title": "Ідентифікатор перевізника",
+          "description": "Ідентифікатор перевізника з таблиці agency (колонка agencyId). Наприклад: 01234567. Якщо на маршруті працює декілька перевізників, інформація для кожного з перевізників зазначається в окремому рядку. При цьому ідентифікатор маршруту та інша інформація мають дублюватися",
+          "datatype": "string",
+          "required": true
+        },
+        {
+          "name": "shortName",
+          "title": "Коротка назва",
+          "description": "Коротка назва маршруту, що використовується для навігації пасажирів у схемах, графіках руху. Як правило, це номер маршруту. Наприклад: 23А",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "fullName",
+          "title": "Повна назва",
+          "description": "Повна назва маршруту або назва, що використовується в документах. Наприклад: Автобусний маршрут №23А вул. Марії Приймаченко — Металургійний комбінат",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "description",
+          "title": "Опис маршруту",
+          "description": "Опис маршруту містить кількісну та якісну інформацію про маршрут. Наприклад: Автобус розпочинає рух із мікрорайону Заріччя, рухається центром міста (вул. Сергія Параджанова) та прибуває до залізничного вокзалу. Тривалість маршруту 35 хв. Частота відправлення автобусів 5-25 хв",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "type",
+          "title": "Тип транспорту",
+          "description": "Тип транспортних засобів, що використовуються на маршруті, позначається кодом (лише цифра): 0 — трамвай, легка залізниця; 1 — метро; 2 — залізниця; 3 — автобус, тролейбус; 7 — фунікулер. Наприклад: 3",
+          "datatype": "integer",
+          "required": true
+        },
+        {
+          "name": "homepage",
+          "title": "Посилання",
+          "description": "Посилання на сторінку в мережі Інтернет, що містить інформацію про маршрут. Посилання має починатися з http:// або https://. Наприклад: https://www.example.com.ua/r23",
+          "datatype": "anyURL",
+          "required": false
+        },
+        {
+          "name": "colour",
+          "title": "Колір маршруту",
+          "description": "Колір, яким позначається лінія маршруту на схемах. Він може бути позначеним словом у чоловічому роді або кодом. Наприклад: червоний. Якщо розпорядник має навички роботи з кодами кольорів HTML, бажано вказати код. Наприклад: FF0000. Якщо колір відсутній, зазначається білий колір або FFFFFF",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "textColour",
+          "title": "Колір тексту",
+          "description": "Колір, яким позначається текст про маршрут на схемах. Він може бути позначеним словом у чоловічому роді або кодом. Наприклад: чорний. Якщо розпорядник має навички роботи з кодами кольорів HTML, бажано вказати код. Наприклад: 000000. Якщо колір відсутній, зазначається білий колір або FFFFFF",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "sortOrder",
+          "title": "Порядковий номер",
+          "description": "Довільний порядковий номер використовується для того, щоб розташувати маршрути в зручному порядку для користувачів таблиці. Наприклад: 002",
+          "datatype": "string",
+          "required": false
+        }
+      ]
+    },
+    {
+      "resource_id": "c4d2ed78-4335-4c79-8e41-1d2954d03931",
+      "resource_name": "stopTimesKyivCityExpress",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про коди та назви станцій (платформ) Київської міської електрички, назви та напрямки маршрутів, а також час прибуття та відправлення поїздів. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T21:19:14",
+      "resource_modified": "2026-03-10T21:28:05",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "-"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/20/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "a4fd8556-025a-4e14-bc75-99e4c018d2b9",
+      "resource_name": "kyivCityExpress",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про схему Київської кільцевої електрички, зокрема, назви, коди та ідентифікатори зупинок початку та зупинок кінця сегментів маршруту Київської міської електрички, а також про напрями її маршрутів. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі GeoJSON.",
+      "format": "GeoJSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T21:26:04",
+      "resource_modified": "2026-04-08T12:01:44",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "-"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/11/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=geojson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "3ca6d5c4-7e00-4e8f-a2e7-bedfe61237f4",
+      "resource_name": "stopsInterchangeKyivFunicular",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про ідентифікатори, назви, коди станцій Київського фунікулеру та інформацію про зупинки/станції пересадки. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T21:32:33",
+      "resource_modified": "2026-03-10T21:45:05",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київпастранс»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/19/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "53cb69a6-6478-4799-abd5-3380a26d6f58",
+      "resource_name": "timePeriodKyivFunicular",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про погодинні інтервали руху Київського фунікулера в робочі та вихідні дні. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T21:45:05",
+      "resource_modified": "2026-03-10T21:51:01",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київпастранс»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/18/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "045dfda9-a8cf-4704-8012-f6f8ea05864e",
+      "resource_name": "stopTimesKyivFunicular",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про коди та назви станцій Київського фунікулера, напрямки маршрутів, а також час прибуття та відправлення першого та останнього поїздів. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T21:51:01",
+      "resource_modified": "2026-03-10T21:54:20",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київпастранс»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/17/query?where=&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "f8fdfebf-ffe5-4ee0-82c3-505213542271",
+      "resource_name": "calendarKyivFunicular",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про час роботи Київського фунікулера (відкриття та закриття), а також про кількість його вестибюлів. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T21:54:20",
+      "resource_modified": "2026-03-10T21:57:31",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київпастранс»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/16/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "f6f83ab2-3818-4d8c-93db-19dcda89cce9",
+      "resource_name": "kyivFunicular",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про схему Київського фунікулера, зокрема назви, коди та ідентифікатори зупинок початку та зупинок кінця сегментів маршруту Київського фунікулера, а також про напрями його маршрутів. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі GeoJSON.",
+      "format": "GeoJSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T21:57:31",
+      "resource_modified": "2026-04-08T12:09:39",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київпастранс»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/8/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=geojson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "f7d0b201-c3c4-4f97-977c-91a3f144588c",
+      "resource_name": "stopsInterchangeUnderground",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про ідентифікатори, назви, коди станцій Київського метрополітену та інформацію про зупинки/станції пересадки. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T22:00:53",
+      "resource_modified": "2026-03-10T22:15:33",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київський метрополітен»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/15/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "b1352a36-3b4d-4a4d-b73d-162479c71bd0",
+      "resource_name": "timePeriodUnderground",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про погодинні інтервали руху поїздів Київського метрополітену в робочі та вихідні дні. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T22:19:06",
+      "resource_modified": "2026-03-10T22:22:44",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київський метрополітен»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/14/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "b7429519-c76d-4a10-a898-896fddf2f37e",
+      "resource_name": "stopTimesUnderground",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про коди та назви станцій Київського метрополітену, а також час відправлення першого та останнього поїзда. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON.",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T22:22:44",
+      "resource_modified": "2026-03-10T22:28:34",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київський метрополітен»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/13/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "b675a915-11fb-470e-af53-5c7f657b7d11",
+      "resource_name": "calendarUnderground",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про час роботи Київського метрополітену (відкриття та закриття), а також про кількість його вестибюлів. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі JSON",
+      "format": "JSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T22:28:34",
+      "resource_modified": "2026-03-10T22:36:05",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київський метрополітен»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/12/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=pjson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "5e385793-58e2-49eb-b856-a963dd7486bb",
+      "resource_name": "underground",
+      "resource_description": "Кінцева точка API (посилання) для отримання даних про схеми руху Київського метрополітену, в тому числі інформацію про ідентифікатори та коди складових сегментів маршруту, назви маршрутів, їх напрямок та порядок слідування, тощо. Дані оприлюднені з ІАС «Майно». Дані надаються в форматі GeoJSON.",
+      "format": "GeoJSON",
+      "resource_code": "OTHER",
+      "resource_created": "2026-03-10T22:36:05",
+      "resource_modified": "2026-03-12T14:07:04",
+      "data_period": "-",
+      "source": "ІАС «Майно»",
+      "data_owners": [
+        "Комунальне підприємство «Київський метрополітен»"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://gisserver-stage.kyivcity.gov.ua/mayno/rest/services/KYIV_API/transport_public/MapServer/5/query?where=1%3D1&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Meter&relationParam=&outFields=*&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&uniqueIds=&returnUniqueIdsOnly=false&featureEncoding=esriDefault&f=geojson",
+      "resource_versions": [],
+      "api_available": true,
+      "schema": "-"
+    },
+    {
+      "resource_id": "224537e0-271e-49a3-bf9a-840e9f37c882",
+      "resource_name": "agency.csv",
+      "resource_description": "Таблиця містить назви, ідентифікатори та контактні дані суб’єктів господарювання, що надають послуги пасажирського автомобільного транспорту у місті Києві. Кожним записом в таблиці є один перевізник.",
+      "format": "CSV",
+      "resource_code": "agency",
+      "resource_created": "2026-03-10T22:45:04",
+      "resource_modified": "2026-03-10T22:45:03",
+      "data_period": "-",
+      "source": "-",
+      "data_owners": [
+        "-"
+      ],
+      "administrator_org": "Департамент транспортної інфраструктури",
+      "resource_current_url": "https://data.kyivcity.gov.ua/dataset/7b958c05-43ba-4ae5-b541-01904d658030/resource/224537e0-271e-49a3-bf9a-840e9f37c882/download/agency.csv",
+      "resource_versions": [],
+      "api_available": false,
+      "schema": [
+        {
+          "name": "id",
+          "title": "Ідентифікатор",
+          "description": "Код ЄДРПОУ перевізника. Дані реєстраційного номера облікової картки платника податків фізичної особи-підприємця знеособлюються. Також ідентифікаторами можуть бути скорочені назви або системні коди. Наприклад: 01234567",
+          "datatype": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "title": "Назва",
+          "description": "Найменування (організаційно-правова форма та назва) юридичної особи- перевізника. Наприклад: Комунальне підприємство «Муніципальна транспортна компанія»",
+          "datatype": "string",
+          "required": true
+        },
+        {
+          "name": "homepage",
+          "title": "Веб-сайт",
+          "description": "Посилання на офіційний веб-сайт перевізника. Посилання має починатися з http:// або https://. Наприклад: https://www.example.com.ua/",
+          "datatype": "anyURL",
+          "required": false
+        },
+        {
+          "name": "timezone",
+          "title": "Часовий пояс",
+          "description": "Часовий пояс, в якому організація здійснює перевезення. У колонці необхідно зазначити Europe/Kyiv. Наприклад: Europe/Kyiv",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "language",
+          "title": "Мова",
+          "description": "Мова надання послуг відповідно до ISO 639-1. Для української мови необхідно зазначити uk. Наприклад: uk",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "telephone",
+          "title": "Телефон",
+          "description": "Номер має починатися з +380, включати код населеного пункту або оператора та телефонний номер (12 цифр, без пробілів і дужок). Наприклад: +380123456789. У електронних таблицях допускається написання коду країни 380 або використання комбінації ‘+ (апостроф та плюс). У випадку кількох номерів телефону значення розділити комою",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "email",
+          "title": "Адреса електронної пошти",
+          "description": "Адреса електронної пошти перевізника. Наприклад: example@example.com",
+          "datatype": "string",
+          "required": false
+        },
+        {
+          "name": "fareUrl",
+          "title": "Сервіс придбання квитків",
+          "description": "Посилання на електронний сервіс придбання проїзних документів. Посилання має починатися з http:// або https://. Наприклад: https://www.example.com.ua/",
+          "datatype": "anyURL",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "generated_at": "03.07.2026 10:32"
+}

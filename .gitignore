@@ -1,0 +1,8 @@
+﻿__pycache__/
+*.pyc
+cache/
+kyivpastrans_gtfs.zip
+kyivpastrans_rgtfs.zip
+kyiv_street_graph_*.pkl
+kyiv_cache.sqlite
+.DS_Store

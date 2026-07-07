@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CityTwin — цифровий двійник міської мобільності</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1118;
+    --panel:#101823;
+    --panel-2:#151f2c;
+    --line:#223145;
+    --text:#EDEAE2;
+    --muted:#8B97A6;
+    --gold:#C9A227;
+    --gold-soft:#e6c766;
+    --red-line:#E8434F;
+    --blue-line:#2E86DE;
+    --green-line:#33A65C;
+    --road-new:#9AA5B1;
+    --band15: 63,209,138;
+    --band30: 240,196,73;
+    --band45: 224,90,66;
+    --band60: 122,56,110;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;background:var(--bg);color:var(--text);font-family:'Golos Text',sans-serif;overflow:hidden;}
+  #map{position:absolute;inset:0;background:#0B1118;}
+  body.theme-dark .leaflet-tile{filter:brightness(0.98) contrast(1.04);}
+  body.theme-light .leaflet-tile{filter:none;}
+  /* Режим "авто": прибираємо кольоровий шум громадського транспорту з карти,
+     і трохи піднімаємо контраст/яскравість тайлів — без ліній метро/трамваїв
+     поверх вулиць самі вулиці й підписи стають значно читабельнішими. */
+  body.role-car.theme-dark .leaflet-tile{filter:brightness(1.14) contrast(1.16) saturate(0.88);}
+  body.role-car.theme-light .leaflet-tile{filter:contrast(1.12) saturate(0.92);}
+  body.theme-light{--bg:#EDEFF2;--panel:#FFFFFF;--panel-2:#F4F5F7;--line:#DADFE5;--text:#1B2430;--muted:#5D6B7A;}
+
+  .hero{
+    position:absolute;top:0;left:0;right:0;z-index:900;
+    display:flex;align-items:flex-start;justify-content:space-between;
+    padding:22px 26px;pointer-events:none;
+  }
+  .wordmark{pointer-events:auto;}
+  .wordmark h1{
+    font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;line-height:1.15;
+    margin:0 0 4px 0;letter-spacing:0.2px;
+  }
+  .wordmark h1 span{color:var(--gold);}
+  .wordmark p{margin:0;font-size:12.5px;color:var(--muted);max-width:340px;}
+  .badge{
+    pointer-events:auto;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);
+    background:rgba(16,24,35,0.75);backdrop-filter:blur(6px);border:1px solid var(--line);
+    padding:6px 10px;border-radius:8px;
+  }
+  body.theme-light .badge{background:rgba(255,255,255,0.85);}
+  .top-right{pointer-events:auto;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+  .theme-btn{
+    pointer-events:auto;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text);
+    background:rgba(16,24,35,0.75);backdrop-filter:blur(6px);border:1px solid var(--line);
+    padding:7px 11px;border-radius:8px;display:flex;align-items:center;gap:6px;
+  }
+  body.theme-light .theme-btn{background:rgba(255,255,255,0.85);}
+
+  .layer-list{display:flex;flex-direction:column;gap:2px;}
+  .layer-item{display:flex;align-items:center;gap:9px;padding:7px 4px;cursor:pointer;border-radius:7px;}
+  .layer-item:hover{background:var(--panel-2);}
+  .layer-item input{accent-color:var(--gold);width:14px;height:14px;flex-shrink:0;}
+  .layer-item i{width:16px;height:3px;border-radius:2px;flex-shrink:0;}
+  .layer-item i.dashed{background-image:linear-gradient(90deg, currentColor 60%, transparent 40%);background-size:8px 3px;background-color:transparent!important;}
+  .layer-item span{font-size:12.5px;color:var(--text);}
+  .layer-item small{color:var(--muted);font-size:10.5px;margin-left:auto;font-family:'JetBrains Mono',monospace;}
+
+  .panel{
+    position:absolute;top:96px;left:22px;bottom:22px;width:308px;z-index:900;
+    background:rgba(16,24,35,0.88);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:16px;
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  .panel-scroll{overflow-y:auto;padding:18px;flex:1;}
+  .panel-scroll::-webkit-scrollbar{width:6px;}
+  .panel-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+  body.theme-light .panel{background:rgba(255,255,255,0.92);}
+  body.theme-light .hud{background:rgba(255,255,255,0.92);}
+  body.theme-light .ref{background:rgba(255,255,255,0.9);}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+    color:var(--gold);margin:0 0 8px 0;
+  }
+  .role-tabs{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+  .role-tab{
+    display:flex;align-items:center;gap:10px;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:10px;
+    padding:11px 12px;cursor:pointer;transition:.15s ease;font-size:13.5px;
+  }
+  .role-tab:hover{border-color:#3a4a60;}
+  .role-tab.active{background:rgba(201,162,39,0.14);border-color:var(--gold);}
+  .role-tab .dot{width:9px;height:9px;border-radius:50%;background:var(--muted);flex-shrink:0;}
+  .role-tab.active .dot{background:var(--gold);}
+  .role-tab b{font-weight:600;}
+  .role-tab small{display:block;color:var(--muted);font-size:11px;margin-top:1px;}
+
+  .section{border-top:1px solid var(--line);padding-top:16px;margin-top:16px;}
+  .section:first-of-type{border-top:none;margin-top:0;padding-top:0;}
+
+  .row{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-bottom:6px;}
+  .row b{color:var(--text);font-family:'JetBrains Mono',monospace;font-weight:500;}
+  input[type=range]{width:100%;accent-color:var(--gold);}
+
+  .hint{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 12px 0;}
+  .hint.active{color:var(--gold-soft);}
+
+  .btn{
+    width:100%;border:1px solid var(--line);background:var(--panel-2);color:var(--text);
+    font-family:'Golos Text',sans-serif;font-size:13px;font-weight:600;
+    padding:10px 12px;border-radius:9px;cursor:pointer;margin-bottom:8px;transition:.15s;
+  }
+  .btn:hover{border-color:#3a4a60;}
+  .btn.primary{background:var(--gold);color:#181206;border-color:var(--gold);}
+  .btn.primary:hover{background:var(--gold-soft);}
+  .btn.ghost{background:transparent;}
+  .btn.active{border-color:var(--gold);color:var(--gold-soft);}
+  .btn:disabled{opacity:0.35;cursor:not-allowed;}
+  .btn-row{display:flex;gap:8px;}
+  .btn-row .btn{margin-bottom:0;}
+
+  .type-toggle{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+  .type-toggle .btn{font-size:11.5px;padding:8px 6px;flex:1 1 auto;min-width:78px;}
+
+  .cap-bars{display:flex;flex-direction:column;gap:8px;}
+  .cap-row{display:flex;align-items:center;gap:8px;}
+  .cap-label{width:92px;flex-shrink:0;font-size:11.5px;color:var(--text);}
+  .cap-track{flex:1;height:14px;background:var(--panel-2);border-radius:4px;overflow:hidden;border:1px solid var(--line);}
+  .cap-fill{height:100%;border-radius:3px;}
+  .cap-val{width:64px;flex-shrink:0;text-align:right;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);}
+  .modal-stack-track{height:20px;background:var(--panel-2);border-radius:6px;overflow:hidden;border:1px solid var(--line);display:flex;margin-bottom:10px;}
+  .modal-seg{height:100%;transition:width .3s ease;}
+  .modal-legend{display:flex;flex-direction:column;gap:6px;}
+  .modal-legend-row{display:flex;align-items:center;gap:8px;font-size:12px;}
+  .modal-legend-row .sw{width:11px;height:11px;border-radius:3px;flex-shrink:0;}
+  .modal-legend-row .lbl{color:var(--text);flex:1;}
+  .modal-legend-row .num{font-family:'JetBrains Mono',monospace;color:var(--gold-soft);font-weight:600;font-size:11.5px;white-space:nowrap;}
+  .modal-legend-row .pct{color:var(--muted);font-size:10.5px;width:34px;text-align:right;}
+
+  .legend-line{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .legend-line i{width:18px;height:3px;border-radius:2px;flex-shrink:0;}
+  .legend-band{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-bottom:6px;}
+  .legend-band i{width:14px;height:14px;border-radius:4px;flex-shrink:0;}
+
+  .callout{
+    font-size:12px;line-height:1.55;background:rgba(224,90,66,0.12);
+    border:1px solid rgba(224,90,66,0.4);color:#f0b7a8;border-radius:10px;padding:10px 11px;margin-top:10px;
+  }
+
+  .hud{
+    position:absolute;right:22px;bottom:22px;z-index:900;width:270px;
+    background:rgba(16,24,35,0.88);backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:16px;padding:16px 18px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .hud h3{margin:0 0 12px 0;font-family:'Golos Text',sans-serif;font-size:12px;letter-spacing:0.5px;
+    text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .stat{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;}
+  .stat .k{font-size:11px;color:var(--muted);font-family:'Golos Text',sans-serif;}
+  .stat .v{font-size:16px;font-weight:700;color:var(--text);}
+  .stat .v.gold{color:var(--gold-soft);}
+  .delta{font-size:11px;color:#7fe0a8;margin-top:-4px;margin-bottom:8px;}
+  .divider{border-top:1px dashed var(--line);margin:10px 0;}
+
+  .map-legend{
+    position:absolute;left:350px;right:310px;bottom:22px;z-index:850;
+    background:rgba(16,24,35,0.88);backdrop-filter:blur(8px);border:1px solid var(--line);
+    border-radius:12px;padding:10px 16px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text);
+  }
+  body.theme-light .map-legend{background:rgba(255,255,255,0.92);}
+  .map-legend .grp{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .map-legend .grp b{font-family:'Golos Text',sans-serif;font-weight:600;font-size:10.5px;
+    color:var(--muted);text-transform:uppercase;letter-spacing:0.3px;margin-right:2px;}
+  .map-legend .swatch{width:14px;height:4px;border-radius:2px;display:inline-block;}
+  .map-legend .swatch.dashed{background-image:linear-gradient(90deg, currentColor 55%, transparent 45%);
+    background-size:7px 4px;background-color:transparent!important;}
+  .map-legend .swatch.dotted{background-image:linear-gradient(90deg, currentColor 30%, transparent 30%);
+    background-size:4px 4px;background-color:transparent!important;}
+  .map-legend .sep{width:1px;height:16px;background:var(--line);}
+  .map-legend .swatch.outline{width:14px;height:10px;border-radius:3px;background:transparent!important;
+    border:2px solid currentColor;}
+  @media (max-width:1100px){ .map-legend{left:22px;right:22px;bottom:auto;top:calc(96px + 1px);position:relative;margin:12px 22px;} }
+
+  @media (max-width:760px){
+    .panel{width:calc(100% - 44px);bottom:auto;max-height:52vh;}
+    .hud{left:22px;right:22px;width:auto;bottom:auto;top:calc(96px + 52vh + 12px);}
+    .hero{padding:16px 18px;}
+    .wordmark h1{font-size:16px;}
+    .wordmark p{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div class="hero">
+  <div class="wordmark">
+    <h1>CityTwin<span>.</span></h1>
+    <p>Цифровий двійник Києва: місто вимірюється не в кілометрах асфальту, а в хвилинах, які людина витрачає, щоб до чогось дістатись.</p>
+  </div>
+  <div class="top-right">
+    <div class="theme-btn" id="themeBtn">☀️ Світла карта</div>
+    <div class="badge" id="clockBadge">14:00 · будній день</div>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-scroll">
+
+    <div class="section">
+      <p class="eyebrow">Роль</p>
+      <div class="role-tabs" id="roleTabs">
+        <div class="role-tab active" data-role="transit">
+          <div class="dot"></div>
+          <div><b>Громадянин · транспорт</b><small>Пішки + метро/трамвай/автобус</small></div>
+        </div>
+        <div class="role-tab" data-role="car">
+          <div class="dot"></div>
+          <div><b>Громадянин · авто</b><small>З урахуванням заторів</small></div>
+        </div>
+        <div class="role-tab" data-role="council">
+          <div class="dot"></div>
+          <div><b>Міськрада</b><small>Проєктуй нові лінії й дороги</small></div>
+        </div>
+      </div>
+      <p class="hint" id="mainHint">Клікни будь-де на карті — побачиш, куди звідти реально можна дістатись за 15 / 30 / 45 / 60 хвилин.</p>
+      <div class="callout" style="border-color:rgba(63,209,138,0.4);background:rgba(63,209,138,0.1);color:#a8e8c4;">
+        💡 Кольорові зони = за скільки часу туди можна дістатись. Іноді видно ОКРЕМІ плями далеко від точки, не з'єднані з основною зоною — це нормально: там поруч зупинка метро/транспорту, і саме через неї туди швидко доїхати, хоча пішки напряму — довго.
+      </div>
+      <div class="callout" id="goldExplainer" style="border-color:rgba(201,162,39,0.45);background:rgba(201,162,39,0.12);color:var(--gold-soft);">
+        🟡 <b>Що означає золотий колір:</b> товста золота ЛІНІЯ — це трамвай, який ти сам намалював у режимі «Міськрада» (проєкт, ще не існує в реальності). Тонкий золотий КОНТУР-ОБЛАСТЬ навколо території (напівпрозорий, без ліній усередині) — це точна ізохрона з підключеного бекенду (kyiv_backend.py): справжній розрахунок по графу вулиць, а не кольорова симуляція. Якщо бекенд не підключено — жодного золотого контуру-області на карті не буде, лише лінії твоїх проєктів (якщо малював).
+      </div>
+      <p class="eyebrow" style="margin-top:14px;">День тижня</p>
+      <div class="type-toggle">
+        <button class="btn active" id="dayWeekday">Будній</button>
+        <button class="btn" id="dayWeekend">Вихідний</button>
+      </div>
+      <p class="hint">Впливає і на інтервали транспорту, і на затори для авто.</p>
+    </div>
+
+    <div class="section" id="analyticsPanel">
+      <p class="eyebrow">📊 Наскільки допомагає транспорт</p>
+      <p class="hint" style="margin-top:-4px;">Розклад доступності (≤45 хв) з поточної точки за шарами мережі — показує, скільки саме людей/території дає кожен вид транспорту, а не тільки сумарну плямy.</p>
+      <div id="modalBars"></div>
+      <div class="divider"></div>
+      <p class="eyebrow" style="margin-top:10px;">⏳ Часова бідність</p>
+      <div id="timePovertyBox" class="hint" style="margin-top:-2px;">Клікни на карту, щоб побачити.</div>
+    </div>
+
+    <div class="section" id="carSection" style="display:none;">
+      <p class="eyebrow">Час доби</p>
+      <div class="row"><span>Година</span><b id="hourLabel">14:00</b></div>
+      <input type="range" id="hourSlider" min="0" max="23" value="14" step="1">
+      <p class="hint" style="margin-top:8px;">У буденний пік (8:00, 18:00) швидкість авто падає до ~15 км/год. У розрахунок часу також включені орієнтовні затримки на світлофорах/перехрестях (частіші в центрі) і час на пошук та паркування машини біля цілі (довше в центрі й у пік, менше на околиці й у вихідні).</p>
+      <div class="btn-row" style="margin-top:4px;">
+        <button class="btn" id="incidentBtn">🚧 Симулювати аварію</button>
+        <button class="btn ghost" id="clearIncidentBtn" disabled>Прибрати</button>
+      </div>
+      <p class="hint" id="incidentHint" style="margin-top:6px;">Випадкове ДТП/затор біля моста чи магістралі.</p>
+    </div>
+
+    <div class="section" id="councilSection" style="display:none;">
+      <p class="eyebrow">Новий маршрут</p>
+      <div class="type-toggle" id="typeToggle">
+        <button class="btn active" id="typeTram">🚋 Трамвай</button>
+        <button class="btn" id="typeMetro">🚇 Метро</button>
+        <button class="btn" id="typeRoad">🛣️ Дорога</button>
+      </div>
+      <div class="btn-row" style="margin-bottom:8px;">
+        <button class="btn" id="drawBtn">Малювати лінію</button>
+        <button class="btn" id="finishBtn" disabled>Завершити</button>
+      </div>
+      <button class="btn" id="recommendBtn">🤖 Знайти найгірше місце й запропонувати лінію</button>
+      <button class="btn primary" id="applyBtn" disabled>Впровадити й порахувати ефект</button>
+      <button class="btn ghost" id="clearLinesBtn">Очистити всі нові лінії</button>
+      <p class="hint" id="councilHint">Оберіть тип, натисніть «Малювати лінію», ставте точки кліками по карті, тоді «Завершити».</p>
+      <div class="callout" id="roadCallout" style="display:none;">
+        <b>Ефект індукованого попиту:</b> нова дорога одразу пришвидшує авто, але за ~2 роки трафік і затори повертаються.
+      </div>
+      <div class="callout" id="metroCallout" style="display:none;border-color:rgba(232,67,79,0.4);background:rgba(232,67,79,0.08);color:#e8a3a8;">
+        <b>Реалістичний термін:</b> навіть після рішення про фінансування будівництво лінії метро в Києві триває 7–10+ років. Це найдорожчий, але і найпотужніший за пропускною здатністю варіант.
+      </div>
+      <div class="callout" style="border-color:rgba(201,162,39,0.35);background:rgba(201,162,39,0.08);margin-top:8px;">
+        💰 <b>Орієнтовна вартість будівництва</b> (публічні оцінки КМДА та профільних видань 2021–2025, у поточних цінах, без викупу землі під нову забудову):<br>
+        🚋 трамвай — ≈ <b>450 млн грн/км</b> (колія + контактна мережа + зупинки)<br>
+        🚇 метро — ≈ <b>2 000 млн грн/км</b> (мілке закладення; глибоке — дорожче)<br>
+        🛣️ дорога — ≈ <b>30 млн грн/км</b> (розширення/реконструкція вулиці)<br>
+        <span style="opacity:0.75;">Це орієнтир для порівняння варіантів, не кошторис. Реальний проєкт зі складним рельєфом, мостами чи викупом землі може коштувати в 2–5 разів більше.</span>
+      </div>
+    </div>
+
+    <div class="section" id="efficiencyPanel">
+      <p class="eyebrow">⚡ Ефективність видів транспорту</p>
+      <p style="font-size:11px;color:var(--muted);margin:-4px 0 10px;line-height:1.4;">
+        Скільки пасажирів на годину в ОДНОМУ напрямку може провезти одна смуга/колія (типові інженерні орієнтири, не специфічно для Києва):
+      </p>
+      <div class="cap-bars" id="capBars"></div>
+      <div class="callout" style="margin-top:10px;border-color:rgba(63,209,138,0.4);background:rgba(63,209,138,0.08);color:#a8e8c4;">
+        📐 Щоб перевезти <b>25 000 пасажирів/год</b> в одному напрямку, потрібно: <b>2 смуги трамваю</b>, 3 — тролейбуса, 4 — автобуса, або <b>23 смуги</b> для легкових авто. Це не гіпербола — стандартний розрахунок з довідників міського транспорту: один трамвай (≈200-230 пас.) з інтервалом 1-2 хв замінює цілу автомагістраль.
+      </div>
+      <p class="hint" style="margin-top:8px;">Тобто вкладення в рейковий транспорт «купує» набагато більше пропускної здатності на 1 км ширини вулиці, ніж розширення під авто — і не деградує з часом через індукований попит, як дорога.</p>
+    </div>
+
+    <div class="section">
+      <p class="eyebrow">Точність</p>
+      <button class="btn" id="backendBtn">🔌 Підключити точний бекенд (localhost:8000)</button>
+      <p class="hint" id="backendHint">За замовчуванням карта використовує швидку симуляцію в браузері.</p>
+    </div>
+
+    <div class="section" id="layerPanel">
+      <p class="eyebrow">Шари транспорту</p>
+      <p style="font-size:11px;color:var(--muted);margin:-4px 0 8px;line-height:1.4;">Метро — реальні станції й перегони. Електричка/трамвай/тролейбус/автобус нижче — орієнтовні коридори (не офіційні GTFS-траси), точні лінії з'являться після підключення бекенду.</p>
+      <div class="layer-list">
+        <label class="layer-item"><input type="checkbox" data-layer="metro" checked><i style="background:#E8434F"></i><span>Метро · 3 лінії</span><small>33 км/год</small></label>
+        <label class="layer-item"><input type="checkbox" data-layer="rail" checked><i style="background:#9B59B6"></i><span>Міська електричка</span><small>орієнтовно</small></label>
+        <label class="layer-item"><input type="checkbox" data-layer="tram" checked><i style="background:#E8891A"></i><span>Трамвай</span><small>орієнтовно</small></label>
+        <label class="layer-item"><input type="checkbox" data-layer="trolley" checked><i style="background:#33C2D9"></i><span>Тролейбус</span><small>орієнтовно</small></label>
+        <label class="layer-item"><input type="checkbox" data-layer="bus"><i class="dashed" style="color:#7F93A8"></i><span>Магістральний автобус</span><small>ілюстр.</small></label>
+        <label class="layer-item"><input type="checkbox" data-layer="funicular" checked><i style="background:#F26D9E"></i><span>Фунікулер</span><small>3 хв</small></label>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="eyebrow">Легенда зон</p>
+      <div class="legend-band"><i style="background:rgb(var(--band15))"></i> до 15 хв</div>
+      <div class="legend-band"><i style="background:rgb(var(--band30))"></i> до 30 хв</div>
+      <div class="legend-band"><i style="background:rgb(var(--band45))"></i> до 45 хв</div>
+      <div class="legend-band"><i style="background:rgb(var(--band60))"></i> до 60 хв</div>
+      <div style="height:8px;"></div>
+      <div class="legend-line"><i style="background:var(--gold)"></i> Новий трамвай (проєкт, товста лінія)</div>
+      <div class="legend-line"><i style="background:var(--blue-line)"></i> Нове метро (проєкт)</div>
+      <div class="legend-line"><i style="background:var(--road-new)"></i> Нова дорога (проєкт)</div>
+      <div class="legend-line"><i style="border:2px solid var(--gold);background:transparent;height:10px;"></i> Точна ізохрона бекенду (область, не лінія)</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="map-legend" id="mapLegend">
+  <div class="grp"><b>Зони:</b>
+    <span class="swatch" style="background:rgb(63,209,138)"></span>15хв
+    <span class="swatch" style="background:rgb(240,196,73)"></span>30хв
+    <span class="swatch" style="background:rgb(224,90,66)"></span>45хв
+    <span class="swatch" style="background:rgb(122,56,110)"></span>60хв
+  </div>
+  <div class="sep"></div>
+  <div class="grp" id="legendModes"><b>Лінії:</b>
+    <span class="swatch" style="background:#E8434F"></span>метро
+    <span class="swatch" style="background:#9B59B6"></span>електричка
+    <span class="swatch dashed" style="color:#E8891A"></span>трамвай
+    <span class="swatch dotted" style="color:#33C2D9"></span>тролейбус
+  </div>
+  <div class="sep"></div>
+  <div class="grp"><b>Проєкт:</b>
+    <span class="swatch" style="background:#C9A227"></span>новий трамвай
+    <span class="swatch" style="background:#2E86DE"></span>нове метро
+    <span class="swatch outline" style="color:#C9A227"></span>точна зона бекенду
+  </div>
+</div>
+
+<div class="hud">
+  <h3>Доступність із цієї точки</h3>
+  <div class="stat"><span class="k">Площа охоплення (≤45 хв)</span><span class="v" id="statArea">—</span></div>
+  <div class="stat"><span class="k">Орієнтовне населення в зоні</span><span class="v gold" id="statPop">—</span></div>
+  <div class="delta" id="statDelta" style="display:none;"></div>
+  <div class="stat" id="statCostRow" style="display:none;"><span class="k">Вартість нових проєктів (усі лінії)</span><span class="v gold" id="statCost">—</span></div>
+  <div class="divider"></div>
+  <div class="stat"><span class="k" id="refCarLabel">Поїздка · авто</span><span class="v" id="refCar">≈180 грн</span></div>
+  <div class="stat"><span class="k" id="refTransitLabel">Поїздка · транспорт</span><span class="v" id="refTransit">20 грн</span></div>
+  <div class="stat"><span class="k">CO₂ авто / транспорт</span><span class="v" id="refCO2">960 г / 240 г</span></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/* ============================== DATA ============================== */
+const METRO_LINES = {
+  red: {color:'#E8434F', speed:33, wait:3,
+    names:['Академмістечко','Житомирська','Святошин','Нивки','Берестейська','Шулявська',
+      'Політехнічний інститут','Вокзальна','Університет','Театральна','Хрещатик','Арсенальна',
+      'Дніпро','Гідропарк','Лівобережна','Дарниця','Чернігівська','Лісова'],
+    pts:[
+    [50.4877,30.3721],[50.4820,30.3796],[50.4757,30.3846],[50.4670,30.3987],
+    [50.4611,30.4136],[50.4534,30.4310],[50.4499,30.4508],[50.4460,30.4737],
+    [50.4444,30.5106],[50.4469,30.5192],[50.4478,30.5238],[50.4472,30.5423],
+    [50.4411,30.5586],[50.4456,30.5769],[50.4514,30.5989],[50.4470,30.6165],
+    [50.4467,30.6250],[50.4436,30.6396]
+  ]},
+  blue: {color:'#2E86DE', speed:33, wait:3,
+    names:['Героїв Дніпра','Мінська','Оболонь','Почайна','Тараса Шевченка','Контрактова площа',
+      'Поштова площа','Майдан Незалежності','Площа Українських Героїв','Олімпійська',
+      'Палац «Україна»','Либідська','Деміївська','Голосіївська','Васильківська',
+      'Виставковий центр','Іподром','Теремки'],
+    pts:[
+    [50.5388,30.4956],[50.5225,30.4970],[50.5054,30.4979],[50.4889,30.5040],
+    [50.4750,30.5110],[50.4661,30.5188],[50.4580,30.5210],[50.4501,30.5237],
+    [50.4372,30.5195],[50.4270,30.5182],[50.4185,30.5230],[50.4132,30.5236],
+    [50.4000,30.5157],[50.3897,30.5040],[50.3820,30.4970],[50.3800,30.4900],
+    [50.3790,30.4820],[50.3765,30.4750]
+  ]},
+  green: {color:'#33A65C', speed:33, wait:3,
+    names:['Сирець','Дорогожичі','Лук\u2019янівська','Золоті ворота','Палац спорту','Кловська',
+      'Печерська','Звіринецька','Видубичі','Славутич','Осокорки','Позняки','Харківська',
+      'Вирлиця','Бориспільська','Червоний хутір'],
+    pts:[
+    [50.4762,30.4361],[50.4700,30.4600],[50.4614,30.4885],[50.4472,30.5152],
+    [50.4362,30.5215],[50.4300,30.5320],[50.4270,30.5420],[50.4200,30.5500],
+    [50.4130,30.5600],[50.4020,30.5720],[50.3980,30.5850],[50.4050,30.6050],
+    [50.4080,30.6200],[50.4020,30.6350],[50.3950,30.6550],[50.3813,30.6889]
+  ]}
+};
+// Real Dnipro road bridges used as mandatory crossing waypoints (right-bank landing -> left-bank landing).
+// Coordinates are approximate landings/mid-span, sourced from Wikipedia articles on each bridge — not survey-grade,
+// but no line is allowed to just "end" in open water anymore, every crossing goes through one of these three.
+const BRIDGE_PATON     = {right:[50.4330,30.5610], left:[50.4278,30.5960]}; // Мост Патона (тролейбус 50, просп. Соборності)
+const BRIDGE_PIVNICHNYI= {right:[50.5125,30.5395], left:[50.5165,30.5870]}; // Північний міст (Троєщина, Воскресенка)
+const BRIDGE_PIVDENNYI = {right:[50.3985,30.5320], left:[50.3975,30.5900]}; // Південний міст (Осокорки, напрямок Бориспіль)
+
+const TRAM_LINES = [
+  {name:'Правобережна: Раєвського–Політехнічний–центр', color:'#E8891A', pts:[
+    [50.4661,30.3512],[50.4598,30.3701],[50.4534,30.4310],[50.4499,30.4508],[50.4478,30.5000]
+  ]},
+  {name:'Лівобережна: Осокорки–Харківський–Бортничі', color:'#E8891A', pts:[
+    [50.4050,30.6050],[50.4180,30.6220],[50.4300,30.6450],[50.4090,30.6700],[50.3950,30.6980]
+  ]},
+  {name:'Троєщинська лінія (через Північний міст)', color:'#E8891A', pts:[
+    [50.5300,30.6250],[50.5225,30.6100],BRIDGE_PIVNICHNYI.left,BRIDGE_PIVNICHNYI.right,[50.5054,30.4979]
+  ]}
+];
+/* Тролейбусні коридори — орієнтовні (не GTFS-точні), але тепер проведені
+   через більше проміжних точок вздовж кожного проспекту, а не прямою лінією
+   з 3-4 точок навпростець. Раніше через це лінії різали квартали по діагоналі
+   і виглядали "зламаними" на реальних тайлах. Кожна лінія тепер монотонна
+   вздовж свого напрямку — жодних зворотних "гачків" по довготі/широті. */
+const TROLLEY_LINES = [
+  {name:'Просп. Перемоги (Святошин – центр)', color:'#33C2D9', pts:[
+    [50.4750,30.3950],[50.4715,30.4055],[50.4676,30.4170],[50.4650,30.4300],
+    [50.4620,30.4400],[50.4592,30.4500],[50.4570,30.4600],[50.4530,30.4750],
+    [50.4501,30.4900],[50.4478,30.5000],[50.4478,30.5100]
+  ]},
+  {name:'Столичне шосе (Теремки – центр)', color:'#33C2D9', pts:[
+    [50.3780,30.4650],[50.3860,30.4720],[50.3930,30.4790],[50.4000,30.4850],
+    [50.4070,30.4910],[50.4135,30.4980],[50.4185,30.5050],[50.4280,30.5120],
+    [50.4372,30.5195]
+  ]},
+  {name:'Тролейбус 50: через Мост Патона', color:'#33C2D9', pts:[
+    [50.4478,30.5238],[50.4440,30.5330],[50.4400,30.5420],[50.4365,30.5515],
+    BRIDGE_PATON.right,BRIDGE_PATON.left,
+    [50.4255,30.6020],[50.4230,30.6080],[50.4195,30.6150],[50.4160,30.6220]
+  ]},
+  {name:'Оболонський просп. (Мінська – центр)', color:'#33C2D9', pts:[
+    [50.5388,30.4956],[50.5300,30.4958],[50.5215,30.4970],[50.5150,30.4990],
+    [50.5020,30.5010],[50.4889,30.5040],[50.4770,30.5110],[50.4661,30.5188]
+  ]},
+  {name:'Васильківська (Теремки – Либідська)', color:'#33C2D9', pts:[
+    [50.3820,30.4970],[50.3900,30.5040],[50.3980,30.5100],[50.4060,30.5140],
+    [50.4140,30.5180],[50.4200,30.5225],[50.4280,30.5240],[50.4362,30.5250]
+  ]}
+];
+const RAIL_LOOP = {name:'Київська міська електричка (підтверджені зупинки)', color:'#9B59B6', pts:[
+  [50.4757,30.3846],[50.4611,30.4136],[50.4762,30.4361],[50.4889,30.5040],[50.4514,30.5989],[50.4130,30.5600]
+]};
+const FUNICULAR = {name:'Фунікулер (Поділ–Михайлівська)', color:'#F26D9E', pts:[
+  [50.4589,30.5257],[50.4635,30.5268]
+]};
+const BUS_TRUNK = [
+  {name:'Sky Bus (через Південний міст, напрямок Бориспіль)', color:'#7F93A8', pts:[
+    [50.4478,30.5238],[50.4200,30.5280],BRIDGE_PIVDENNYI.right,BRIDGE_PIVDENNYI.left,[50.3900,30.6600],[50.3450,30.8946]
+  ]},
+  {name:'Магістральний: Троєщина–центр (через Північний міст)', color:'#7F93A8', pts:[
+    [50.5300,30.6250],[50.5225,30.6050],BRIDGE_PIVNICHNYI.left,BRIDGE_PIVNICHNYI.right,[50.4889,30.5040],[50.4478,30.5238]
+  ]}
+];
+
+const RIVER_LINE_LATLNG = [
+  [50.5480,30.5780],[50.5330,30.5620],[50.5054,30.5480],[50.4780,30.5560],
+  [50.4520,30.5610],[50.4390,30.5710],[50.4180,30.5690],[50.3980,30.5760],
+  [50.3765,30.5980],[50.3450,30.6250]
+];
+const BRIDGES_LATLNG = [
+  BRIDGE_PIVNICHNYI.right, BRIDGE_PIVNICHNYI.left,
+  BRIDGE_PATON.right, BRIDGE_PATON.left,
+  BRIDGE_PIVDENNYI.right, BRIDGE_PIVDENNYI.left,
+  [50.4436,30.5589],[50.4514,30.5989] // мости Метро + Русанівський (метро проходить тут)
+];
+
+const CENTER = [50.4501,30.5234];
+const BBOX = {south:50.335, north:50.560, west:30.310, east:30.740};
+const DENSITY = 3300;
+const WALK_SPEED = 4.5;
+const TRAM_SPEED = 20, TRAM_WAIT = 4;
+const METRO_NEW_SPEED = 33;
+const HIGHWAY_SPEED = 50;
+/* Орієнтовна вартість будівництва, млн грн за 1 км (публічні оцінки КМДА
+   та профільних видань 2021-2025, поточні ціни, без викупу землі) */
+const BUILD_COST_PER_KM = { tram: 450, metro: 2000, road: 30 };
+/* Чому потрібен CATCHMENT_KM: якщо рахувати "скільки людей отримали доступ"
+   по ВСЬОМУ місту (до/після), одна нова дорога може випадково "перекинути"
+   через поріг 45 хв величезний вже існуючий шматок міста (мережа
+   переплутується, і виграють райони, які фізично не біля дороги) — тоді як
+   трамвай, що працює лише в пішому радіусі до зупинок, ніколи не дає такого
+   ефекту. Це і є причина, чому дорога виглядала "аномально дешевою за людину"
+   — рахувалась не її локальна користь, а вся мережа. CATCHMENT_KM обмежує
+   підрахунок лише територією реально навколо нової лінії — так дорога і
+   трамвай порівнюються на рівних умовах. */
+const CATCHMENT_KM = 1.5;
+
+/* ============================== MAP ============================== */
+const map = L.map('map', {zoomControl:false, attributionControl:false}).setView(CENTER, 11.5);
+L.control.zoom({position:'bottomright'}).addTo(map);
+
+let currentTheme = 'dark';
+let tileLayer = L.tileLayer(tileUrl('dark'), {subdomains:'abcd', maxZoom:19}).addTo(map);
+function tileUrl(theme){
+  return theme==='dark'
+    ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+    : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+}
+L.control.attribution({position:'bottomright', prefix:false}).addAttribution('© OpenStreetMap, © CARTO').addTo(map);
+
+document.getElementById('themeBtn').addEventListener('click', ()=>{
+  currentTheme = currentTheme==='dark' ? 'light' : 'dark';
+  document.body.classList.toggle('theme-light', currentTheme==='light');
+  document.body.classList.toggle('theme-dark', currentTheme==='dark');
+  map.removeLayer(tileLayer);
+  tileLayer = L.tileLayer(tileUrl(currentTheme), {subdomains:'abcd', maxZoom:19}).addTo(map);
+  tileLayer.bringToBack();
+  document.getElementById('themeBtn').textContent = currentTheme==='dark' ? '☀️ Світла карта' : '🌙 Темна карта';
+});
+document.body.classList.add('theme-dark');
+
+/* ---- projection / geometry helpers ---- */
+const LAT_REF = 50.45;
+function proj(lat,lng){ return {x:(lng)*Math.cos(LAT_REF*Math.PI/180)*111.32, y:lat*111.32}; }
+function dist2(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
+/* Орієнтовна провізна здатність однієї смуги/колії, пасажирів на годину в
+   одному напрямку — узагальнені інженерні орієнтири з довідників міського
+   транспорту (не специфічні виміри для Києва, порядок величини коректний). */
+const CAPACITY_DATA = [
+  {label:'Смуга авто',   val:3000,  color:'#7F93A8'},
+  {label:'Автобус',      val:6000,  color:'#7F93A8'},
+  {label:'Тролейбус',    val:8000,  color:'#33C2D9'},
+  {label:'Трамвай',      val:14000, color:'#E8891A'},
+  {label:'Швидк. трамвай',val:21000, color:getVar('--gold') || '#C9A227'},
+  {label:'Метро',        val:45000, color:'#E8434F'},
+];
+function renderCapBars(){
+  const el = document.getElementById('capBars');
+  if(!el) return;
+  const max = Math.max(...CAPACITY_DATA.map(d=>d.val));
+  el.innerHTML = CAPACITY_DATA.map(d=>`
+    <div class="cap-row">
+      <div class="cap-label">${d.label}</div>
+      <div class="cap-track"><div class="cap-fill" style="width:${(d.val/max*100).toFixed(0)}%;background:${d.color};"></div></div>
+      <div class="cap-val">${d.val.toLocaleString('uk-UA')}/год</div>
+    </div>`).join('');
+}
+renderCapBars();
+function precomputeLine(pts){
+  const p = pts.map(([lat,lng])=>proj(lat,lng));
+  const cum=[0];
+  for(let i=1;i<p.length;i++){
+    const dx=p[i].x-p[i-1].x, dy=p[i].y-p[i-1].y;
+    cum.push(cum[i-1]+Math.sqrt(dx*dx+dy*dy));
+  }
+  return {p, cum};
+}
+function segCross(p1,p2,p3,p4){
+  const d1x=p2.x-p1.x, d1y=p2.y-p1.y, d2x=p4.x-p3.x, d2y=p4.y-p3.y;
+  const denom = d1x*d2y - d1y*d2x;
+  if(Math.abs(denom)<1e-9) return false;
+  const t = ((p3.x-p1.x)*d2y - (p3.y-p1.y)*d2x)/denom;
+  const u = ((p3.x-p1.x)*d1y - (p3.y-p1.y)*d1x)/denom;
+  return t>0 && t<1 && u>0 && u<1;
+}
+const RIVER_P = RIVER_LINE_LATLNG.map(([la,ln])=>proj(la,ln));
+const BRIDGES_P = BRIDGES_LATLNG.map(([la,ln])=>proj(la,ln));
+function crossesRiver(A,B){
+  for(let i=0;i<RIVER_P.length-1;i++){
+    if(segCross(A,B,RIVER_P[i],RIVER_P[i+1])) return true;
+  }
+  return false;
+}
+
+/* ---- ФІКС: жоден намальований чи завантажений з бекенду маршрут не має
+   "летіти" прямо над Дніпром там, де немає мосту. Ця функція проходить по
+   послідовності точок лінії і там, де відрізок перетинає річку, вставляє
+   найближчу реальну точку мосту — лінія фізично "згинається" й іде через
+   міст, а не по прямій крізь воду. ---- */
+const BRIDGE_LIST = [BRIDGE_PATON, BRIDGE_PIVNICHNYI, BRIDGE_PIVDENNYI,
+  {right:[50.4436,30.5586], left:[50.4514,30.5989]} /* міст Метро + Русанівський */];
+function isNearBridgeLanding(latlng){
+  const p = proj(latlng[0], latlng[1]);
+  return BRIDGE_LIST.some(br =>
+    dist2(p, proj(br.right[0],br.right[1])) < 0.05 || dist2(p, proj(br.left[0],br.left[1])) < 0.05
+  );
+}
+function sanitizeAgainstRiver(pts){
+  if(pts.length<2) return pts;
+  const out=[pts[0]];
+  for(let i=0;i<pts.length-1;i++){
+    const Alatlng=pts[i], Blatlng=pts[i+1];
+    const A=proj(Alatlng[0],Alatlng[1]), B=proj(Blatlng[0],Blatlng[1]);
+    // якщо обидва кінці відрізка вже "стоять" на мосту (ми самі туди їх поставили) — нічого не робимо,
+    // інакше ця сама функція заново заламує вже виправлену лінію
+    if(crossesRiver(A,B) && !(isNearBridgeLanding(Alatlng) && isNearBridgeLanding(Blatlng))){
+      const mid={x:(A.x+B.x)/2, y:(A.y+B.y)/2};
+      let best=null, bestD=Infinity;
+      BRIDGE_LIST.forEach(br=>{
+        const bm = proj((br.right[0]+br.left[0])/2, (br.right[1]+br.left[1])/2);
+        const d = dist2(mid, bm);
+        if(d<bestD){ bestD=d; best=br; }
+      });
+      if(best){
+        // вставляємо ОБИДВІ точки мосту (не одну!), у порядку "ближча до A спочатку"
+        const dR = dist2(A, proj(best.right[0], best.right[1]));
+        const dL = dist2(A, proj(best.left[0], best.left[1]));
+        if(dR<=dL){ out.push(best.right); out.push(best.left); }
+        else { out.push(best.left); out.push(best.right); }
+      }
+    }
+    out.push(Blatlng);
+  }
+  return out;
+}
+/* застосовуємо одразу до всіх схематичних наземних ліній — до того, як
+   будувати з них полілінії й рахувати відстані.
+   РЕАЛЬНИЙ БАГ, який тут був: RAIL_LOOP (міська електричка) не входив у
+   цей список — тому саме електричка малювала прямі лінії просто по воді,
+   без жодної прив'язки до мосту. Додав її сюди. Метро свідомо НЕ чіпаємо:
+   київське метро реально йде під Дніпром тунелем, тож пряма лінія через
+   річку для METRO_LINES — це коректне відображення, а не помилка. */
+[...TRAM_LINES, ...TROLLEY_LINES, ...BUS_TRUNK].forEach(line=>{ line.pts = sanitizeAgainstRiver(line.pts); });
+RAIL_LOOP.pts = sanitizeAgainstRiver(RAIL_LOOP.pts);
+
+Object.values(METRO_LINES).forEach(line=>{ Object.assign(line, precomputeLine(line.pts)); });
+TRAM_LINES.forEach(line=>{ Object.assign(line, precomputeLine(line.pts)); });
+TROLLEY_LINES.forEach(line=>{ Object.assign(line, precomputeLine(line.pts)); });
+BUS_TRUNK.forEach(line=>{ Object.assign(line, precomputeLine(line.pts)); });
+Object.assign(RAIL_LOOP, precomputeLine(RAIL_LOOP.pts));
+
+function closestOnLine(lineP, lineCum, pt){
+  let best = {dist:Infinity, arc:0};
+  for(let i=0;i<lineP.length-1;i++){
+    const a=lineP[i], b=lineP[i+1];
+    const dx=b.x-a.x, dy=b.y-a.y;
+    const len2 = dx*dx+dy*dy || 1e-9;
+    let t = ((pt.x-a.x)*dx + (pt.y-a.y)*dy)/len2;
+    t = Math.max(0, Math.min(1, t));
+    const cx=a.x+t*dx, cy=a.y+t*dy;
+    const dist = Math.hypot(pt.x-cx, pt.y-cy);
+    if(dist<best.dist){ best={dist, arc: lineCum[i] + t*(lineCum[i+1]-lineCum[i])}; }
+  }
+  return best;
+}
+
+const STREET_CIRCUITY = 1.28;
+function routeDistanceKm(A,B){
+  let d;
+  if(crossesRiver(A,B)){
+    let best=Infinity;
+    BRIDGES_P.forEach(br=>{
+      const cand = dist2(A,br)+dist2(br,B);
+      if(cand<best) best=cand;
+    });
+    d = best;
+  } else {
+    d = dist2(A,B);
+  }
+  return d*STREET_CIRCUITY;
+}
+function pointToSegDist(pt,a,b){
+  const dx=b.x-a.x, dy=b.y-a.y;
+  const len2=dx*dx+dy*dy || 1e-9;
+  let t=((pt.x-a.x)*dx+(pt.y-a.y)*dy)/len2;
+  t=Math.max(0,Math.min(1,t));
+  return Math.hypot(pt.x-(a.x+t*dx), pt.y-(a.y+t*dy));
+}
+function corridorTime(line, originP, destP, approachSpeed, rideSpeed, wait){
+  const o = closestOnLine(line.p, line.cum, originP);
+  const d = closestOnLine(line.p, line.cum, destP);
+  return (o.dist*STREET_CIRCUITY/approachSpeed*60) + (d.dist*STREET_CIRCUITY/approachSpeed*60) + (Math.abs(o.arc-d.arc)/rideSpeed*60) + wait;
+}
+
+/* ---- transit layers, з РІЗНИМИ стилями по видах транспорту + відтінками
+   по кожній окремій лінії всередині виду, щоб не зливались в одну "кашу" ---- */
+// Explicit z-order (higher = drawn on top). Without this, Leaflet just stacks paths in the
+// order they were created in the script, which is why metro used to end up buried at the back.
+['paneBus','paneRail','paneTrolley','paneTram','paneMetro','paneFunicular'].forEach((name,i)=>{
+  const pane = map.createPane(name);
+  pane.style.zIndex = 390 + i*5;
+});
+// Кожен вид транспорту має "тонкий" (при віддаленні) і "товстий" (при наближенні) розмір.
+// Leaflet малює weight у пікселях незалежно від зуму, тому без цього все виглядає однаково
+// грубим на будь-якому масштабі — звідси й враження "все як метро, все сміститься".
+const SIZE_RANGE = {
+  metro:     {zMin:9,    zMax:11.5, wMin:2.4, wMax:4.4, rMin:1.8, rMax:2.8},
+  rail:      {zMin:9.5,  zMax:12,   wMin:1.2, wMax:2.6, rMin:1.8, rMax:4.0},
+  tram:      {zMin:10.5, zMax:13.5, wMin:0.8, wMax:3.0, rMin:0.8, rMax:2.2},
+  trolley:   {zMin:10.5, zMax:13.5, wMin:0.6, wMax:2.2, rMin:0.6, rMax:1.8},
+  bus:       {zMin:10.5, zMax:13.5, wMin:0.5, wMax:1.5, rMin:0,   rMax:0},
+  funicular: {zMin:9,    zMax:12,   wMin:2.0, wMax:5.0, rMin:1.0, rMax:3.0}
+};
+function zoomFactor(kind){
+  const R = SIZE_RANGE[kind] || SIZE_RANGE.bus;
+  return Math.max(0, Math.min(1, (map.getZoom()-R.zMin)/(R.zMax-R.zMin)));
+}
+const transitShapes = {metro:[], rail:[], tram:[], trolley:[], bus:[], funicular:[]};
+function addTransitShape(kind, shape, {isLine}={}){
+  transitShapes[kind].push({shape, isLine});
+  return shape;
+}
+function rescaleTransitShapes(){
+  Object.entries(transitShapes).forEach(([kind, list])=>{
+    const R = SIZE_RANGE[kind]; const f = zoomFactor(kind);
+    list.forEach(({shape,isLine})=>{
+      if(isLine) shape.setStyle({weight: R.wMin + (R.wMax-R.wMin)*f});
+      else shape.setRadius(R.rMin + (R.rMax-R.rMin)*f);
+    });
+  });
+}
+
+const layers = {
+  metro: L.layerGroup().addTo(map),
+  rail: L.layerGroup().addTo(map),
+  tram: L.layerGroup().addTo(map),
+  trolley: L.layerGroup().addTo(map),
+  bus: L.layerGroup(),
+  funicular: L.layerGroup().addTo(map)
+};
+
+Object.values(METRO_LINES).forEach(line=>{
+  const R = SIZE_RANGE.metro;
+  const pl = L.polyline(line.pts, {color:line.color, weight:R.wMax, opacity:0.97, lineCap:'round', pane:'paneMetro'}).addTo(layers.metro);
+  addTransitShape('metro', pl, {isLine:true, minW:R.wMin, maxW:R.wMax});
+  line.pts.forEach((p,i)=>{
+    const m = L.circleMarker(p, {radius:R.rMax, color:line.color, fillColor:'#fff', fillOpacity:1, weight:1.8, pane:'paneMetro'}).addTo(layers.metro);
+    addTransitShape('metro', m, {isLine:false, minR:R.rMin, maxR:R.rMax});
+    if(line.names && line.names[i]) m.bindTooltip(line.names[i], {direction:'top', offset:[0,-4]});
+  });
+});
+{
+  const R = SIZE_RANGE.rail;
+  const pl = L.polyline(RAIL_LOOP.pts, {color:RAIL_LOOP.color, weight:R.wMax, opacity:0.85, dashArray:'1 9', lineCap:'round', pane:'paneRail'}).addTo(layers.rail);
+  addTransitShape('rail', pl, {isLine:true, minW:R.wMin, maxW:R.wMax});
+  const RAIL_NAMES = ['Святошин','Берестейська','Сирець','Почайна','Лівобережна','Видубичі'];
+  RAIL_LOOP.pts.forEach((p,i)=>{
+    const m = L.circleMarker(p, {radius:R.rMax, color:RAIL_LOOP.color, fillColor:'#fff', fillOpacity:1, weight:2, pane:'paneRail'}).addTo(layers.rail);
+    addTransitShape('rail', m, {isLine:false, minR:R.rMin, maxR:R.rMax});
+    m.bindTooltip('🚆 '+RAIL_NAMES[i]+' (підтверджена зупинка)', {direction:'top', offset:[0,-4]});
+  });
+}
+// трамвай: суцільна лінія + маленькі кружечки-зупинки через рівні проміжки,
+// кожна окрема лінія — свій відтінок помаранчевого, щоб їх можна було розрізнити
+const TRAM_SHADES = ['#E8891A','#C96A0A','#F2A94D'];
+TRAM_LINES.forEach((line,li)=>{
+  const R = SIZE_RANGE.tram;
+  const shade = TRAM_SHADES[li % TRAM_SHADES.length];
+  const pl = L.polyline(line.pts, {color:shade, weight:R.wMax, opacity:0.95, lineCap:'round', pane:'paneTram'}).addTo(layers.tram);
+  addTransitShape('tram', pl, {isLine:true, minW:R.wMin, maxW:R.wMax});
+  pl.bindTooltip('🚋 '+line.name);
+  line.pts.forEach(p=>{
+    const m = L.circleMarker(p,{radius:R.rMax, color:shade, fillColor:'#fff', fillOpacity:1, weight:1.4, pane:'paneTram'}).addTo(layers.tram);
+    addTransitShape('tram', m, {isLine:false, minR:R.rMin, maxR:R.rMax});
+  });
+});
+// тролейбус: довгий пунктир (виразно довший за трамвайний), кожна лінія — свій відтінок бірюзового
+const TROLLEY_SHADES = ['#33C2D9','#1F8FA3','#57D3E8','#2AA9C0','#7EE0F0'];
+TROLLEY_LINES.forEach((line,li)=>{
+  const R = SIZE_RANGE.trolley;
+  const shade = TROLLEY_SHADES[li % TROLLEY_SHADES.length];
+  const pl = L.polyline(line.pts, {color:shade, weight:R.wMax, opacity:0.9, dashArray:'9 5', lineJoin:'round', pane:'paneTrolley'}).addTo(layers.trolley);
+  addTransitShape('trolley', pl, {isLine:true, minW:R.wMin, maxW:R.wMax});
+  pl.bindTooltip('🚎 '+line.name);
+  line.pts.forEach(p=>{
+    const m = L.circleMarker(p,{radius:R.rMax, color:shade, fillColor:'#fff', fillOpacity:1, weight:1.2, pane:'paneTrolley'}).addTo(layers.trolley);
+    addTransitShape('trolley', m, {isLine:false, minR:R.rMin, maxR:R.rMax});
+  });
+});
+// автобус: тонкий, дрібний пунктир-крапка, свій сірий відтінок
+const BUS_SHADES = ['#7F93A8','#5C7288'];
+BUS_TRUNK.forEach((line,li)=>{
+  const R = SIZE_RANGE.bus;
+  const shade = BUS_SHADES[li % BUS_SHADES.length];
+  const pl = L.polyline(line.pts, {color:shade, weight:R.wMax, opacity:0.8, dashArray:'2 5', pane:'paneBus'}).addTo(layers.bus);
+  addTransitShape('bus', pl, {isLine:true, minW:R.wMin, maxW:R.wMax});
+  pl.bindTooltip('🚌 '+line.name);
+});
+{
+  const R = SIZE_RANGE.funicular;
+  const pl = L.polyline(FUNICULAR.pts, {color:FUNICULAR.color, weight:R.wMax, opacity:0.97, pane:'paneFunicular'}).addTo(layers.funicular);
+  addTransitShape('funicular', pl, {isLine:true, minW:R.wMin, maxW:R.wMax});
+  [0,1].forEach(i=>{
+    const m = L.circleMarker(FUNICULAR.pts[i],{radius:R.rMax,color:FUNICULAR.color,fillColor:'#fff',fillOpacity:1,weight:1.8, pane:'paneFunicular'}).addTo(layers.funicular);
+    addTransitShape('funicular', m, {isLine:false, minR:R.rMin, maxR:R.rMax});
+  });
+}
+rescaleTransitShapes();
+map.on('zoomend zoom', rescaleTransitShapes);
+
+document.querySelectorAll('.layer-item input[type=checkbox]').forEach(cb=>{
+  cb.addEventListener('change', ()=>{
+    const key = cb.dataset.layer;
+    if(cb.checked) map.addLayer(layers[key]); else map.removeLayer(layers[key]);
+  });
+});
+
+/* ============================== STATE ============================== */
+let state = {
+  role:'transit', hour:14, dayType:'weekday', origin:null,
+  newLines:[], drawing:false, drawType:'tram', draft:[], incident:null
+};
+let originMarker=null, draftLayer=null, newLinesLayer=L.layerGroup().addTo(map);
+let realRoutesLayer = null;
+let overlay=null, baselinePop=null, incidentMarker=null;
+
+function isRush(h){ return (h>=7&&h<=10)||(h>=16&&h<=19); }
+function carSpeedForHour(h, dayType){
+  if(dayType==='weekend'){
+    if(h>=12&&h<=17) return 26;
+    if(h>=23||h<=6) return 48;
+    return 34;
+  }
+  if(isRush(h)) return 15;
+  if(h>=23||h<=5) return 46;
+  return 29;
+}
+function waitFor(mode, hour, dayType){
+  const rush = isRush(hour);
+  if(mode==='metro')   return dayType==='weekend' ? 5.5 : (rush?1.75:4.5);
+  if(mode==='rail')    return dayType==='weekend' ? 30 : (rush?15:26);
+  if(mode==='tram')    return dayType==='weekend' ? 10 : (rush?5:8);
+  if(mode==='trolley') return dayType==='weekend' ? 11 : (rush?5.5:8.5);
+  if(mode==='funicular') return 5;
+  return 6;
+}
+const FREE_FLOW_CAR_SPEED = 48;
+function roadCongestionRatio(hour, dayType){
+  const ratio = carSpeedForHour(hour, dayType) / FREE_FLOW_CAR_SPEED;
+  return Math.max(0.32, Math.min(1, ratio));
+}
+function effectiveSpeed(mode, baseSpeed, hour, dayType){
+  if(mode==='trolley' || mode==='bus') return baseSpeed * roadCongestionRatio(hour, dayType);
+  if(mode==='tram'){
+    const r = roadCongestionRatio(hour, dayType);
+    return baseSpeed * (0.72 + 0.28 * r);
+  }
+  return baseSpeed;
+}
+
+function timeAt(lat,lng,modeFilter){
+  const filter = modeFilter || {rail:true, ground:true};
+  const O = proj(state.origin.lat, state.origin.lng);
+  const P = proj(lat,lng);
+  const hour = state.hour, day = state.dayType;
+
+  let best;
+  if(state.role==='car'){
+    best = carTimeBetween(O,P,hour,day);
+  } else {
+    best = routeDistanceKm(O,P)/WALK_SPEED*60;
+  }
+
+  if(state.role==='transit' || state.role==='council'){
+    if(filter.rail){
+      Object.values(METRO_LINES).forEach(line=>{
+        const t = corridorTime(line, O, P, WALK_SPEED, line.speed, waitFor('metro',hour,day));
+        if(t<best) best=t;
+      });
+      const tRail = corridorTime(RAIL_LOOP, O, P, WALK_SPEED, 40, waitFor('rail',hour,day));
+      if(tRail<best) best=tRail;
+    }
+    if(filter.ground){
+      TRAM_LINES.forEach(line=>{
+        const t = corridorTime(line, O, P, WALK_SPEED, effectiveSpeed('tram',17,hour,day), waitFor('tram',hour,day));
+        if(t<best) best=t;
+      });
+      TROLLEY_LINES.forEach(line=>{
+        const t = corridorTime(line, O, P, WALK_SPEED, effectiveSpeed('trolley',16,hour,day), waitFor('trolley',hour,day));
+        if(t<best) best=t;
+      });
+    }
+    if(filter.ground){
+      state.newLines.filter(l=>l.type==='tram').forEach(line=>{
+        const t = corridorTime(line, O, P, WALK_SPEED, effectiveSpeed('tram',TRAM_SPEED,hour,day), waitFor('tram',hour,day));
+        if(t<best) best=t;
+      });
+    }
+    if(filter.rail){
+      state.newLines.filter(l=>l.type==='metro').forEach(line=>{
+        const t = corridorTime(line, O, P, WALK_SPEED, METRO_NEW_SPEED, waitFor('metro',hour,day));
+        if(t<best) best=t;
+      });
+    }
+  } else if(state.role==='car'){
+    const cs = carSpeedForHour(hour, day);
+    state.newLines.filter(l=>l.type==='road').forEach(line=>{
+      const t = corridorTime(line, O, P, cs, HIGHWAY_SPEED, 0);
+      if(t<best) best=t;
+    });
+  }
+  return best;
+}
+const CENTER_P = proj(CENTER[0], CENTER[1]);
+// Скільки хвилин зазвичай іде на пошук і паркування машини біля цілі поїздки.
+// В центрі (перевантажені вулиці, платні паркінги, черги) — довше, ніж на околиці.
+// Ввечері/вихідними трохи менше (менше учбового/офісного траfіку конкуруючого за місця).
+function parkingSearchMinutes(destP, hour, day){
+  const distFromCenter = dist2(destP, CENTER_P); // км
+  let base;
+  if(distFromCenter<3) base=9;        // центр — дуже мало місць
+  else if(distFromCenter<7) base=5;   // серединні райони
+  else base=2.5;                      // спальні райони, більше дворів
+  const rush = isRush(hour);
+  if(day==='weekend') base *= 0.7;
+  else if(rush) base *= 1.25;
+  return base;
+}
+// Затримка на світлофорах і перехрестях: що більше відстань, то більше перетинів,
+// але приріст нелінійний (у центрі перехрестя частіші на км, ніж на околиці/шосе).
+function trafficLightMinutes(distKm, destP){
+  const distFromCenter = dist2(destP, CENTER_P);
+  const perKm = distFromCenter<6 ? 0.55 : 0.3; // хв затримки на 1 км шляху
+  return distKm * perKm;
+}
+function carTimeBetween(O,P,hour,day){
+  const speed = carSpeedForHour(hour,day);
+  const crosses = crossesRiver(O,P);
+  let distKm, legs;
+  if(crosses){
+    let best=Infinity, bestBr=null;
+    BRIDGES_P.forEach(br=>{
+      const cand = dist2(O,br)+dist2(br,P);
+      if(cand<best){ best=cand; bestBr=br; }
+    });
+    distKm = best*STREET_CIRCUITY;
+    legs = [[O,bestBr],[bestBr,P]];
+  } else {
+    distKm = dist2(O,P)*STREET_CIRCUITY;
+    legs = [[O,P]];
+  }
+  let time = distKm/speed*60;
+  time += trafficLightMinutes(distKm, P);
+  time += parkingSearchMinutes(P, hour, day);
+  if(state.incident){
+    const I = proj(state.incident.lat, state.incident.lng);
+    let minD=Infinity;
+    legs.forEach(([a,b])=>{ const d=pointToSegDist(I,a,b); if(d<minD) minD=d; });
+    const RADIUS=1.4;
+    if(minD<RADIUS){
+      const penalty = lerp(18, 0, minD/RADIUS);
+      time += penalty;
+    }
+  }
+  return time;
+}
+
+/* ============================== RENDER ============================== */
+function getVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+function lerp(a,b,t){ return a+(b-a)*t; }
+function colorStops(){
+  const b15=getVar('--band15').split(',').map(Number);
+  const b30=getVar('--band30').split(',').map(Number);
+  const b45=getVar('--band45').split(',').map(Number);
+  const b60=getVar('--band60').split(',').map(Number);
+  return [
+    {t:0,rgb:b15,a:175},{t:14,rgb:b15,a:150},{t:17,rgb:b30,a:150},{t:29,rgb:b30,a:118},
+    {t:32,rgb:b45,a:118},{t:44,rgb:b45,a:105},{t:47,rgb:b60,a:105},{t:60,rgb:b60,a:75},{t:75,rgb:b60,a:0}
+  ];
+}
+function colorAt(stops, t){
+  if(t<=stops[0].t) return {rgb:stops[0].rgb, a:stops[0].a};
+  for(let i=0;i<stops.length-1;i++){
+    const s0=stops[i], s1=stops[i+1];
+    if(t>=s0.t && t<=s1.t){
+      const f=(t-s0.t)/(s1.t-s0.t || 1);
+      return {rgb:[lerp(s0.rgb[0],s1.rgb[0],f), lerp(s0.rgb[1],s1.rgb[1],f), lerp(s0.rgb[2],s1.rgb[2],f)], a: lerp(s0.a, s1.a, f)};
+    }
+  }
+  return {rgb:stops[stops.length-1].rgb, a:0};
+}
+const CW=180, CH=152;
+const OUT_W=760, OUT_H=640;
+function recompute(){
+  if(!state.origin){ return; }
+  const small = document.createElement('canvas');
+  small.width=CW; small.height=CH;
+  const sctx = small.getContext('2d');
+  const img = sctx.createImageData(CW,CH);
+  const stops = colorStops();
+  let reachPx=0;
+  for(let j=0;j<CH;j++){
+    const lat = BBOX.north - (j/CH)*(BBOX.north-BBOX.south);
+    for(let i=0;i<CW;i++){
+      const lng = BBOX.west + (i/CW)*(BBOX.east-BBOX.west);
+      const t = timeAt(lat,lng);
+      const idx=(j*CW+i)*4;
+      if(t<=75){
+        const c = colorAt(stops,t);
+        img.data[idx]=c.rgb[0]; img.data[idx+1]=c.rgb[1]; img.data[idx+2]=c.rgb[2]; img.data[idx+3]=c.a;
+        if(t<=45) reachPx++;
+      } else { img.data[idx+3]=0; }
+    }
+  }
+  sctx.putImageData(img,0,0);
+  const big = document.createElement('canvas');
+  big.width=OUT_W; big.height=OUT_H;
+  const bctx = big.getContext('2d');
+  bctx.imageSmoothingEnabled = true;
+  bctx.imageSmoothingQuality = 'high';
+  bctx.filter = 'blur(2px)';
+  bctx.drawImage(small, 0,0,CW,CH, -6,-6, OUT_W+12, OUT_H+12);
+  const url = big.toDataURL();
+  if(overlay) map.removeLayer(overlay);
+  const bounds = [[BBOX.south,BBOX.west],[BBOX.north,BBOX.east]];
+  // Бекенд (/isochrone) рахує ЛИШЕ пішки+транспорт — у нього немає графа
+  // для авто взагалі. Тож навіть коли бекенд увімкнено, в режимі "авто"
+  // симуляція в браузері має лишатись видимою — інакше показувалась б
+  // ізохрона громадського транспорту під виглядом "точних доріг для авто".
+  const showBackendInstead = state.backendMode && state.role!=='car';
+  overlay = L.imageOverlay(url, bounds, {opacity: showBackendInstead ? 0 : 1, interactive:false}).addTo(map);
+  const bboxWkm = proj(BBOX.north,BBOX.east).x - proj(BBOX.north,BBOX.west).x;
+  const bboxHkm = proj(BBOX.north,BBOX.west).y - proj(BBOX.south,BBOX.west).y;
+  const pxAreaKm2 = (bboxWkm/CW) * (bboxHkm/CH);
+  const areaKm2 = reachPx*pxAreaKm2;
+  const pop = Math.round(areaKm2*DENSITY);
+  document.getElementById('statArea').textContent = areaKm2.toFixed(1)+' км²';
+  document.getElementById('statPop').textContent = pop.toLocaleString('uk-UA');
+  updateRefStats();
+  renderAnalytics();
+  return pop;
+}
+/* Динамічний, а не "захардкоджений" розрахунок вартості типової поїздки з обраної
+   точки до центру міста — залежить від реальної відстані, часу доби, дня тижня
+   і того, чи доводиться платити/шукати паркування в центрі. */
+const FUEL_UAH_PER_KM = 5.6;   // ~8 л/100км при ціні пального ≈70 грн/л
+const WEAR_UAH_PER_KM = 3.2;   // амортизація, мастило, шини, ОСЦПВ у перерахунку на км
+const CENTER_PARKING_UAH = 45; // орієнтовна вартість платного паркування в центрі за поїздку
+const TRANSIT_FARE_UAH = 8;    // разова поїздка станом на початок липня 2026
+const TRANSIT_FARE_UAH_SOON = 30; // анонсоване підвищення з 15 липня 2026
+const CO2_CAR_G_PER_KM = 120;
+const CO2_TRANSIT_G_PER_KM = 28;
+function updateRefStats(){
+  if(!state.origin) return;
+  const O = proj(state.origin.lat, state.origin.lng);
+  const distKm = Math.max(dist2(O, CENTER_P), 2.5); // типова поїздка "звідси до центру"
+  const carDistKm = distKm*STREET_CIRCUITY;
+  const carCost = Math.round(carDistKm*(FUEL_UAH_PER_KM+WEAR_UAH_PER_KM) + CENTER_PARKING_UAH);
+  const fare = TRANSIT_FARE_UAH; // поточний тариф; підвищення відображене в підказці нижче
+  const co2Car = Math.round(carDistKm*CO2_CAR_G_PER_KM);
+  const co2Transit = Math.round(distKm*CO2_TRANSIT_G_PER_KM);
+  const label = distKm.toFixed(1)+' км · ';
+  document.getElementById('refCar').textContent = '≈'+carCost.toLocaleString('uk-UA')+' грн';
+  document.getElementById('refTransit').innerHTML = fare+' грн <span style="opacity:0.6;font-size:10px;">(30 грн з 15.07)</span>';
+  document.getElementById('refCO2').textContent = co2Car.toLocaleString('uk-UA')+' г / '+co2Transit.toLocaleString('uk-UA')+' г';
+  document.getElementById('refCarLabel').textContent = 'Поїздка ('+label+'авто)';
+  document.getElementById('refTransitLabel').textContent = 'Поїздка ('+label+'транспорт)';
+}
+
+/* ============================== INTERACTION ============================== */
+function setOrigin(lat,lng){
+  state.origin={lat,lng};
+  if(originMarker) map.removeLayer(originMarker);
+  originMarker = L.circleMarker([lat,lng],{radius:7,color:'#0B1118',weight:2,fillColor:'#EDEAE2',fillOpacity:1}).addTo(map);
+  const p = recompute();
+  if(state.role==='council'){ baselinePop = p; document.getElementById('statDelta').style.display='none'; }
+  // Бекенд рахує пішки+транспорт, а не авто — тож у режимі "авто" його
+  // ізохрону взагалі не запитуємо й ховаємо, якщо вона вже була показана.
+  if(state.backendMode && state.role!=='car'){
+    fetchBackendIsochrone();
+  } else if(backendLayer){
+    map.removeLayer(backendLayer);
+  }
+}
+
+/* ---- 🔌 бекенд ---- */
+state.backendMode = false;
+let backendLayer = null;
+document.getElementById('backendBtn').addEventListener('click', async ()=>{
+  state.backendMode = !state.backendMode;
+  const btn = document.getElementById('backendBtn');
+  const hint = document.getElementById('backendHint');
+  if(state.backendMode){
+    btn.classList.add('active');
+    btn.textContent = '🔌 Бекенд увімкнено — перевіряю...';
+    await fetchBackendRoutes();
+    // Бекенд рахує лише пішки+транспорт — у режимі "авто" його ізохрону
+    // не запитуємо (там і так буде показана симуляція авто).
+    if(state.origin && state.role!=='car') await fetchBackendIsochrone();
+  } else {
+    btn.classList.remove('active');
+    btn.textContent = '🔌 Підключити точний бекенд (localhost:8000)';
+    hint.textContent = 'За замовчуванням карта використовує швидку симуляцію в браузері.';
+    if(backendLayer){ map.removeLayer(backendLayer); backendLayer=null; }
+    if(realRoutesLayer){ map.removeLayer(realRoutesLayer); realRoutesLayer=null; }
+    resetLegendToSchematic();
+    if(overlay) overlay.setOpacity(1);
+    document.querySelectorAll('.layer-item input[type=checkbox]').forEach(cb=>{
+      cb.disabled=false;
+      if(cb.checked && state.role!=='car') map.addLayer(layers[cb.dataset.layer]);
+    });
+  }
+});
+const KIND_LABELS = {metro:'метро', rail:'електричка', tram:'трамвай', trolley:'тролейбус', trolleybus:'тролейбус', bus:'автобус'};
+const KIND_COLOR = {metro:'#E8434F', rail:'#9B59B6', tram:'#E8891A', trolley:'#33C2D9', bus:'#7F93A8'};
+
+function renderRealDataLegend(kindCounts){
+  const el = document.getElementById('legendModes');
+  let html = '<b>Лінії (реальні дані):</b>';
+  Object.keys(KIND_LABELS).forEach(k=>{
+    if(k==='trolleybus') return;
+    if(kindCounts[k] > 0){
+      html += `<span class="swatch" style="background:${KIND_COLOR[k]}"></span>${KIND_LABELS[k]} (${kindCounts[k]})`;
+    }
+  });
+  Object.keys(KIND_LABELS).forEach(k=>{
+    if(k==='trolleybus') return;
+    if(!kindCounts[k] || kindCounts[k]===0){
+      html += `<span class="swatch dashed" style="color:${KIND_COLOR[k]}"></span>${KIND_LABELS[k]} (схема)`;
+    }
+  });
+  el.innerHTML = html;
+}
+function resetLegendToSchematic(){
+  document.getElementById('legendModes').innerHTML =
+    `<b>Лінії:</b><span class="swatch" style="background:#E8434F"></span>метро
+     <span class="swatch" style="background:#9B59B6"></span>електричка
+     <span class="swatch dashed" style="color:#E8891A"></span>трамвай
+     <span class="swatch dotted" style="color:#33C2D9"></span>тролейбус`;
+}
+
+/* ---- ФІКС: та сама санітизація проти "польоту над Дніпром" застосовується
+   і до РЕАЛЬНИХ ліній із бекенду (shapes.txt/зупинки можуть містити огріхи
+   геокодування, або пряма між двома зупинками через раптовий пропуск даних
+   може випадково перетнути річку) ---- */
+function sanitizeGeoJSONCoords(coords){
+  // coords: [[lng,lat], [lng,lat], ...]
+  const asLatLng = coords.map(([lng,lat])=>[lat,lng]);
+  const fixed = sanitizeAgainstRiver(asLatLng);
+  return fixed.map(([lat,lng])=>[lng,lat]);
+}
+function sanitizeFeature(f){
+  if(f.geometry && f.geometry.type==='LineString'){
+    f.geometry.coordinates = sanitizeGeoJSONCoords(f.geometry.coordinates);
+  }
+  return f;
+}
+
+async function fetchBackendRoutes(){
+  try{
+    const res = await fetch('http://localhost:8000/routes', {signal: AbortSignal.timeout(8000)});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const geojson = await res.json();
+    if(!geojson.features || geojson.features.length===0){
+      console.warn('Бекенд повернув 0 маршрутів.');
+      return false;
+    }
+    /* Тут був баг, який ти й помітив: до РЕАЛЬНИХ ліній з бекенду (shapes.txt
+       від перевізника) застосовувалась sanitizeFeature — функція, яка
+       "заламує" будь-який відрізок, що геометрично перетинає річку, і
+       примусово проводить його через одну з лише ~4 захардкожених точок
+       мостів (BRIDGE_LIST). Реальних мостів у Києві десятки, тож РІЗНІ
+       реальні лінії "зшивались" в одну й ту саму точку — звідси "всі шляхи
+       стікаються в одну точку". Я прибрав це для реальних GPS-трас.
+       Але є й інший бік: коли в GTFS немає shapes.txt для маршруту (це
+       типово саме для тролейбусів у багатьох фідах), бекенд віддає
+       properties.approx=true — пряму лінію "зупинка -> зупинка". Ось ЦЯ
+       пряма цілком може випадково перетнути річку там, де насправді їде
+       міст — тому й "тролейбуси перепливають Дніпро". Правильний фікс:
+       застосовувати корекцію мосту ЛИШЕ до approx-ліній (fallback), а
+       справжню GPS-геометрію (approx=false) лишати як є. */
+    // ФІКС НАЗАД: річкову корекцію можна застосовувати ТІЛЬКИ до approx-ліній
+    // (наближення по послідовності зупинок, без shapes.txt) — вони справді
+    // намальовані прямими "напроліт" і можуть випадково перетнути Дніпро.
+    // Реальні GPS-траси з shapes.txt вже коректно йдуть через СПРАВЖНІЙ міст,
+    // яким їде маршрут — а BRIDGE_LIST у нас містить лише 4 захардкожені
+    // мости. Застосування sanitizeAgainstRiver до реальних треків тягнуло
+    // кожен маршрут, що перетинає Дніпро через будь-який ІНШИЙ реальний міст,
+    // до найближчого з цих 4-х — звідси й "усі маршрути сходяться в одну
+    // точку і повертаються назад": то не один зламаний маршрут, а десятки
+    // різних, яких примусово стягнуло до однієї фейкової точки.
+    geojson.features.forEach(f=>{ if(f.properties && f.properties.approx) sanitizeFeature(f); });
+
+    const kindCounts = {};
+    geojson.features.forEach(f=>{
+      let k = f.properties.kind || 'unknown';
+      if(k==='trolleybus') k='trolley';
+      kindCounts[k] = (kindCounts[k]||0) + 1;
+    });
+
+    if(realRoutesLayer) map.removeLayer(realRoutesLayer);
+    realRoutesLayer = L.layerGroup();
+    const kindLayers = {};
+    ['tram','trolley','trolleybus','bus','metro','rail'].forEach(k=>{ kindLayers[k]=L.layerGroup().addTo(realRoutesLayer); });
+
+    geojson.features.forEach(f=>{
+      const kind = f.properties.kind==='trolleybus' ? 'trolley' : (f.properties.kind||'bus');
+      const target = kindLayers[kind] || kindLayers['bus'];
+      // той самий діапазон розмірів і пейн (z-order), що й у схематичних ліній, щоб
+      // реальні GPS-трасі поводились однаково при зумі й не малювались "під" картою
+      const paneByKind = {metro:'paneMetro', rail:'paneRail', tram:'paneTram', trolley:'paneTrolley', bus:'paneBus'};
+      const R = SIZE_RANGE[kind] || SIZE_RANGE.bus;
+      const dashByKind = {metro:null, rail:'1 9', tram:null, trolley:'9 5', bus:'2 5'};
+      const layer = L.geoJSON(f, {
+        pane: paneByKind[kind] || 'paneBus',
+        style: {
+          color: f.properties.color || KIND_COLOR[kind] || '#999',
+          weight: R.wMax,
+          opacity: f.properties.approx ? 0.65 : 0.95,
+          dashArray: f.properties.approx ? '2 6' : dashByKind[kind]
+        }
+      });
+      const tag = f.properties.approx ? ' · наближено по зупинках' : ' · реальна GPS-траса';
+      layer.bindTooltip('🚌 '+(KIND_LABELS[kind]||kind)+' '+(f.properties.name||'')+tag, {sticky:true});
+      layer.eachLayer(pl=> addTransitShape(kind, pl, {isLine:true}));
+      layer.addTo(target);
+    });
+    if(state.role!=='car') realRoutesLayer.addTo(map);
+    rescaleTransitShapes(); // нові лінії з бекенду з'явились із weight:wMax — одразу підганяємо під поточний зум
+
+    const hideIfReal = {metro:layers.metro, rail:layers.rail, tram:layers.tram, trolley:layers.trolley, bus:layers.bus};
+    Object.entries(hideIfReal).forEach(([kind, layerGroup])=>{
+      if(kindCounts[kind] > 0) map.removeLayer(layerGroup);
+    });
+
+    renderRealDataLegend(kindCounts);
+    document.querySelectorAll('.layer-item input[type=checkbox]').forEach(cb=>{
+      if(kindCounts[cb.dataset.layer] > 0) cb.disabled = true;
+    });
+    document.getElementById('backendHint').innerHTML += '<br><br>🗺️ Реальні лінії підвантажено (перевірені на перетин з Дніпром і виправлені, якщо потрібно) — дивись легенду знизу.';
+    return true;
+  } catch(e){
+    console.warn('Не вдалось завантажити /routes:', e);
+    return false;
+  }
+}
+
+async function fetchBackendIsochrone(){
+  const hint = document.getElementById('backendHint');
+  const btn = document.getElementById('backendBtn');
+  // Раніше тут був ОДИН запит на 45 хв — тепер тягнемо кілька окремих
+  // ізохрон (15/30/45/60 хв) і малюємо їх як вкладені кільця тими самими
+  // кольорами, що й у легенді зліва, щоб було видно, яка зона за який
+  // час відповідає — так само як у симуляції в браузері, тільки тепер
+  // це точний полігон по реальному графу вулиць і розкладу.
+  const BANDS = [
+    {minutes:60, varName:'--band60', label:'до 60 хв', opacity:0.16},
+    {minutes:45, varName:'--band45', label:'до 45 хв', opacity:0.22},
+    {minutes:30, varName:'--band30', label:'до 30 хв', opacity:0.30},
+    {minutes:15, varName:'--band15', label:'до 15 хв', opacity:0.42},
+  ];
+  try{
+    const results = await Promise.all(BANDS.map(async b=>{
+      const url = `http://localhost:8000/isochrone?lat=${state.origin.lat}&lng=${state.origin.lng}&minutes=${b.minutes}`;
+      const res = await fetch(url, {signal: AbortSignal.timeout(8000)});
+      if(!res.ok) throw new Error('HTTP '+res.status+' для '+b.minutes+' хв');
+      return {band:b, geojson: await res.json()};
+    }));
+
+    if(backendLayer) map.removeLayer(backendLayer);
+    backendLayer = L.layerGroup();
+    // Малюємо від найбільшої (60 хв, ззаду) до найменшої (15 хв, згори) —
+    // так менші/ближчі зони не ховаються під більшими.
+    results.forEach(({band, geojson})=>{
+      const colorRgb = getVar(band.varName);
+      const colorCss = `rgb(${colorRgb})`;
+      const layer = L.geoJSON(geojson, {
+        style:{color:colorCss, weight:1.5, fillColor:colorCss, fillOpacity:band.opacity, opacity:0.9}
+      });
+      layer.bindTooltip(`🔷 Точна ізохрона з бекенду — ${band.label}: сюди можна дістатись пішки+транспортом за цей час по реальному графу вулиць і розкладу`, {sticky:true});
+      layer.addTo(backendLayer);
+    });
+    backendLayer.addTo(map);
+
+    if(overlay) overlay.setOpacity(0);
+    btn.textContent = '🔌 Бекенд активний — реальні вулиці';
+    hint.innerHTML = '✅ Показано точні полігони по графу вулиць і реальному розкладу (не симуляція).<br>'
+      + BANDS.slice().reverse().map(b=>`<span class="swatch" style="background:rgb(${getVar(b.varName)})"></span>${b.label}`).join(' ');
+  } catch(e){
+    if(overlay) overlay.setOpacity(1);
+    if(backendLayer){ map.removeLayer(backendLayer); backendLayer=null; }
+    btn.textContent = '🔌 Бекенд недоступний (клікни, щоб вимкнути)';
+    hint.textContent = '⚠️ Не вдалось зʼєднатись з localhost:8000. Запусти: uvicorn kyiv_backend:app --reload.';
+  }
+}
+
+
+map.on('click', (e)=>{
+  if(state.role==='council' && state.drawing){
+    state.draft.push([e.latlng.lat, e.latlng.lng]);
+    if(draftLayer) map.removeLayer(draftLayer);
+    const col = state.drawType==='tram' ? getVar('--gold') : getVar('--road-new');
+    draftLayer = L.polyline(state.draft, {color:col, weight:4, dashArray:'2 6'}).addTo(map);
+    document.getElementById('finishBtn').disabled = state.draft.length<2;
+    return;
+  }
+  setOrigin(e.latlng.lat, e.latlng.lng);
+});
+
+const TRANSIT_LAYER_KEYS = ['metro','rail','tram','trolley','bus','funicular'];
+function applyRoleVisibility(){
+  const carMode = state.role==='car';
+  document.body.classList.toggle('role-car', carMode);
+  const layerPanel = document.getElementById('layerPanel');
+  const legendModes = document.getElementById('legendModes');
+  if(legendModes) legendModes.style.display = carMode ? 'none' : '';
+  if(carMode){
+    // Ховаємо ВСІ шари громадського транспорту (і схематичні, і реальні
+    // з бекенду) — саме це просив: в режимі авто транспорт не потрібен,
+    // а без нього карта одразу читається чіткіше.
+    TRANSIT_LAYER_KEYS.forEach(k=>{ if(map.hasLayer(layers[k])) map.removeLayer(layers[k]); });
+    if(realRoutesLayer && map.hasLayer(realRoutesLayer)) map.removeLayer(realRoutesLayer);
+    if(layerPanel){ layerPanel.style.opacity='0.4'; layerPanel.style.pointerEvents='none'; }
+    // Бекенд рахує пішки+транспорт, не авто — його ізохрону в режимі "авто"
+    // ховаємо і показуємо натомість симуляцію авто в браузері.
+    if(backendLayer){ map.removeLayer(backendLayer); }
+    if(overlay) overlay.setOpacity(1);
+  } else {
+    // Повертаємо кожен шар відповідно до стану його чекбокса (а не всі
+    // підряд) — щоб не відмінити те, що людина сама вимкнула вручну.
+    document.querySelectorAll('.layer-item input[type=checkbox]').forEach(cb=>{
+      const key = cb.dataset.layer;
+      if(cb.checked && !cb.disabled && layers[key]) map.addLayer(layers[key]);
+    });
+    if(realRoutesLayer) realRoutesLayer.addTo(map);
+    if(layerPanel){ layerPanel.style.opacity=''; layerPanel.style.pointerEvents=''; }
+    // Повертаємось із "авто" на пасажира/міськраду — якщо бекенд увімкнено
+    // і точка вже обрана, знову тягнемо його точну пішки+транспорт ізохрону.
+    if(state.backendMode && state.origin) fetchBackendIsochrone();
+  }
+}
+
+document.querySelectorAll('.role-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.role-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    state.role = tab.dataset.role;
+    document.getElementById('carSection').style.display = state.role==='car' ? 'block':'none';
+    document.getElementById('councilSection').style.display = state.role==='council' ? 'block':'none';
+    applyRoleVisibility();
+    const hints = {
+      transit:'Клікни будь-де на карті — побачиш, куди звідти реально можна дістатись пішки й транспортом за 15 / 30 / 45 хвилин.',
+      car:'Та сама точка — тепер на авто. Громадський транспорт прибрано з карти, щоб не заважав. Посунь повзунок години: у пік радіус стискається через затори.',
+      council:'Клікни точку громадянина, тоді проєктуй нову лінію — і дивись, скільки людей отримають доступ.'
+    };
+    document.getElementById('mainHint').textContent = hints[state.role];
+    if(state.role==='council' && state.origin){ baselinePop = recompute(); }
+    else if(state.origin){ recompute(); }
+  });
+});
+
+const hourSlider = document.getElementById('hourSlider');
+hourSlider.addEventListener('input', ()=>{
+  state.hour = parseInt(hourSlider.value,10);
+  document.getElementById('hourLabel').textContent = String(state.hour).padStart(2,'0')+':00';
+  updateClockBadge();
+  if(state.origin) recompute();
+});
+function updateClockBadge(){
+  const dayLabel = state.dayType==='weekday' ? 'будній день' : 'вихідний';
+  document.getElementById('clockBadge').textContent = String(state.hour).padStart(2,'0')+':00 · '+dayLabel;
+}
+document.getElementById('dayWeekday').addEventListener('click', ()=>{
+  state.dayType='weekday';
+  document.getElementById('dayWeekday').classList.add('active');
+  document.getElementById('dayWeekend').classList.remove('active');
+  updateClockBadge();
+  if(state.origin) recompute();
+});
+document.getElementById('dayWeekend').addEventListener('click', ()=>{
+  state.dayType='weekend';
+  document.getElementById('dayWeekend').classList.add('active');
+  document.getElementById('dayWeekday').classList.remove('active');
+  updateClockBadge();
+  if(state.origin) recompute();
+});
+
+const ACCIDENT_SPOTS = [...BRIDGES_LATLNG, ...TROLLEY_LINES.flatMap(l=>l.pts), ...TRAM_LINES.flatMap(l=>l.pts)];
+document.getElementById('incidentBtn').addEventListener('click', ()=>{
+  const spot = ACCIDENT_SPOTS[Math.floor(Math.random()*ACCIDENT_SPOTS.length)];
+  state.incident = {lat:spot[0], lng:spot[1]};
+  if(incidentMarker) map.removeLayer(incidentMarker);
+  incidentMarker = L.circleMarker(spot, {radius:9, color:'#E8434F', weight:2, fillColor:'#E8434F', fillOpacity:0.35}).addTo(map);
+  incidentMarker.bindTooltip('🚧 Аварія / затор', {permanent:false});
+  document.getElementById('clearIncidentBtn').disabled = false;
+  document.getElementById('incidentHint').innerHTML = '🚧 Аварія позначена на карті.';
+  if(state.origin && state.role==='car') recompute();
+});
+document.getElementById('clearIncidentBtn').addEventListener('click', ()=>{
+  state.incident=null;
+  if(incidentMarker){ map.removeLayer(incidentMarker); incidentMarker=null; }
+  document.getElementById('clearIncidentBtn').disabled = true;
+  document.getElementById('incidentHint').textContent = 'Випадкове ДТП/затор біля моста чи магістралі.';
+  if(state.origin && state.role==='car') recompute();
+});
+
+function lineLengthKm(line){ return line.cum[line.cum.length-1]; }
+function lineCostMln(line){ return lineLengthKm(line) * BUILD_COST_PER_KM[line.type]; }
+function formatCostMln(mln){
+  if(mln>=1000) return (mln/1000).toLocaleString('uk-UA',{maximumFractionDigits:2})+' млрд грн';
+  return Math.round(mln).toLocaleString('uk-UA')+' млн грн';
+}
+function totalNewLinesCostMln(){ return state.newLines.reduce((s,l)=>s+lineCostMln(l),0); }
+function updateCostHud(){
+  const el = document.getElementById('statCost');
+  const row = document.getElementById('statCostRow');
+  if(!el||!row) return;
+  if(state.newLines.length===0){ row.style.display='none'; return; }
+  row.style.display='flex';
+  el.textContent = formatCostMln(totalNewLinesCostMln());
+}
+// Тимчасово рахує охоплення населення для іншої ролі (без зміни активної ролі в UI) —
+// потрібно, щоб ефект нової ДОРОГИ оцінювався для авто, а не для пішохода/транспорту,
+// куди дорога взагалі не впливає.
+function reachForRole(role){
+  const saved = state.role;
+  state.role = role;
+  const pop = recompute();
+  state.role = saved;
+  return pop;
+}
+const PX_AREA_KM2 = ((BBOX.east-BBOX.west)*Math.cos(LAT_REF*Math.PI/180)*111.32/CW) * ((BBOX.north-BBOX.south)*111.32/CH);
+/* Рахує приріст населення з доступом ЛИШЕ в межах CATCHMENT_KM від нової лінії —
+   а не по всьому місту. Так дорога й трамвай/метро порівнюються за однаковою
+   логікою: "скільки людей поруч з проєктом реально виграли", а не "як
+   перетасувалась вся мережа доступності міста". */
+function catchmentGain(line, role){
+  const savedRole = state.role;
+  const savedLines = state.newLines;
+  const withoutLine = savedLines.filter(l => l !== line);
+
+  // 1) зібрати клітинки сітки в межах CATCHMENT_KM від лінії (незалежно від ролі/стану)
+  const cells = [];
+  for(let j=0;j<CH;j++){
+    const lat = BBOX.north - (j/CH)*(BBOX.north-BBOX.south);
+    for(let i=0;i<CW;i++){
+      const lng = BBOX.west + (i/CW)*(BBOX.east-BBOX.west);
+      const d = closestOnLine(line.p, line.cum, proj(lat,lng)).dist;
+      if(d<=CATCHMENT_KM) cells.push({lat,lng});
+    }
+  }
+
+  state.role = role;
+  state.newLines = withoutLine;
+  let reachBefore=0;
+  cells.forEach(c=>{ if(timeAt(c.lat,c.lng)<=45) reachBefore++; });
+
+  state.newLines = savedLines;
+  let reachAfter=0;
+  cells.forEach(c=>{ if(timeAt(c.lat,c.lng)<=45) reachAfter++; });
+
+  state.role = savedRole;
+  state.newLines = savedLines;
+
+  const gainPop = Math.round((reachAfter-reachBefore) * PX_AREA_KM2 * DENSITY);
+  const catchmentAreaKm2 = cells.length * PX_AREA_KM2;
+  return {gainPop, catchmentAreaKm2};
+}
+
+/* ============================== АНАЛІТИКА: внесок кожного виду транспорту ============================== */
+/* Рахує населення в зоні ≤45 хв для довільного набору увімкнених режимів
+   (rail = метро+електричка, ground = трамвай+тролейбус). Той самий раster-
+   прохід, що й у recompute(), але без рендеру — тільки цифра. */
+function computeReachPopulation(role, filter){
+  const savedRole = state.role;
+  state.role = role;
+  let reachPx=0;
+  for(let j=0;j<CH;j++){
+    const lat = BBOX.north - (j/CH)*(BBOX.north-BBOX.south);
+    for(let i=0;i<CW;i++){
+      const lng = BBOX.west + (i/CW)*(BBOX.east-BBOX.west);
+      if(timeAt(lat,lng,filter)<=45) reachPx++;
+    }
+  }
+  state.role = savedRole;
+  return Math.round(reachPx * PX_AREA_KM2 * DENSITY);
+}
+/* Розкладає загальну доступність з поточної точки на три шари: тільки пішки,
+   пішки+наземний транспорт (трамвай/тролейбус), і повна мережа (+метро/електричка).
+   Це відповідає на "наскільки взагалі допомагає метро/трамвай" — числом, а не на око. */
+function computeModalBreakdown(){
+  if(!state.origin) return null;
+  const walkOnly   = computeReachPopulation('transit', {rail:false, ground:false});
+  const withGround = computeReachPopulation('transit', {rail:false, ground:true});
+  const withAll    = computeReachPopulation('transit', {rail:true,  ground:true});
+  return {
+    walkOnly,
+    ground: Math.max(0, withGround-walkOnly),
+    rail: Math.max(0, withAll-withGround),
+    total: withAll
+  };
+}
+
+/* ============================== АНАЛІТИКА: "часова бідність" ============================== */
+/* Порівнює час "звідси до центру" з декількома добре обслугованими орієнтирами
+   (Хрещатик/Майдан, Контрактова, Либідська — всі за 2-3 хв пішки від метро) —
+   це і є "типовий" мешканець із хорошим доступом, а не довільна цифра з голови. */
+const WELL_SERVED_REFS = [ [50.4501,30.5234], [50.4661,30.5188], [50.4132,30.5236] ];
+function timePoverty(){
+  if(!state.origin) return null;
+  const toCenterNow = timeAt(CENTER[0], CENTER[1]);
+  const savedOrigin = state.origin;
+  let sum=0;
+  WELL_SERVED_REFS.forEach(([lat,lng])=>{
+    state.origin = {lat,lng};
+    sum += timeAt(CENTER[0], CENTER[1]);
+  });
+  state.origin = savedOrigin;
+  const baselineAvg = sum / WELL_SERVED_REFS.length;
+  const diffMin = toCenterNow - baselineAvg;
+  const hoursPerYear = Math.round(diffMin * 2 * 250 / 60); // 2 поїздки/день, ~250 робочих днів
+  return {toCenterNow, baselineAvg, diffMin, hoursPerYear};
+}
+
+function renderAnalytics(){
+  const box = document.getElementById('modalBars');
+  if(box){
+    if(state.role==='car'){
+      box.innerHTML = `<p class="hint">Розклад по видах транспорту стосується громадського транспорту — перемкнись на «Громадянин · транспорт» або «Міськрада», щоб побачити внесок метро й трамваю.</p>`;
+    } else {
+      const mb = computeModalBreakdown();
+      if(mb){
+        const total = mb.total || 1;
+        const segs = [
+          {label:'Тільки пішки', val:mb.walkOnly, color:'#5D6B7A'},
+          {label:'+ Трамвай/тролейбус', val:mb.ground, color:'#33C2D9'},
+          {label:'+ Метро/електричка', val:mb.rail, color:'#E8434F'}
+        ];
+        const track = segs.map(s=>`<div class="modal-seg" style="width:${(s.val/total*100).toFixed(1)}%;background:${s.color};" title="${s.label}: ${s.val.toLocaleString('uk-UA')}"></div>`).join('');
+        const legend = segs.map(s=>`
+          <div class="modal-legend-row">
+            <span class="sw" style="background:${s.color}"></span>
+            <span class="lbl">${s.label}</span>
+            <span class="num">+${s.val.toLocaleString('uk-UA')}</span>
+            <span class="pct">${(s.val/total*100).toFixed(0)}%</span>
+          </div>`).join('');
+        box.innerHTML = `<div class="modal-stack-track">${track}</div><div class="modal-legend">${legend}</div>
+          <p class="hint" style="margin-top:8px;">Разом у зоні ≤45 хв: <b>${mb.total.toLocaleString('uk-UA')}</b> людей. Без метро й електрички (лише пішки+наземний транспорт) було б <b>${(mb.walkOnly+mb.ground).toLocaleString('uk-UA')}</b> — тобто рейковий транспорт додає <b>${Math.round(mb.rail/total*100)}%</b> усієї зони доступності звідси.</p>`;
+      }
+    }
+  }
+
+  const tp = timePoverty();
+  const tbox = document.getElementById('timePovertyBox');
+  if(tp && tbox){
+    const sign = tp.diffMin>=0 ? '+' : '';
+    let verdict;
+    if(tp.diffMin > 2){
+      verdict = `Звідси до центру на <b>${sign}${tp.diffMin.toFixed(0)} хв</b> довше в один бік, ніж із добре обслугованого району. За рік набігає ≈ <b>${tp.hoursPerYear.toLocaleString('uk-UA')} год</b> — це ${(tp.hoursPerYear/24).toFixed(0)}+ повних діб життя у дорозі.`;
+    } else if(tp.diffMin < -2){
+      verdict = `Ця точка ефективніша за середнє: на <b>${Math.abs(tp.diffMin).toFixed(0)} хв</b> швидше до центру за поїздку. Економія ≈ <b>${Math.abs(tp.hoursPerYear).toLocaleString('uk-UA')} год/рік</b> порівняно з типовим добре обслугованим районом.`;
+    } else {
+      verdict = `Доступ до центру приблизно як у добре обслугованих районів (різниця ${Math.abs(tp.diffMin).toFixed(0)} хв).`;
+    }
+    tbox.innerHTML = `<div class="row"><span>До центру звідси</span><b>${tp.toCenterNow.toFixed(0)} хв</b></div>
+      <div class="row"><span>Орієнтир (Хрещатик/Контрактова/Либідська)</span><b>${tp.baselineAvg.toFixed(0)} хв</b></div>
+      <p style="font-size:12px;color:var(--muted);line-height:1.5;margin:8px 0 0 0;">${verdict}</p>`;
+  }
+}
+
+function getLineColor(type){
+  if(type==='tram') return getVar('--gold');
+  if(type==='metro') return getVar('--blue-line');
+  return getVar('--road-new');
+}
+const TYPE_BUTTONS = {tram:'typeTram', metro:'typeMetro', road:'typeRoad'};
+Object.entries(TYPE_BUTTONS).forEach(([type, id])=>{
+  document.getElementById(id).addEventListener('click', ()=>{
+    state.drawType = type;
+    Object.values(TYPE_BUTTONS).forEach(bid=>document.getElementById(bid).classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.getElementById('roadCallout').style.display = type==='road' ? 'block' : 'none';
+    document.getElementById('metroCallout').style.display = type==='metro' ? 'block' : 'none';
+  });
+});
+document.getElementById('drawBtn').addEventListener('click', ()=>{
+  if(!state.origin){ alert('Спочатку клікни на карту, щоб обрати точку громадянина.'); return; }
+  state.drawing = true;
+  state.draft = [];
+  document.getElementById('councilHint').textContent = 'Клікай по карті, щоб додавати точки лінії. Тоді натисни «Завершити».';
+  document.getElementById('drawBtn').classList.add('active');
+  document.getElementById('finishBtn').disabled = true;
+});
+document.getElementById('finishBtn').addEventListener('click', ()=>{
+  if(state.draft.length<2) return;
+  // санітизація і для лінії, яку малює сам користувач — щоб він теж не
+  // намалював трамвай, що пливе по воді
+  const cleanPts = sanitizeAgainstRiver(state.draft.slice());
+  const line = {type:state.drawType, pts:cleanPts};
+  Object.assign(line, precomputeLine(line.pts));
+  state.newLines.push(line);
+  const col = getLineColor(line.type);
+  L.polyline(line.pts, {color:col, weight:4}).addTo(newLinesLayer);
+  if(draftLayer){ map.removeLayer(draftLayer); draftLayer=null; }
+  state.drawing=false; state.draft=[];
+  document.getElementById('drawBtn').classList.remove('active');
+  document.getElementById('finishBtn').disabled = true;
+  document.getElementById('applyBtn').disabled = false;
+  const km = lineLengthKm(line);
+  const cost = lineCostMln(line);
+  const typeLabel = line.type==='tram' ? 'Трамвай' : (line.type==='metro' ? 'Метро' : 'Дорога');
+  document.getElementById('councilHint').innerHTML =
+    `${typeLabel}, довжина ≈ <b>${km.toFixed(1)} км</b>, орієнтовна вартість будівництва ≈ <b>${formatCostMln(cost)}</b>. Натисни «Впровадити», щоб порахувати ефект.`;
+  updateCostHud();
+});
+document.getElementById('applyBtn').addEventListener('click', ()=>{
+  const lastLine = state.newLines[state.newLines.length-1];
+  const isRoad = lastLine && lastLine.type==='road';
+  const role = isRoad ? 'car' : 'transit';
+  const {gainPop, catchmentAreaKm2} = catchmentGain(lastLine, role);
+  const delta = gainPop;
+  const el = document.getElementById('statDelta');
+  el.style.display='block';
+  const cost = lastLine ? lineCostMln(lastLine) : 0;
+  let costPerPerson = '';
+  if(delta>0 && cost>0){
+    const grnPerPerson = Math.round(cost*1_000_000/delta);
+    costPerPerson = `<br><span style="opacity:0.8;font-weight:400;">≈ ${grnPerPerson.toLocaleString('uk-UA')} грн вартості будівництва на кожну людину з новим доступом</span>`;
+  } else if(isRoad){
+    costPerPerson = `<br><span style="opacity:0.8;font-weight:400;">Дорога не додає доступу пішоходам/транспорту — рахунок вище для авто. Пам'ятай про індукований попит.</span>`;
+  }
+  el.innerHTML = (delta>=0?'+':'')+delta.toLocaleString('uk-UA')+(isRoad?' людей отримали кращий доступ на авто':' людей отримали доступ громадським транспортом')
+    +` у межах ~${CATCHMENT_KM} км від проєкту (площа охоплення ${catchmentAreaKm2.toFixed(1)} км²)`+costPerPerson;
+  document.getElementById('applyBtn').disabled = true;
+  if(state.origin && state.role!=='car') recompute();
+});
+document.getElementById('clearLinesBtn').addEventListener('click', ()=>{
+  state.newLines = [];
+  newLinesLayer.clearLayers();
+  document.getElementById('applyBtn').disabled = true;
+  document.getElementById('statDelta').style.display='none';
+  updateCostHud();
+  if(state.origin){ baselinePop = recompute(); }
+});
+
+document.getElementById('recommendBtn').addEventListener('click', ()=>{
+  if(!state.origin){ alert('Спочатку клікни на карту, щоб обрати точку громадянина.'); return; }
+  const O = proj(state.origin.lat, state.origin.lng);
+  let worst = {t:-1, lat:null, lng:null};
+  const STEPS=42;
+  for(let j=0;j<STEPS;j++){
+    const lat = BBOX.north - (j/STEPS)*(BBOX.north-BBOX.south);
+    for(let i=0;i<STEPS;i++){
+      const lng = BBOX.west + (i/STEPS)*(BBOX.east-BBOX.west);
+      const P = proj(lat,lng);
+      const distFromOrigin = dist2(O,P);
+      if(distFromOrigin>22 || distFromOrigin<2) continue;
+      const t = timeAt(lat,lng);
+      if(t<90 && t>worst.t){ worst={t, lat, lng}; }
+    }
+  }
+  if(worst.lat===null){ alert('Не вдалось знайти релевантну ділянку поблизу.'); return; }
+
+  const P = proj(worst.lat, worst.lng);
+  let anchor=null, anchorDist=Infinity;
+  [...Object.values(METRO_LINES), ...TRAM_LINES, ...TROLLEY_LINES, RAIL_LOOP].forEach(line=>{
+    const c = closestOnLine(line.p, line.cum, P);
+    if(c.dist<anchorDist){
+      anchorDist=c.dist;
+      let bestVertex=line.pts[0], bestVD=Infinity;
+      line.pts.forEach(([la,ln])=>{
+        const d=dist2(proj(la,ln), P);
+        if(d<bestVD){ bestVD=d; bestVertex=[la,ln]; }
+      });
+      anchor=bestVertex;
+    }
+  });
+  if(!anchor) anchor=[state.origin.lat, state.origin.lng];
+
+  baselinePop = recompute();
+  const cleanPts = sanitizeAgainstRiver([anchor, [worst.lat, worst.lng]]);
+  const line = {type:'tram', pts:cleanPts};
+  Object.assign(line, precomputeLine(line.pts));
+  state.newLines.push(line);
+  L.polyline(line.pts, {color:getVar('--gold'), weight:4, dashArray:'10 6'}).addTo(newLinesLayer);
+  L.circleMarker([worst.lat,worst.lng],{radius:6,color:getVar('--gold'),fillColor:'#181206',fillOpacity:1,weight:2}).addTo(newLinesLayer);
+
+  document.getElementById('applyBtn').disabled=false;
+  const rKm = lineLengthKm(line);
+  const rCost = lineCostMln(line);
+  document.getElementById('councilHint').innerHTML =
+    `🤖 Найгірше обслугована ділянка поблизу: <b>${worst.t.toFixed(0)} хв</b> дороги. Запропонована трамвайна лінія (≈${rKm.toFixed(1)} км, орієнтовно ${formatCostMln(rCost)}) з'єднує її з найближчим транспортним коридором. Натисни «Впровадити», щоб порахувати ефект.`;
+  updateCostHud();
+});
+
+(async ()=>{
+  updateClockBadge();
+  setOrigin(50.5225, 30.6100);
+  state.role='transit';
+
+  const btn = document.getElementById('backendBtn');
+  const hint = document.getElementById('backendHint');
+  btn.textContent = '🔌 Перевіряю точний бекенд...';
+
+  let connected = false;
+  for(let attempt=1; attempt<=2 && !connected; attempt++){
+    try{
+      const res = await fetch('http://localhost:8000/isochrone?lat=50.5225&lng=30.61&minutes=15', {signal: AbortSignal.timeout(2000)});
+      if(res.ok){ connected = true; }
+    } catch(e){ /* тиха повторна спроба */ }
+  }
+  if(connected){
+    state.backendMode = true;
+    btn.classList.add('active');
+    await fetchBackendRoutes();
+    await fetchBackendIsochrone();
+  } else {
+    btn.textContent = '🔌 Підключити точний бекенд (localhost:8000)';
+    hint.textContent = 'Точний бекенд не знайдено на localhost:8000 — карта працює на швидкій симуляції в браузері.';
+  }
+})();
+</script>
+</body>
+</html>

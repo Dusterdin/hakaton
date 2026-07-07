@@ -1,0 +1,95 @@
+{
+ "displayFieldName": "name",
+ "fieldAliases": {
+  "objectid": "OBJECTID",
+  "code1": "Код станції",
+  "name": "Назва станції",
+  "globalid": "globalid станції",
+  "line": "Лінія",
+  "halls_cnt": "Кількість вестибюлів",
+  "halls_open": "Кількість діючих вестибюлів",
+  "open_max": "Час відкриття (макс.)",
+  "close_min": "Час закриття (мін.)"
+ },
+ "fields": [
+  {
+   "name": "objectid",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID"
+  },
+  {
+   "name": "code1",
+   "type": "esriFieldTypeString",
+   "alias": "Код станції",
+   "length": 10
+  },
+  {
+   "name": "name",
+   "type": "esriFieldTypeString",
+   "alias": "Назва станції",
+   "length": 254
+  },
+  {
+   "name": "globalid",
+   "type": "esriFieldTypeString",
+   "alias": "globalid станції",
+   "length": 38
+  },
+  {
+   "name": "line",
+   "type": "esriFieldTypeString",
+   "alias": "Лінія",
+   "length": 254
+  },
+  {
+   "name": "halls_cnt",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Кількість вестибюлів"
+  },
+  {
+   "name": "halls_open",
+   "type": "esriFieldTypeSmallInteger",
+   "alias": "Кількість діючих вестибюлів"
+  },
+  {
+   "name": "open_max",
+   "type": "esriFieldTypeString",
+   "alias": "Час відкриття (макс.)",
+   "length": 10
+  },
+  {
+   "name": "close_min",
+   "type": "esriFieldTypeString",
+   "alias": "Час закриття (мін.)",
+   "length": 10
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "objectid": 1,
+    "code1": "fn01",
+    "name": "Фунікулер. Верхня станція",
+    "globalid": "{dd942bf8-32be-4c46-9787-bb573accb8ea}",
+    "line": "Київський фунікулер",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "06:55",
+    "close_min": "22:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 2,
+    "code1": "fn02",
+    "name": "Фунікулер. Нижня станція",
+    "globalid": "{ef2dd01e-d929-45c1-8a8a-a7f1b44a6a95}",
+    "line": "Київський фунікулер",
+    "halls_cnt": 1,
+    "halls_open": 1,
+    "open_max": "06:55",
+    "close_min": "22:00"
+   }
+  }
+ ]
+}

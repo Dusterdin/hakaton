@@ -1,0 +1,7 @@
+osmnx>=1.9
+networkx>=3.2
+fastapi>=0.110
+uvicorn[standard]>=0.29
+shapely>=2.0
+scikit-learn>=1.3
+ 

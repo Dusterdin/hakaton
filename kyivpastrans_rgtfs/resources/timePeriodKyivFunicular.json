@@ -1,0 +1,145 @@
+{
+ "displayFieldName": "line",
+ "fieldAliases": {
+  "objectid": "OBJECTID",
+  "line": "Лінія",
+  "timeperiod": "Період (год:хв)",
+  "st_weekday": "Робочі дні (вверх, хв:сек)",
+  "rv_weekday": "Робочі дні (донизу, хв:сек)",
+  "st_holiday": "Вихідні дні (вверх, хв:сек)",
+  "rv_holiday": "Вихідні дні (донизу, хв:сек)"
+ },
+ "fields": [
+  {
+   "name": "objectid",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID"
+  },
+  {
+   "name": "line",
+   "type": "esriFieldTypeString",
+   "alias": "Лінія",
+   "length": 254
+  },
+  {
+   "name": "timeperiod",
+   "type": "esriFieldTypeString",
+   "alias": "Період (год:хв)",
+   "length": 50
+  },
+  {
+   "name": "st_weekday",
+   "type": "esriFieldTypeString",
+   "alias": "Робочі дні (вверх, хв:сек)",
+   "length": 50
+  },
+  {
+   "name": "rv_weekday",
+   "type": "esriFieldTypeString",
+   "alias": "Робочі дні (донизу, хв:сек)",
+   "length": 50
+  },
+  {
+   "name": "st_holiday",
+   "type": "esriFieldTypeString",
+   "alias": "Вихідні дні (вверх, хв:сек)",
+   "length": 50
+  },
+  {
+   "name": "rv_holiday",
+   "type": "esriFieldTypeString",
+   "alias": "Вихідні дні (донизу, хв:сек)",
+   "length": 50
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "objectid": 304,
+    "line": "Київський фунікулер",
+    "timeperiod": "07:00-07:54",
+    "st_weekday": "15:00",
+    "rv_weekday": "15:00",
+    "st_holiday": "15:00",
+    "rv_holiday": "15:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 305,
+    "line": "Київський фунікулер",
+    "timeperiod": "07:54-09:30",
+    "st_weekday": "5:00",
+    "rv_weekday": "5:00",
+    "st_holiday": "15:00",
+    "rv_holiday": "15:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 306,
+    "line": "Київський фунікулер",
+    "timeperiod": "09:30-11:00",
+    "st_weekday": "6:00",
+    "rv_weekday": "6:00",
+    "st_holiday": "10:00",
+    "rv_holiday": "10:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 307,
+    "line": "Київський фунікулер",
+    "timeperiod": "11:00-17:00",
+    "st_weekday": "7:00",
+    "rv_weekday": "7:00",
+    "st_holiday": "7:00",
+    "rv_holiday": "7:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 308,
+    "line": "Київський фунікулер",
+    "timeperiod": "17:00-19:00",
+    "st_weekday": "5:00",
+    "rv_weekday": "5:00",
+    "st_holiday": "7:00",
+    "rv_holiday": "7:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 309,
+    "line": "Київський фунікулер",
+    "timeperiod": "19:00-20:03",
+    "st_weekday": "6:00",
+    "rv_weekday": "6:00",
+    "st_holiday": "7:00",
+    "rv_holiday": "7:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 310,
+    "line": "Київський фунікулер",
+    "timeperiod": "20:03-20:53",
+    "st_weekday": "7:00",
+    "rv_weekday": "7:00",
+    "st_holiday": "15:00",
+    "rv_holiday": "15:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 311,
+    "line": "Київський фунікулер",
+    "timeperiod": "20:53-21:45",
+    "st_weekday": "14:00",
+    "rv_weekday": "14:00",
+    "st_holiday": "15:00",
+    "rv_holiday": "15:00"
+   }
+  }
+ ]
+}
