@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Київ — щільність населення (житлова забудова OSM × офіційна чисельність)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; display:flex; flex-direction:column; }
+  header { padding:14px 20px 8px; text-align:center; }
+  .badge { display:inline-block; background:#1f2937; border:1px solid #374151; color:#9ca3af; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+  h1 { font-size:clamp(15px,2.6vw,22px); font-weight:700; background:linear-gradient(135deg,#a78bfa,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .sub { color:#9ca3af; font-size:12px; margin-top:4px; max-width:800px; margin-left:auto; margin-right:auto; line-height:1.5; }
+  .warn { color:#fbbf24; }
+  #map { flex:1; min-height:0; }
+  .panel { position:absolute; top:10px; right:10px; z-index:1000; background:rgba(13,17,23,.93); border:1px solid rgba(255,255,255,.12); border-radius:11px; padding:12px 14px; font-size:12px; width:230px; }
+  .panel h3 { font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:#9ca3af; margin:0 0 6px; }
+  .panel label { display:flex; align-items:center; gap:7px; padding:3px 0; cursor:pointer; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .toprow { display:flex; justify-content:space-between; padding:2px 0; font-size:11px; }
+  .hint { color:#6b7280; font-size:10px; margin-top:7px; line-height:1.5; border-top:1px solid rgba(255,255,255,.08); padding-top:7px; }
+  .leaflet-popup-content-wrapper { background:#161b22; color:#e6edf3; border-radius:9px; border:1px solid rgba(255,255,255,.15); }
+  .leaflet-popup-tip { background:#161b22; }
+  .leaflet-popup-content { font-size:12px; line-height:1.55; margin:10px 13px; }
+  .rt { font-weight:700; font-size:13px; }
+  .muted { color:#8b949e; }
+  footer { text-align:center; color:#4b5563; font-size:10px; padding:6px; }
+  footer a { color:#60a5fa; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Прототип · Щільність населення · OSM × офіційна статистика</div>
+  <h1>Київ — де живуть люди</h1>
+  <div class="sub">Форма — з житлових будинків OpenStreetMap (будинок × поверховість),
+  масштаб — офіційна чисельність населення районів (кожен район відкалібрований до своєї цифри).
+  <span class="warn">Оцінка на клітинку ~500 м — модель, а не перепис.</span></div>
+</header>
+<div id="map"></div>
+<footer>Будівлі: © учасники <a href="https://www.openstreetmap.org/">OpenStreetMap</a> · Населення районів: <a href="https://kyivcity.gov.ua/kyiv_ta_miska_vlada/pro_kyiv/raiony_kyieva/">портал Києва</a> · Мапа: © OpenStreetMap, © CARTO</footer>
+
+<script>
+const POINTS = __POINTS__;
+const TOP = __TOP__;
+const NODES = __NODES__;
+const METRO = __METRO__;
+const STATS = __STATS__;
+
+const map = L.map("map").setView([50.4501, 30.5334], 11);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  { attribution:"© OpenStreetMap © CARTO", maxZoom:19 }).addTo(map);
+
+const maxPop = Math.max(...POINTS.map(p => p[2]));
+const heat = L.heatLayer(POINTS.map(p => [p[0], p[1], p[2] / maxPop]), {
+  radius: 14, blur: 18, maxZoom: 13, max: 0.35,
+  gradient: {0.1:"#1e3a8a", 0.3:"#7c3aed", 0.5:"#db2777", 0.7:"#f59e0b", 0.9:"#fde047"},
+}).addTo(map);
+
+const metroLayer = L.layerGroup().addTo(map);
+for (const s of METRO) L.polyline(s.path, { color:s.c, weight:2, opacity:.5 }).addTo(metroLayer);
+
+const distLayer = L.layerGroup().addTo(map);
+for (const n of NODES) {
+  L.circleMarker([n.lat, n.lon], { radius:5, color:"#e6edf3", weight:1.5,
+      fillColor:"#0d1117", fillOpacity:.9 })
+    .bindPopup(`<div class="rt">${n.name} район</div>
+      <span class="muted">Офіційне населення:</span> <b>${n.pop.toLocaleString("uk-UA")}</b>`)
+    .addTo(distLayer);
+}
+
+const topLayer = L.layerGroup();
+for (const p of TOP) {
+  L.circleMarker([p[0], p[1]], { radius:7, color:"#fde047", weight:2,
+      fillColor:"#f59e0b", fillOpacity:.5 })
+    .bindPopup(`<div class="rt">Гаряча клітинка</div>
+      <span class="muted">Оцінка мешканців (~500×500 м):</span> <b>${Math.round(p[2]).toLocaleString("uk-UA")}</b><br>
+      <span class="muted">Щільність:</span> ~${Math.round(p[2]/STATS.cell_km2).toLocaleString("uk-UA")} осіб/км²`)
+    .addTo(topLayer);
+}
+
+const panel = L.control({ position:"topright" });
+panel.onAdd = () => {
+  const d = L.DomUtil.create("div", "panel");
+  d.innerHTML = `<h3>Шари</h3>
+    <label><input type="checkbox" checked id="ht"><span class="dot" style="background:#db2777"></span>Теплова мапа щільності</label>
+    <label><input type="checkbox" id="tp"><span class="dot" style="background:#f59e0b"></span>Топ-15 клітинок (клікабельні)</label>
+    <label><input type="checkbox" checked id="ds"><span class="dot" style="background:#e6edf3"></span>Центри районів</label>
+    <label><input type="checkbox" checked id="mt"><span class="dot" style="background:#E4222C"></span>Метро (контекст)</label>
+    <div class="hint">${STATS.buildings.toLocaleString("uk-UA")} житлових будинків OSM ·
+    ${STATS.cells.toLocaleString("uk-UA")} клітинок ~500 м ·
+    сума калібрована до ${STATS.total.toLocaleString("uk-UA")} мешканців ·
+    найгустіша клітинка ≈ ${STATS.max_cell.toLocaleString("uk-UA")} осіб ·
+    межі районів наближені (найближчий центроїд)</div>`;
+  L.DomEvent.disableClickPropagation(d);
+  const wire = (id, layer) => d.querySelector(id).addEventListener("change", e =>
+    e.target.checked ? layer.addTo(map) : map.removeLayer(layer));
+  wire("#ht", heat); wire("#tp", topLayer); wire("#ds", distLayer); wire("#mt", metroLayer);
+  return d;
+};
+panel.addTo(map);
+</script>
+</body>
+</html>

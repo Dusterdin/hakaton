@@ -1,0 +1,1031 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "id": 1,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.3721,
+     50.4877
+    ]
+   },
+   "properties": {
+    "objectid": 1,
+    "code1": "metro:red:Академмістечко",
+    "name": "Академмістечко",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 2,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.3796,
+     50.482
+    ]
+   },
+   "properties": {
+    "objectid": 2,
+    "code1": "metro:red:Житомирська",
+    "name": "Житомирська",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 3,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.3846,
+     50.4757
+    ]
+   },
+   "properties": {
+    "objectid": 3,
+    "code1": "metro:red:Святошин",
+    "name": "Святошин",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 4,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.3987,
+     50.467
+    ]
+   },
+   "properties": {
+    "objectid": 4,
+    "code1": "metro:red:Нивки",
+    "name": "Нивки",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 5,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.4136,
+     50.4611
+    ]
+   },
+   "properties": {
+    "objectid": 5,
+    "code1": "metro:red:Берестейська",
+    "name": "Берестейська",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 6,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.431,
+     50.4534
+    ]
+   },
+   "properties": {
+    "objectid": 6,
+    "code1": "metro:red:Шулявська",
+    "name": "Шулявська",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 7,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.4508,
+     50.4499
+    ]
+   },
+   "properties": {
+    "objectid": 7,
+    "code1": "metro:red:Політехнічний інститут",
+    "name": "Політехнічний інститут",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 8,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.4737,
+     50.446
+    ]
+   },
+   "properties": {
+    "objectid": 8,
+    "code1": "metro:red:Вокзальна",
+    "name": "Вокзальна",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 9,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5106,
+     50.4444
+    ]
+   },
+   "properties": {
+    "objectid": 9,
+    "code1": "metro:red:Університет",
+    "name": "Університет",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 10,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5192,
+     50.4469
+    ]
+   },
+   "properties": {
+    "objectid": 10,
+    "code1": "metro:red:Театральна",
+    "name": "Театральна",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 11,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5238,
+     50.4478
+    ]
+   },
+   "properties": {
+    "objectid": 11,
+    "code1": "metro:red:Хрещатик",
+    "name": "Хрещатик",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 12,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5423,
+     50.4472
+    ]
+   },
+   "properties": {
+    "objectid": 12,
+    "code1": "metro:red:Арсенальна",
+    "name": "Арсенальна",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 13,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5586,
+     50.4411
+    ]
+   },
+   "properties": {
+    "objectid": 13,
+    "code1": "metro:red:Дніпро",
+    "name": "Дніпро",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 14,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5769,
+     50.4456
+    ]
+   },
+   "properties": {
+    "objectid": 14,
+    "code1": "metro:red:Гідропарк",
+    "name": "Гідропарк",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 15,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5989,
+     50.4514
+    ]
+   },
+   "properties": {
+    "objectid": 15,
+    "code1": "metro:red:Лівобережна",
+    "name": "Лівобережна",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 16,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.6165,
+     50.447
+    ]
+   },
+   "properties": {
+    "objectid": 16,
+    "code1": "metro:red:Дарниця",
+    "name": "Дарниця",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 17,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.625,
+     50.4467
+    ]
+   },
+   "properties": {
+    "objectid": 17,
+    "code1": "metro:red:Чернігівська",
+    "name": "Чернігівська",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 18,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.6396,
+     50.4436
+    ]
+   },
+   "properties": {
+    "objectid": 18,
+    "code1": "metro:red:Лісова",
+    "name": "Лісова",
+    "line": "Святошинсько-Броварська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 19,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.4956,
+     50.5388
+    ]
+   },
+   "properties": {
+    "objectid": 19,
+    "code1": "metro:blue:Героїв Дніпра",
+    "name": "Героїв Дніпра",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 20,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.497,
+     50.5225
+    ]
+   },
+   "properties": {
+    "objectid": 20,
+    "code1": "metro:blue:Мінська",
+    "name": "Мінська",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 21,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.4979,
+     50.5054
+    ]
+   },
+   "properties": {
+    "objectid": 21,
+    "code1": "metro:blue:Оболонь",
+    "name": "Оболонь",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 22,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.504,
+     50.4889
+    ]
+   },
+   "properties": {
+    "objectid": 22,
+    "code1": "metro:blue:Почайна",
+    "name": "Почайна",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 23,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.511,
+     50.475
+    ]
+   },
+   "properties": {
+    "objectid": 23,
+    "code1": "metro:blue:Тараса Шевченка",
+    "name": "Тараса Шевченка",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 24,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5188,
+     50.4661
+    ]
+   },
+   "properties": {
+    "objectid": 24,
+    "code1": "metro:blue:Контрактова площа",
+    "name": "Контрактова площа",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 25,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.521,
+     50.458
+    ]
+   },
+   "properties": {
+    "objectid": 25,
+    "code1": "metro:blue:Поштова площа",
+    "name": "Поштова площа",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 26,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5237,
+     50.4501
+    ]
+   },
+   "properties": {
+    "objectid": 26,
+    "code1": "metro:blue:Майдан Незалежності",
+    "name": "Майдан Незалежності",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 27,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5195,
+     50.4372
+    ]
+   },
+   "properties": {
+    "objectid": 27,
+    "code1": "metro:blue:Площа Українських Героїв",
+    "name": "Площа Українських Героїв",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 28,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5182,
+     50.427
+    ]
+   },
+   "properties": {
+    "objectid": 28,
+    "code1": "metro:blue:Олімпійська",
+    "name": "Олімпійська",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 29,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.523,
+     50.4185
+    ]
+   },
+   "properties": {
+    "objectid": 29,
+    "code1": "metro:blue:Палац «Україна»",
+    "name": "Палац «Україна»",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 30,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5236,
+     50.4132
+    ]
+   },
+   "properties": {
+    "objectid": 30,
+    "code1": "metro:blue:Либідська",
+    "name": "Либідська",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 31,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5157,
+     50.4
+    ]
+   },
+   "properties": {
+    "objectid": 31,
+    "code1": "metro:blue:Деміївська",
+    "name": "Деміївська",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 32,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.504,
+     50.3897
+    ]
+   },
+   "properties": {
+    "objectid": 32,
+    "code1": "metro:blue:Голосіївська",
+    "name": "Голосіївська",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 33,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.497,
+     50.382
+    ]
+   },
+   "properties": {
+    "objectid": 33,
+    "code1": "metro:blue:Васильківська",
+    "name": "Васильківська",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 34,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.49,
+     50.38
+    ]
+   },
+   "properties": {
+    "objectid": 34,
+    "code1": "metro:blue:Виставковий центр",
+    "name": "Виставковий центр",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 35,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.482,
+     50.379
+    ]
+   },
+   "properties": {
+    "objectid": 35,
+    "code1": "metro:blue:Іподром",
+    "name": "Іподром",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 36,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.475,
+     50.3765
+    ]
+   },
+   "properties": {
+    "objectid": 36,
+    "code1": "metro:blue:Теремки",
+    "name": "Теремки",
+    "line": "Оболонсько-Теремківська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 37,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.4361,
+     50.4762
+    ]
+   },
+   "properties": {
+    "objectid": 37,
+    "code1": "metro:green:Сирець",
+    "name": "Сирець",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 38,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.46,
+     50.47
+    ]
+   },
+   "properties": {
+    "objectid": 38,
+    "code1": "metro:green:Дорогожичі",
+    "name": "Дорогожичі",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 39,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.4885,
+     50.4614
+    ]
+   },
+   "properties": {
+    "objectid": 39,
+    "code1": "metro:green:Лук’янівська",
+    "name": "Лук’янівська",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 40,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5152,
+     50.4472
+    ]
+   },
+   "properties": {
+    "objectid": 40,
+    "code1": "metro:green:Золоті ворота",
+    "name": "Золоті ворота",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 41,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5215,
+     50.4362
+    ]
+   },
+   "properties": {
+    "objectid": 41,
+    "code1": "metro:green:Палац спорту",
+    "name": "Палац спорту",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 42,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.532,
+     50.43
+    ]
+   },
+   "properties": {
+    "objectid": 42,
+    "code1": "metro:green:Кловська",
+    "name": "Кловська",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 43,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.542,
+     50.427
+    ]
+   },
+   "properties": {
+    "objectid": 43,
+    "code1": "metro:green:Печерська",
+    "name": "Печерська",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 44,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.55,
+     50.42
+    ]
+   },
+   "properties": {
+    "objectid": 44,
+    "code1": "metro:green:Звіринецька",
+    "name": "Звіринецька",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 45,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.56,
+     50.413
+    ]
+   },
+   "properties": {
+    "objectid": 45,
+    "code1": "metro:green:Видубичі",
+    "name": "Видубичі",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 46,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.572,
+     50.402
+    ]
+   },
+   "properties": {
+    "objectid": 46,
+    "code1": "metro:green:Славутич",
+    "name": "Славутич",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 47,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.585,
+     50.398
+    ]
+   },
+   "properties": {
+    "objectid": 47,
+    "code1": "metro:green:Осокорки",
+    "name": "Осокорки",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 48,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.605,
+     50.405
+    ]
+   },
+   "properties": {
+    "objectid": 48,
+    "code1": "metro:green:Позняки",
+    "name": "Позняки",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 49,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.62,
+     50.408
+    ]
+   },
+   "properties": {
+    "objectid": 49,
+    "code1": "metro:green:Харківська",
+    "name": "Харківська",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 50,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.635,
+     50.402
+    ]
+   },
+   "properties": {
+    "objectid": 50,
+    "code1": "metro:green:Вирлиця",
+    "name": "Вирлиця",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 51,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.655,
+     50.395
+    ]
+   },
+   "properties": {
+    "objectid": 51,
+    "code1": "metro:green:Бориспільська",
+    "name": "Бориспільська",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 52,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.6889,
+     50.3813
+    ]
+   },
+   "properties": {
+    "objectid": 52,
+    "code1": "metro:green:Червоний хутір",
+    "name": "Червоний хутір",
+    "line": "Сирецько-Печерська",
+    "kind": "metro",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 53,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5257,
+     50.4589
+    ]
+   },
+   "properties": {
+    "objectid": 53,
+    "code1": "funicular:Поділ",
+    "name": "Поділ",
+    "line": "Київський фунікулер",
+    "kind": "funicular",
+    "approx": true
+   }
+  },
+  {
+   "type": "Feature",
+   "id": 54,
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     30.5268,
+     50.4635
+    ]
+   },
+   "properties": {
+    "objectid": 54,
+    "code1": "funicular:Михайлівська",
+    "name": "Михайлівська",
+    "line": "Київський фунікулер",
+    "kind": "funicular",
+    "approx": true
+   }
+  }
+ ]
+}

@@ -1,0 +1,4060 @@
+{
+ "displayFieldName": "from_name",
+ "fieldAliases": {
+  "objectid": "OBJECTID",
+  "from_code1": "Код станції",
+  "from_guid": "globalid станції",
+  "from_name": "Назва станції",
+  "to_code1": "Код зупинки/станції пересадки",
+  "to_guid": "globalid зупинки/станції пересадки",
+  "to_name": "Назва зупинки/станції пересадки",
+  "comment": "Коментар"
+ },
+ "fields": [
+  {
+   "name": "objectid",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID"
+  },
+  {
+   "name": "from_code1",
+   "type": "esriFieldTypeString",
+   "alias": "Код станції",
+   "length": 10
+  },
+  {
+   "name": "from_guid",
+   "type": "esriFieldTypeString",
+   "alias": "globalid станції",
+   "length": 38
+  },
+  {
+   "name": "from_name",
+   "type": "esriFieldTypeString",
+   "alias": "Назва станції",
+   "length": 254
+  },
+  {
+   "name": "to_code1",
+   "type": "esriFieldTypeString",
+   "alias": "Код зупинки/станції пересадки",
+   "length": 10
+  },
+  {
+   "name": "to_guid",
+   "type": "esriFieldTypeString",
+   "alias": "globalid зупинки/станції пересадки",
+   "length": 38
+  },
+  {
+   "name": "to_name",
+   "type": "esriFieldTypeString",
+   "alias": "Назва зупинки/станції пересадки",
+   "length": 254
+  },
+  {
+   "name": "comment",
+   "type": "esriFieldTypeString",
+   "alias": "Коментар",
+   "length": 254
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "objectid": 432,
+    "from_code1": "mr12_121",
+    "from_guid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "from_name": "Арсенальна",
+    "to_code1": "a2716",
+    "to_guid": "{7FA5448F-F0ED-4629-BA92-5ADE2B19E68D}",
+    "to_name": "ст. м. «Арсенальна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 433,
+    "from_code1": "mr12_121",
+    "from_guid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "from_name": "Арсенальна",
+    "to_code1": "a2717",
+    "to_guid": "{13C5A9DE-0F2F-4DB5-9680-B49D68317908}",
+    "to_name": "ст. м. «Арсенальна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 434,
+    "from_code1": "mr12_121",
+    "from_guid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "from_name": "Арсенальна",
+    "to_code1": "a9165",
+    "to_guid": "{7C72E591-8128-40C0-9176-F58B73A416CE}",
+    "to_name": "ст. м. «Арсенальна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 435,
+    "from_code1": "mr12_121",
+    "from_guid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "from_name": "Арсенальна",
+    "to_code1": "a9231",
+    "to_guid": "{57D8644A-EAA7-4842-A96E-BCA30A134ADA}",
+    "to_name": "пл. Арсенальна",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 436,
+    "from_code1": "mr12_121",
+    "from_guid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "from_name": "Арсенальна",
+    "to_code1": "a9635",
+    "to_guid": "{C04F7AB3-51F3-4C7D-895B-E5B9AD9DDB3E}",
+    "to_name": "пл. Арсенальна",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 437,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a2331",
+    "to_guid": "{F8A93FCF-56CA-4B53-A180-5D71E9698A8B}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 438,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a2330",
+    "to_guid": "{51A03685-EA09-4D61-8CD0-0EC35B7CBB83}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 439,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a2333",
+    "to_guid": "{FE16B537-BC72-45B3-8E8E-B0224774B8B8}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 440,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a2332",
+    "to_guid": "{AF560C1B-8143-4095-A0BC-27537D1A616A}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 441,
+    "from_code1": "mb11_220",
+    "from_guid": "{82e72f9c-d253-4709-8b61-2783dd567bb9}",
+    "from_name": "Палац «Україна»",
+    "to_code1": "a2312",
+    "to_guid": "{99AB4526-9CC7-49D8-BBB8-1DDB47818DC1}",
+    "to_name": "ст. м. Палац «Україна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 442,
+    "from_code1": "mb11_220",
+    "from_guid": "{82e72f9c-d253-4709-8b61-2783dd567bb9}",
+    "from_name": "Палац «Україна»",
+    "to_code1": "a2313",
+    "to_guid": "{47509EC4-3966-41EC-88A7-56DE66C27D96}",
+    "to_name": "Володимирський ринок",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 443,
+    "from_code1": "mb07_216",
+    "from_guid": "{badf8bd0-4d9d-4134-905b-bc6dcca6942f}",
+    "from_name": "Поштова площа",
+    "to_code1": "a8766",
+    "to_guid": "{0649B3FE-6A11-4A2C-90D0-4523E542694D}",
+    "to_name": "ст. м. «Поштова площа»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 444,
+    "from_code1": "mb07_216",
+    "from_guid": "{badf8bd0-4d9d-4134-905b-bc6dcca6942f}",
+    "from_name": "Поштова площа",
+    "to_code1": "a8767",
+    "to_guid": "{74F4F335-BCB0-4BBF-A339-B773F83394ED}",
+    "to_name": "ст. м. «Поштова площа»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 445,
+    "from_code1": "mb14_223",
+    "from_guid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "from_name": "Голосіївська",
+    "to_code1": "a1536",
+    "to_guid": "{2E9501C0-9CD9-48BC-8A30-40DAC76ADDA7}",
+    "to_name": "ст. м. «Голосіївська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 446,
+    "from_code1": "mb14_223",
+    "from_guid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "from_name": "Голосіївська",
+    "to_code1": "a1537",
+    "to_guid": "{4A21427F-2531-4B2E-8723-E82A723C2BC1}",
+    "to_name": "ст. м. «Голосіївська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 447,
+    "from_code1": "mb14_223",
+    "from_guid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "from_name": "Голосіївська",
+    "to_code1": "a1538",
+    "to_guid": "{59FD50C5-EEF4-44F6-BE90-2AA88FCE7E40}",
+    "to_name": "Поліклініка",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 448,
+    "from_code1": "mb14_223",
+    "from_guid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "from_name": "Голосіївська",
+    "to_code1": "a13632",
+    "to_guid": "{C591BDB5-3221-44B1-9591-932C10B24CDF}",
+    "to_name": "ст. м. «Голосіївська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 449,
+    "from_code1": "mb14_223",
+    "from_guid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "from_name": "Голосіївська",
+    "to_code1": "a12451",
+    "to_guid": "{CA75CF34-788C-4545-9149-E8D91EA3F99E}",
+    "to_name": "ст. м. «Голосіївська» (для висадки)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 450,
+    "from_code1": "mb14_223",
+    "from_guid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "from_name": "Голосіївська",
+    "to_code1": "a13663",
+    "to_guid": "{3FE20870-53DB-4620-97C6-5DCD11B6BA7A}",
+    "to_name": "вул. Голосіївська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 451,
+    "from_code1": "mr10_119",
+    "from_guid": "{3bfbcac5-3dc7-4712-a556-2e8f4155d415}",
+    "from_name": "Театральна",
+    "to_code1": "a15565",
+    "to_guid": "{1DBA7954-87B8-4DF8-8A75-85D16D4D893A}",
+    "to_name": "ст. м. «Театральна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 452,
+    "from_code1": "mr10_119",
+    "from_guid": "{3bfbcac5-3dc7-4712-a556-2e8f4155d415}",
+    "from_name": "Театральна",
+    "to_code1": "a15566",
+    "to_guid": "{8B437C33-99C7-4DD7-8A37-2CDF66B958B7}",
+    "to_name": "ст. м. «Театральна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 453,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a5120",
+    "to_guid": "{29D53B21-21D9-4846-8EB5-3C6C29E476A2}",
+    "to_name": "ст. м. «Святошин»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 454,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a5121",
+    "to_guid": "{E87D1284-F170-488E-8576-45A36CCCDFC3}",
+    "to_name": "ст. м. «Святошин»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 455,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a4715",
+    "to_guid": "{5929B4D1-3D22-4F01-84AC-D8B1F000BC0A}",
+    "to_name": "ст. м. «Святошин»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 456,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a4716",
+    "to_guid": "{76B18CE4-D309-4790-BA80-DDEBBCE95FE8}",
+    "to_name": "ст. м. «Святошин»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 457,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a4717",
+    "to_guid": "{E422043D-740A-427E-BC56-D78A8FBFD584}",
+    "to_name": "вул. Авіаконструкторська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 459,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a5122",
+    "to_guid": "{31CD74BF-CEF3-43DC-8036-D7D0EFB288D7}",
+    "to_name": "ст. м. «Святошин»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 460,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a12835",
+    "to_guid": "{59C80939-2E3E-4253-AF9B-24C59AD490AE}",
+    "to_name": "ст. м. «Святошин»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 461,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a125",
+    "to_guid": "{C2901D71-B464-4A0E-9473-C97B16FC0A91}",
+    "to_name": "ст. м. «Оболонь»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 462,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a124",
+    "to_guid": "{AC04046F-4636-4174-9614-43AC43495ECE}",
+    "to_name": "Торговий центр «Метрополіс»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 463,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a123",
+    "to_guid": "{83B39015-6331-4089-AB6C-D658725E6D4E}",
+    "to_name": "ст. м. «Оболонь»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 464,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a7212",
+    "to_guid": "{D2AE1F52-5955-406B-BB98-7749A6AD4044}",
+    "to_name": "ст. м. «Оболонь»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 465,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a7211",
+    "to_guid": "{4FEFA192-0FE3-414D-9ED5-6FE33B6A698F}",
+    "to_name": "ст. м. «Оболонь»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 466,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a7213",
+    "to_guid": "{0E408497-4109-45A1-867E-109889AD238E}",
+    "to_name": "ст. м. «Оболонь»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 467,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a7214",
+    "to_guid": "{37AC51C8-1051-447E-815E-FEC7BFB20A7F}",
+    "to_name": "ст. м. «Оболонь»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 468,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a19961",
+    "to_guid": "{3316EEF7-0C77-48A4-B950-A3B16824FEB9}",
+    "to_name": "ст. м. «Оболонь»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 469,
+    "from_code1": "mb03_212",
+    "from_guid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "from_name": "Оболонь",
+    "to_code1": "a19962",
+    "to_guid": "{B7AC17F8-D28F-4945-8ED3-4ECFF6582172}",
+    "to_name": "ст. м. «Оболонь»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 470,
+    "from_code1": "mg15_326",
+    "from_guid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "from_name": "Бориспільська",
+    "to_code1": "a7165",
+    "to_guid": "{4FB6EB83-0ACB-474E-8F90-929B183ED5F6}",
+    "to_name": "ст. м. «Бориспільська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 471,
+    "from_code1": "mg15_326",
+    "from_guid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "from_name": "Бориспільська",
+    "to_code1": "a7166",
+    "to_guid": "{734368E3-0667-4225-A4DF-20AB51450D86}",
+    "to_name": "ст. м. «Бориспільська» (для висадки)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 472,
+    "from_code1": "mg15_326",
+    "from_guid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "from_name": "Бориспільська",
+    "to_code1": "a12802",
+    "to_guid": "{0C6439C5-3DED-44CB-8A15-01F538985E26}",
+    "to_name": "ст. м. «Бориспільська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 473,
+    "from_code1": "mg15_326",
+    "from_guid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "from_name": "Бориспільська",
+    "to_code1": "a12803",
+    "to_guid": "{665D824A-36E4-4291-B0A7-66DF97FBCF7E}",
+    "to_name": "ст. м. «Бориспільська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 474,
+    "from_code1": "mg15_326",
+    "from_guid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "from_name": "Бориспільська",
+    "to_code1": "a15593",
+    "to_guid": "{AAD6C630-00EB-40AC-9C03-DE7594BE91EA}",
+    "to_name": "ст. м. «Бориспільська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 475,
+    "from_code1": "mb18_227",
+    "from_guid": "{f0005dd0-8e02-4523-a495-d29e7e56ae8e}",
+    "from_name": "Теремки",
+    "to_code1": "a1889",
+    "to_guid": "{DB5946B4-BEE4-40FC-9CDA-95B9D833202F}",
+    "to_name": "ст. м. «Теремки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 476,
+    "from_code1": "mb18_227",
+    "from_guid": "{f0005dd0-8e02-4523-a495-d29e7e56ae8e}",
+    "from_name": "Теремки",
+    "to_code1": "a1887",
+    "to_guid": "{23ADBAE9-8B90-42F5-B7D5-BA86ADA5FE8B}",
+    "to_name": "вул. Академіка Заболотного",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 477,
+    "from_code1": "mb18_227",
+    "from_guid": "{f0005dd0-8e02-4523-a495-d29e7e56ae8e}",
+    "from_name": "Теремки",
+    "to_code1": "a1886",
+    "to_guid": "{F89091D1-B636-41A4-9775-95E96921AE54}",
+    "to_name": "пл. Одеська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 478,
+    "from_code1": "mb18_227",
+    "from_guid": "{f0005dd0-8e02-4523-a495-d29e7e56ae8e}",
+    "from_name": "Теремки",
+    "to_code1": "a1888",
+    "to_guid": "{B7C083B9-9992-457E-A98C-D9602A04C209}",
+    "to_name": "ст. м. «Теремки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 479,
+    "from_code1": "mr07_116",
+    "from_guid": "{f6d8fbff-a9f8-4c19-b289-4d4db7ff0000}",
+    "from_name": "Політехнічний інститут",
+    "to_code1": "a4330",
+    "to_guid": "{D3F2199A-40E2-4B8A-9E8F-093F7C74BFB0}",
+    "to_name": "ст. м. «Політехнічний інститут»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 480,
+    "from_code1": "mr07_116",
+    "from_guid": "{f6d8fbff-a9f8-4c19-b289-4d4db7ff0000}",
+    "from_name": "Політехнічний інститут",
+    "to_code1": "a4329",
+    "to_guid": "{C0AFB145-CA5A-4BFB-B557-5B6232759007}",
+    "to_name": "ст. м. «Політехнічний інститут»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 481,
+    "from_code1": "mr07_116",
+    "from_guid": "{f6d8fbff-a9f8-4c19-b289-4d4db7ff0000}",
+    "from_name": "Політехнічний інститут",
+    "to_code1": "a10795",
+    "to_guid": "{9AE22714-8166-457E-9D37-073180F4BB8D}",
+    "to_name": "ст. м. «Політехнічний інститут»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 482,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a7961",
+    "to_guid": "{A33A67A8-5AF9-456A-8F8A-3406FABC52DC}",
+    "to_name": "ст. м. «Мінська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 483,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a7960",
+    "to_guid": "{80EA9C55-0B94-4B39-A68F-2664222AE261}",
+    "to_name": "ст. м. «Мінська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 484,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a7962",
+    "to_guid": "{97678A1F-AA7D-4BD9-AC67-06D1D2E609F5}",
+    "to_name": "Супермаркет",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 485,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a7963",
+    "to_guid": "{DAA85548-F549-4964-BE3A-0941C6B9200A}",
+    "to_name": "Супермаркет",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 486,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a4708",
+    "to_guid": "{8329330A-4F24-4453-A2A8-00C09BBBFFD5}",
+    "to_name": "ст. м. «Мінська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 487,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a4709",
+    "to_guid": "{EDE1A8B4-6248-4924-96FD-B628B1304897}",
+    "to_name": "ст. м. «Мінська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 488,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a4710",
+    "to_guid": "{CE680EF6-2EA7-4D9A-9655-B9BB54FC66B8}",
+    "to_name": "ст. м. «Мінська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 489,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a7199",
+    "to_guid": "{32843E76-78DE-4C3A-8534-9F3A552A9F43}",
+    "to_name": "просп. Оболонський",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 490,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a7200",
+    "to_guid": "{93A27331-F2B7-437E-8B12-0D9E8720D11E}",
+    "to_name": "Райдержадміністрація",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 491,
+    "from_code1": "mg02_311",
+    "from_guid": "{84ada966-ff1d-4139-b2b6-2f0d759d4bbf}",
+    "from_name": "Дорогожичі",
+    "to_code1": "a5116",
+    "to_guid": "{EFD74D9E-5114-4085-84EF-744BE6224AAA}",
+    "to_name": "ст. м. «Дорогожичі»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 492,
+    "from_code1": "mg02_311",
+    "from_guid": "{84ada966-ff1d-4139-b2b6-2f0d759d4bbf}",
+    "from_name": "Дорогожичі",
+    "to_code1": "a5117",
+    "to_guid": "{7C79E01C-BF43-4BB6-9E97-8294739E090C}",
+    "to_name": "ст. м. «Дорогожичі»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 493,
+    "from_code1": "mg02_311",
+    "from_guid": "{84ada966-ff1d-4139-b2b6-2f0d759d4bbf}",
+    "from_name": "Дорогожичі",
+    "to_code1": "a5514",
+    "to_guid": "{70EABB42-CD26-48ED-B4A6-56D16AC4B66F}",
+    "to_name": "ст. м. «Дорогожичі»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 494,
+    "from_code1": "mg02_311",
+    "from_guid": "{84ada966-ff1d-4139-b2b6-2f0d759d4bbf}",
+    "from_name": "Дорогожичі",
+    "to_code1": "a5515",
+    "to_guid": "{D7C4F04D-B19A-4453-AB73-966EDA4C17BB}",
+    "to_name": "ст. м. «Дорогожичі»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 495,
+    "from_code1": "mb05_214",
+    "from_guid": "{efd663ad-266a-45e9-8a46-8632b0fa912e}",
+    "from_name": "Тараса Шевченка",
+    "to_code1": "a8822",
+    "to_guid": "{3F7A2C55-80B0-4D4F-B577-F0A4293B36A2}",
+    "to_name": "вул. Оленівська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 496,
+    "from_code1": "mb05_214",
+    "from_guid": "{efd663ad-266a-45e9-8a46-8632b0fa912e}",
+    "from_name": "Тараса Шевченка",
+    "to_code1": "a8827",
+    "to_guid": "{276E7F74-6559-49DF-AF2D-E2C09D52DC31}",
+    "to_name": "ст. м. «Тараса Шевченка»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 497,
+    "from_code1": "mb05_214",
+    "from_guid": "{efd663ad-266a-45e9-8a46-8632b0fa912e}",
+    "from_name": "Тараса Шевченка",
+    "to_code1": "a9578",
+    "to_guid": "{BB6E0241-2F64-4FDA-A7D3-3D90802FF1B3}",
+    "to_name": "вул. Оленівська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 498,
+    "from_code1": "mb09_218",
+    "from_guid": "{f54ca771-e70f-4bd2-80fd-e454729be7b2}",
+    "from_name": "Площа Українських Героїв",
+    "to_code1": "a4347",
+    "to_guid": "{A4C1684F-E2FD-4C2B-B47E-C3EAF8C0E41A}",
+    "to_name": "ст. м. «Площа Українських Героїв» (посадка)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 499,
+    "from_code1": "mb09_218",
+    "from_guid": "{f54ca771-e70f-4bd2-80fd-e454729be7b2}",
+    "from_name": "Площа Українських Героїв",
+    "to_code1": "a4346",
+    "to_guid": "{27BFFABB-12F5-4AFD-B313-80B43E2FD100}",
+    "to_name": "ст. м. «Площа Українських Героїв»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 500,
+    "from_code1": "mb09_218",
+    "from_guid": "{f54ca771-e70f-4bd2-80fd-e454729be7b2}",
+    "from_name": "Площа Українських Героїв",
+    "to_code1": "a10830",
+    "to_guid": "{398D6592-28DC-434C-A441-98D53F6826A3}",
+    "to_name": "ст. м. «Площа Українських Героїв»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 501,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a42",
+    "to_guid": "{A7806D63-42AF-484F-8188-E6C8F82D9A9B}",
+    "to_name": "пл. Контрактова",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 502,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a654",
+    "to_guid": "{CAFC3BBD-0EA1-459B-93B7-B0C022716D80}",
+    "to_name": "вул. Ярославська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 503,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a1462",
+    "to_guid": "{0E92B6F4-477A-4CDF-979C-CCAAFCD6FFD2}",
+    "to_name": "вул. Нижній Вал",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 504,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a43",
+    "to_guid": "{E98019D7-36A1-495E-B357-9B43DD6AFCF5}",
+    "to_name": "вул. Верхній Вал",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 505,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a41",
+    "to_guid": "{F6840204-29E1-4C3A-984E-BCAB0D8DB9B4}",
+    "to_name": "пл. Контрактова",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 506,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a8823",
+    "to_guid": "{B1D497BB-8B4E-4646-8C21-FD4AFC6AB69C}",
+    "to_name": "ст. м. «Контрактова площа»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 507,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a9232",
+    "to_guid": "{4D829A7A-B9D1-4365-8847-990B7BB70245}",
+    "to_name": "пл. Контрактова",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 508,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a9589",
+    "to_guid": "{D6DE825D-E21E-4B97-B392-77E46BE465D1}",
+    "to_name": "вул. Верхній Вал",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 509,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a9590",
+    "to_guid": "{59E1A2C6-1DB9-4FB1-A9C8-2B0F1ABE9642}",
+    "to_name": "пл. Контрактова",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 510,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a9592",
+    "to_guid": "{886F93AB-2CB0-443C-BA5A-57D261A9E8C0}",
+    "to_name": "вул. Нижній Вал",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 511,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a9594",
+    "to_guid": "{FBEE8301-EB6D-4DF9-B57B-726580BE5EA4}",
+    "to_name": "Житній ринок",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 514,
+    "from_code1": "mg10_321",
+    "from_guid": "{bd37e469-380b-4853-a0e7-7e6c018f12c3}",
+    "from_name": "Славутич",
+    "to_code1": "a13596",
+    "to_guid": "{3D6E295C-FD56-4A98-8A1C-5414F0F5FD24}",
+    "to_name": "ст. м. «Славутич»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 515,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a6759",
+    "to_guid": "{620347E8-6A6A-4090-AFD1-6AE866AE58B3}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 516,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a6760",
+    "to_guid": "{5A90724C-AE66-41DC-9AAE-5D6CC15A820B}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 517,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a7651",
+    "to_guid": "{B11AF5BC-AED8-4150-BF62-516C3EF4E8BD}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 512,
+    "from_code1": "mg10_321",
+    "from_guid": "{bd37e469-380b-4853-a0e7-7e6c018f12c3}",
+    "from_name": "Славутич",
+    "to_code1": "a12759",
+    "to_guid": "{F0FCDB3E-CB99-4985-87B8-A7DC8B8E39B8}",
+    "to_name": "ст. м. «Славутич»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 518,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a9220",
+    "to_guid": "{131932FC-637F-47E3-9D50-FB7398D4AE19}",
+    "to_name": "вул. Кіото (ст. м. «Лісова», висадка)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 519,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a9221",
+    "to_guid": "{9AA0F4E1-7CD0-471E-B8A5-F264C4B05775}",
+    "to_name": "просп. Броварський (ст. м. «Лісова»)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 520,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a9223",
+    "to_guid": "{17120BDE-681B-4076-8418-F363CB690D84}",
+    "to_name": "просп. Броварський (ст. м. «Лісова»)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 521,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a9222",
+    "to_guid": "{BB5800C1-5F88-475D-849D-CEA9A72A179F}",
+    "to_name": "просп. Броварський (ст. м. «Лісова»)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 522,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a20375",
+    "to_guid": "{6346382a-80be-4c26-a5bf-03104fa90969}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 523,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a20376",
+    "to_guid": "{a2c6975a-3cfd-4ad1-9347-167864a1b722}",
+    "to_name": "просп. Броварський (ст. м. «Лісова»)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 524,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a7602",
+    "to_guid": "{89E56414-CE03-4CD9-867E-063347523A02}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 525,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a7603",
+    "to_guid": "{C91D0309-BA1F-4594-B4A8-FFCBF3FE3657}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 526,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a7604",
+    "to_guid": "{BDAA59AC-2FF4-4592-9187-B9F7EAA0FD68}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 527,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a7605",
+    "to_guid": "{A988123C-0E45-4973-9490-56156C62C030}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 528,
+    "from_code1": "mg01_310",
+    "from_guid": "{9233b80a-b40c-467c-b693-766b41fefb51}",
+    "from_name": "Сирець",
+    "to_code1": "a4775",
+    "to_guid": "{B184E77A-33D3-4B3F-86F8-96B847D0F085}",
+    "to_name": "ст. м. «Сирець»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 529,
+    "from_code1": "mg01_310",
+    "from_guid": "{9233b80a-b40c-467c-b693-766b41fefb51}",
+    "from_name": "Сирець",
+    "to_code1": "a4776",
+    "to_guid": "{763925AA-095B-4130-B309-547062BA1790}",
+    "to_name": "ст. м. «Сирець»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 530,
+    "from_code1": "mb16_225",
+    "from_guid": "{95410970-a9c3-49a9-a872-9df9ab5e0839}",
+    "from_name": "Виставковий центр",
+    "to_code1": "a1551",
+    "to_guid": "{D5FC1461-B0C3-478E-87B9-2E3D025A6B9D}",
+    "to_name": "ст. м. «Виставковий центр»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 531,
+    "from_code1": "mb16_225",
+    "from_guid": "{95410970-a9c3-49a9-a872-9df9ab5e0839}",
+    "from_name": "Виставковий центр",
+    "to_code1": "a1552",
+    "to_guid": "{619ADD37-548B-4588-829D-97A262A3BDDF}",
+    "to_name": "ст. м. «Виставковий центр»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 532,
+    "from_code1": "mb16_225",
+    "from_guid": "{95410970-a9c3-49a9-a872-9df9ab5e0839}",
+    "from_name": "Виставковий центр",
+    "to_code1": "a1911",
+    "to_guid": "{D07FF0AC-122E-472F-B1F8-2EEF65ABBEBE}",
+    "to_name": "вул. Васильківська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 533,
+    "from_code1": "mr05_114",
+    "from_guid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "from_name": "Берестейська",
+    "to_code1": "a170",
+    "to_guid": "{C37B2250-014F-4E31-BC54-80A5D1029512}",
+    "to_name": "ст. м. «Берестейська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 534,
+    "from_code1": "mr05_114",
+    "from_guid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "from_name": "Берестейська",
+    "to_code1": "a165",
+    "to_guid": "{DBDA9B46-F87E-4120-B911-A77AF88C417C}",
+    "to_name": "ст. м. «Берестейська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 535,
+    "from_code1": "mr05_114",
+    "from_guid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "from_name": "Берестейська",
+    "to_code1": "a4317",
+    "to_guid": "{36F8D149-46A2-49AA-BD0A-0FC273378DC3}",
+    "to_name": "ст. м. «Берестейська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 536,
+    "from_code1": "mr05_114",
+    "from_guid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "from_name": "Берестейська",
+    "to_code1": "a4318",
+    "to_guid": "{07E6849A-0F5B-45D3-9226-60C735AC5322}",
+    "to_name": "ст. м. «Берестейська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 537,
+    "from_code1": "mr05_114",
+    "from_guid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "from_name": "Берестейська",
+    "to_code1": "a10405",
+    "to_guid": "{283912B0-EC89-406B-B65D-D7017A90A943}",
+    "to_name": "ст. м. «Берестейська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 538,
+    "from_code1": "mr05_114",
+    "from_guid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "from_name": "Берестейська",
+    "to_code1": "a10406",
+    "to_guid": "{87632F65-1A1E-4B29-BA2B-339A957A6F1B}",
+    "to_name": "ст. м. «Берестейська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 539,
+    "from_code1": "mg08_318",
+    "from_guid": "{f8940903-aca5-47a8-8938-42268515426d}",
+    "from_name": "Звіринецька",
+    "to_code1": "a1523",
+    "to_guid": "{49B8B770-108A-4249-B17E-2D9C0C8ECA46}",
+    "to_name": "ст. м. «Звіринецька»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 540,
+    "from_code1": "mg08_318",
+    "from_guid": "{f8940903-aca5-47a8-8938-42268515426d}",
+    "from_name": "Звіринецька",
+    "to_code1": "a1524",
+    "to_guid": "{0FCBFFA1-745A-4A63-BF9F-655228C5B8B9}",
+    "to_name": "ст. м. «Звіринецька»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 541,
+    "from_code1": "mg08_318",
+    "from_guid": "{f8940903-aca5-47a8-8938-42268515426d}",
+    "from_name": "Звіринецька",
+    "to_code1": "a9225",
+    "to_guid": "{AB8B862E-2297-4FAB-B4E9-8B9DF746BE97}",
+    "to_name": "бульв. Миколи Міхновського",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 542,
+    "from_code1": "mg08_318",
+    "from_guid": "{f8940903-aca5-47a8-8938-42268515426d}",
+    "from_name": "Звіринецька",
+    "to_code1": "a15595",
+    "to_guid": "{F9FDEFEE-0CA6-47B1-874B-4954E6249B13}",
+    "to_name": "ст. м. «Звіринецька»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 543,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a121",
+    "to_guid": "{8ABF20D4-F432-40B2-AB35-675063B87A77}",
+    "to_name": "ст. м. «Героїв Дніпра» (для висадки)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 544,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a7958",
+    "to_guid": "{7C10B9C1-6A0C-4334-8305-AE7CF2D898D5}",
+    "to_name": "ст. м. «Героїв Дніпра»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 545,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a7959",
+    "to_guid": "{8D8BB5C1-5920-4C66-ACE9-73B820E86BB5}",
+    "to_name": "ст. м. «Героїв Дніпра» (для висадки)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 575,
+    "from_code1": "mb13_222",
+    "from_guid": "{7b6d81a2-6cb6-4b48-842b-5a5201f8e2bc}",
+    "from_name": "Деміївська",
+    "to_code1": "a1893",
+    "to_guid": "{13C2D61A-FEE3-44B5-A3D5-B0D7D8E604AD}",
+    "to_name": "Автовокзал",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 546,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a122",
+    "to_guid": "{414A85B4-0BDB-4482-A9BE-A1789B9A4141}",
+    "to_name": "ст. м. «Героїв Дніпра»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 547,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a7174",
+    "to_guid": "{2C983BF5-A965-404B-A21B-DE27F8DF6047}",
+    "to_name": "просп. Оболонський",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 548,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a7175",
+    "to_guid": "{F7A13EA4-DB7B-45C7-AF90-8E159D555DD0}",
+    "to_name": "ст. м. «Героїв Дніпра»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 549,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a7176",
+    "to_guid": "{022794AC-3172-4EDE-9AE7-E358171E4FE3}",
+    "to_name": "ст. м. «Героїв Дніпра»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 550,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a15197",
+    "to_guid": "{4A97D5C0-32D6-4D3B-9317-1750FBA92C0E}",
+    "to_name": "ст. м. «Героїв Дніпра»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 551,
+    "from_code1": "mr17_126",
+    "from_guid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "from_name": "Чернігівська",
+    "to_code1": "a199",
+    "to_guid": "{0340DE99-165E-4F4D-A236-46C5DBFC7F82}",
+    "to_name": "ст. м. «Чернігівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 552,
+    "from_code1": "mr17_126",
+    "from_guid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "from_name": "Чернігівська",
+    "to_code1": "a193",
+    "to_guid": "{F1369441-E13D-433A-8BF1-57B4122488BA}",
+    "to_name": "ст. м. «Чернігівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 553,
+    "from_code1": "mr17_126",
+    "from_guid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "from_name": "Чернігівська",
+    "to_code1": "a9197",
+    "to_guid": "{86C44EE8-A2A2-4EAF-9A7A-123257F75944}",
+    "to_name": "ст. м. «Чернігівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 554,
+    "from_code1": "mr17_126",
+    "from_guid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "from_name": "Чернігівська",
+    "to_code1": "a9198",
+    "to_guid": "{07A7C436-822A-4B55-8964-0CA67BCD5B43}",
+    "to_name": "ст. м. «Чернігівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 555,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a26",
+    "to_guid": "{312FE8C3-0D61-445A-A532-AA8E583B40D1}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 556,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a11968",
+    "to_guid": "{E88F6356-615B-4780-A2BD-1981C825204C}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 557,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a12763",
+    "to_guid": "{4FDFE0FE-32E9-4BF1-9DAD-BBE4903A8DA3}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 558,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a12764",
+    "to_guid": "{3928CD10-AEA1-4D39-A97E-8E25EEB85C6F}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 559,
+    "from_code1": "mg05_315",
+    "from_guid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "from_name": "Палац спорту",
+    "to_code1": "a2340",
+    "to_guid": "{27688BCA-2C2F-48D6-B3CC-54A403994CD7}",
+    "to_name": "вул. Басейна",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 560,
+    "from_code1": "mg05_315",
+    "from_guid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "from_name": "Палац спорту",
+    "to_code1": "a2339",
+    "to_guid": "{F12C8379-EC8D-4EF9-8487-5C4CCE634718}",
+    "to_name": "вул. Шота Руставелі",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 561,
+    "from_code1": "mg05_315",
+    "from_guid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "from_name": "Палац спорту",
+    "to_code1": "a2363",
+    "to_guid": "{BF3B534E-1C95-484C-858F-7310ABB52467}",
+    "to_name": "ст. м. «Палац Спорту»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 562,
+    "from_code1": "mg05_315",
+    "from_guid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "from_name": "Палац спорту",
+    "to_code1": "a2343",
+    "to_guid": "{B8294BA8-B4D5-440D-826E-C149D08A00AC}",
+    "to_name": "ст. м. «Палац Спорту»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 563,
+    "from_code1": "mb17_226",
+    "from_guid": "{2cd14ab2-b74c-4650-a597-a9c638059d25}",
+    "from_name": "Іподром",
+    "to_code1": "a1553",
+    "to_guid": "{6D22A6CA-A1B7-428E-BDBA-6D9E0EBECA03}",
+    "to_name": "Автостанція «Південна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 564,
+    "from_code1": "mb17_226",
+    "from_guid": "{2cd14ab2-b74c-4650-a597-a9c638059d25}",
+    "from_name": "Іподром",
+    "to_code1": "a1554",
+    "to_guid": "{B87B54BF-DC9B-41F3-B97D-9209875AF558}",
+    "to_name": "Автостанція «Південна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 565,
+    "from_code1": "mb17_226",
+    "from_guid": "{2cd14ab2-b74c-4650-a597-a9c638059d25}",
+    "from_name": "Іподром",
+    "to_code1": "a1555",
+    "to_guid": "{060A842F-C629-4AE9-85B0-586B48FFB275}",
+    "to_name": "ст. м. «Іподром»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 566,
+    "from_code1": "mb17_226",
+    "from_guid": "{2cd14ab2-b74c-4650-a597-a9c638059d25}",
+    "from_name": "Іподром",
+    "to_code1": "a1556",
+    "to_guid": "{3444D322-EF87-4F88-A109-0125E35A9CB9}",
+    "to_name": "ст. м. «Іподром»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 567,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a11216",
+    "to_guid": "{DD53F65F-E2BA-43DD-9556-73B9C6F3ECCC}",
+    "to_name": "Театр драми і комедії",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 568,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a11973",
+    "to_guid": "{A05EF535-7F61-4057-8CAB-5110B3724CAE}",
+    "to_name": "ст. м. «Лівобережна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 569,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a11217",
+    "to_guid": "{52F26621-D173-4E64-9557-3D012B208692}",
+    "to_name": "ст. м. «Лівобережна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 570,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a12375",
+    "to_guid": "{286BE0DF-B8D3-4300-A8FA-324C6CCB5B5D}",
+    "to_name": "ст. м. «Лівобережна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 571,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a12376",
+    "to_guid": "{D907238B-9A50-49D9-A860-59CF50EB702D}",
+    "to_name": "ст. м. «Лівобережна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 572,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a11974",
+    "to_guid": "{B2E455BB-B357-48CA-8F5E-41AD187B41FE}",
+    "to_name": "ст. м. «Лівобережна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 573,
+    "from_code1": "mr06_115",
+    "from_guid": "{2ec76936-19ff-49af-a897-07b830dde005}",
+    "from_name": "Шулявська",
+    "to_code1": "a4323",
+    "to_guid": "{17E5686A-A8E7-42B6-B6BE-C1B9D0E61595}",
+    "to_name": "ст. м. «Шулявська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 574,
+    "from_code1": "mb13_222",
+    "from_guid": "{7b6d81a2-6cb6-4b48-842b-5a5201f8e2bc}",
+    "from_name": "Деміївська",
+    "to_code1": "a1533",
+    "to_guid": "{54BAE386-0EB6-4752-A8B7-175BD3DB2E6B}",
+    "to_name": "ст. м. «Деміївська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 576,
+    "from_code1": "mb13_222",
+    "from_guid": "{7b6d81a2-6cb6-4b48-842b-5a5201f8e2bc}",
+    "from_name": "Деміївська",
+    "to_code1": "a9591",
+    "to_guid": "{FA785E96-9BE8-442B-ABA3-49294F1E3249}",
+    "to_name": "ст. м. «Деміївська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 577,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a1486",
+    "to_guid": "{493CFC1C-3A3F-48B5-B04E-2838D5DCCB0A}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 578,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a1531",
+    "to_guid": "{AE7F28AF-0D59-47F7-9333-060C0D3CE05E}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 579,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a11158",
+    "to_guid": "{0B6EF048-0461-405F-8597-FDE84D6090EA}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 580,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a1532",
+    "to_guid": "{6548A9DD-03D8-45F9-98E8-41EC91E49946}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 581,
+    "from_code1": "mr02_111",
+    "from_guid": "{c3a1cb27-d237-486e-90a5-8e4353b6af87}",
+    "from_name": "Житомирська",
+    "to_code1": "a4724",
+    "to_guid": "{14ECC005-9485-46DB-B034-81C446B5ABFE}",
+    "to_name": "ст. м. «Житомирська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 582,
+    "from_code1": "mr02_111",
+    "from_guid": "{c3a1cb27-d237-486e-90a5-8e4353b6af87}",
+    "from_name": "Житомирська",
+    "to_code1": "a4723",
+    "to_guid": "{ABF801A4-55B7-40E9-A699-DE8480ABB798}",
+    "to_name": "ст. м. «Житомирська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 583,
+    "from_code1": "mr01_110",
+    "from_guid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "from_name": "Академмістечко",
+    "to_code1": "a4737",
+    "to_guid": "{D7030E56-39C1-41E3-906D-B8C8FC89FA4A}",
+    "to_name": "ст. м. «Академмістечко»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 584,
+    "from_code1": "mr01_110",
+    "from_guid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "from_name": "Академмістечко",
+    "to_code1": "a4739",
+    "to_guid": "{93CA7E0E-DC99-4B95-9691-129D90A1FF97}",
+    "to_name": "просп. Академіка Палладіна",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 585,
+    "from_code1": "mr01_110",
+    "from_guid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "from_name": "Академмістечко",
+    "to_code1": "a8799",
+    "to_guid": "{2E951AB3-1562-4624-ACB9-0AA616A8ADBE}",
+    "to_name": "ст. м. «Академмістечко»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 586,
+    "from_code1": "mr01_110",
+    "from_guid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "from_name": "Академмістечко",
+    "to_code1": "a8800",
+    "to_guid": "{9BD830D8-6B0A-4980-B1B7-D0AC469E8644}",
+    "to_name": "ст. м. «Академмістечко»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 587,
+    "from_code1": "mr01_110",
+    "from_guid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "from_name": "Академмістечко",
+    "to_code1": "a4738",
+    "to_guid": "{EB0D59A6-DF28-470A-B037-FD2D4E59F12C}",
+    "to_name": "ст. м. «Академмістечко»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 588,
+    "from_code1": "mr01_110",
+    "from_guid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "from_name": "Академмістечко",
+    "to_code1": "a12846",
+    "to_guid": "{039590C2-A7C7-437E-90EB-5CB4C48A3088}",
+    "to_name": "бульв. Академіка Вернадського",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 589,
+    "from_code1": "mr01_110",
+    "from_guid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "from_name": "Академмістечко",
+    "to_code1": "a8801",
+    "to_guid": "{AD8264D0-C580-4301-A580-3D4005C059D8}",
+    "to_name": "ст. м. «Академмістечко»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 590,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a3552",
+    "to_guid": "{E9D277DD-81AD-4715-963F-DFB6CB797572}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 591,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a3553",
+    "to_guid": "{D28A9699-E187-427D-815E-A1B1153015CA}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 592,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a7996",
+    "to_guid": "{27FA45B6-D04C-41EF-BD98-5789AD57BE8A}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 593,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a7997",
+    "to_guid": "{A7444B16-07C7-49BD-B637-F7560BC28B2F}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 594,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a7998",
+    "to_guid": "{8CF098F1-A164-41D6-A497-81884AAB30B6}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 595,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a7999",
+    "to_guid": "{096076F2-24BD-4DC6-B685-644E5963BE38}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 596,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a15590",
+    "to_guid": "{A7D536A7-6413-4A98-994D-11B1DEC45260}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 597,
+    "from_code1": "mg04_314",
+    "from_guid": "{6c243faf-8a61-4102-8e1f-4b292a49142a}",
+    "from_name": "Золоті Ворота",
+    "to_code1": "a15563",
+    "to_guid": "{DB8488F8-EF4F-4CF8-8B7F-2966D097055C}",
+    "to_name": "ст. м. «Золоті ворота»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 598,
+    "from_code1": "mg07_317",
+    "from_guid": "{8ca71d40-5de0-45bf-a101-494d4e93e49f}",
+    "from_name": "Печерська",
+    "to_code1": "a2349",
+    "to_guid": "{F6697867-943F-41F0-A258-EFC24D4A07C4}",
+    "to_name": "пл. Лесі Українки",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 599,
+    "from_code1": "mg07_317",
+    "from_guid": "{8ca71d40-5de0-45bf-a101-494d4e93e49f}",
+    "from_name": "Печерська",
+    "to_code1": "a2350",
+    "to_guid": "{6A963A40-83F7-40B7-9B54-C9D094BB2B7F}",
+    "to_name": "пл. Лесі Українки",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 600,
+    "from_code1": "mg07_317",
+    "from_guid": "{8ca71d40-5de0-45bf-a101-494d4e93e49f}",
+    "from_name": "Печерська",
+    "to_code1": "a2706",
+    "to_guid": "{D2E5FFB1-A018-472C-9999-5467ABD6D530}",
+    "to_name": "вул. Арсенальна",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 601,
+    "from_code1": "mg07_317",
+    "from_guid": "{8ca71d40-5de0-45bf-a101-494d4e93e49f}",
+    "from_name": "Печерська",
+    "to_code1": "a2705",
+    "to_guid": "{2B891DC4-13F1-4FBD-8ADE-257135B595EE}",
+    "to_name": "пл. Лесі Українки",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 602,
+    "from_code1": "mb10_219",
+    "from_guid": "{e4ca329c-019b-4042-90c3-c1924ac237c9}",
+    "from_name": "Олімпійська",
+    "to_code1": "a2320",
+    "to_guid": "{A650A496-ACC0-43E5-B8DE-FD24467A1303}",
+    "to_name": "вул. Ділова",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 603,
+    "from_code1": "mb10_219",
+    "from_guid": "{e4ca329c-019b-4042-90c3-c1924ac237c9}",
+    "from_name": "Олімпійська",
+    "to_code1": "a2321",
+    "to_guid": "{0F7FC042-8E3F-4C81-9E7A-CDA02B2B61D9}",
+    "to_name": "ст. м. «Олімпійська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 604,
+    "from_code1": "mb10_219",
+    "from_guid": "{e4ca329c-019b-4042-90c3-c1924ac237c9}",
+    "from_name": "Олімпійська",
+    "to_code1": "a2323",
+    "to_guid": "{444F1B24-831F-4949-8DE1-4B3DD43B22B4}",
+    "to_name": "НСК «Олімпійський»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 605,
+    "from_code1": "mb10_219",
+    "from_guid": "{e4ca329c-019b-4042-90c3-c1924ac237c9}",
+    "from_name": "Олімпійська",
+    "to_code1": "a2324",
+    "to_guid": "{1A3D8EEE-6751-4865-B64F-576CB90F6E6E}",
+    "to_name": "вул. Жилянська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 606,
+    "from_code1": "mb10_219",
+    "from_guid": "{e4ca329c-019b-4042-90c3-c1924ac237c9}",
+    "from_name": "Олімпійська",
+    "to_code1": "a2322",
+    "to_guid": "{37366D5A-952A-47D3-955A-A2A822456AB1}",
+    "to_name": "вул. Фізкультури (ст. м. «Олімпійська»)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 607,
+    "from_code1": "mg11_322",
+    "from_guid": "{dbc2817a-1957-4f4e-a749-2a1813853d07}",
+    "from_name": "Осокорки",
+    "to_code1": "a12008",
+    "to_guid": "{F66067AC-01AD-4E88-84F6-04E56482B535}",
+    "to_name": "ст. м. «Осокорки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 608,
+    "from_code1": "mg11_322",
+    "from_guid": "{dbc2817a-1957-4f4e-a749-2a1813853d07}",
+    "from_name": "Осокорки",
+    "to_code1": "a12367",
+    "to_guid": "{CFC28232-05E6-427F-BF67-96CB074B3313}",
+    "to_name": "ст. м. «Осокорки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 609,
+    "from_code1": "mg11_322",
+    "from_guid": "{dbc2817a-1957-4f4e-a749-2a1813853d07}",
+    "from_name": "Осокорки",
+    "to_code1": "a12368",
+    "to_guid": "{DB991201-BD1D-4F30-9A3A-F62631F446C3}",
+    "to_name": "ст. м. «Осокорки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 610,
+    "from_code1": "mg16_327",
+    "from_guid": "{16048cd2-361b-48f3-a3b5-2c08de8810a2}",
+    "from_name": "Червоний хутір",
+    "to_code1": "a9186",
+    "to_guid": "{ED6A36FC-CD77-45E1-933E-AFF2A919DEBC}",
+    "to_name": "ст. м. «Червоний хутір»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 611,
+    "from_code1": "mg16_327",
+    "from_guid": "{16048cd2-361b-48f3-a3b5-2c08de8810a2}",
+    "from_name": "Червоний хутір",
+    "to_code1": "a9187",
+    "to_guid": "{FC8D4C17-A225-4518-8C18-46C78F1E2223}",
+    "to_name": "ст. м. «Червоний хутір»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 612,
+    "from_code1": "mb15_224",
+    "from_guid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "from_name": "Васильківська",
+    "to_code1": "a1936",
+    "to_guid": "{3BC06FB0-593C-49E6-AF4B-59F30D0B9C1A}",
+    "to_name": "На вимогу",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 613,
+    "from_code1": "mb15_224",
+    "from_guid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "from_name": "Васильківська",
+    "to_code1": "a1938",
+    "to_guid": "{1412B606-BE40-463C-8C65-7586F6EFA6F8}",
+    "to_name": "Фабрика «Киянка»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 614,
+    "from_code1": "mb15_224",
+    "from_guid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "from_name": "Васильківська",
+    "to_code1": "a2305",
+    "to_guid": "{5B38555A-1B5F-4A10-9B88-DE2ED012714B}",
+    "to_name": "ст. м. «Васильківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 615,
+    "from_code1": "mb15_224",
+    "from_guid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "from_name": "Васильківська",
+    "to_code1": "a2306",
+    "to_guid": "{0AC58C02-8843-4110-87C4-6A4F3108A632}",
+    "to_name": "ст. м. «Васильківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 616,
+    "from_code1": "mb15_224",
+    "from_guid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "from_name": "Васильківська",
+    "to_code1": "a9611",
+    "to_guid": "{B95110C6-7456-495D-BADF-2736D0B18C85}",
+    "to_name": "Фабрика «Киянка»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 617,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a3592",
+    "to_guid": "{F497E8E9-D365-4B55-B480-6780FDBF7164}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 618,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a3591",
+    "to_guid": "{AFA13D6D-32FF-473A-8F47-0BC3524C4DC7}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 619,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a3590",
+    "to_guid": "{BE61DB47-4048-4C18-8A8D-1F1F4255C1F0}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 620,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a3593",
+    "to_guid": "{8769F773-02A5-4C78-8FEC-E987739F76E5}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 621,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a4711",
+    "to_guid": "{2A12F598-BC25-4DBA-B911-48F4607DDB49}",
+    "to_name": "вул. Данила Щербаківського",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 622,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a4712",
+    "to_guid": "{D201E81D-3D7C-4339-8D82-1249BB5F402C}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 623,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a15591",
+    "to_guid": "{E0FC985D-8DA4-4C22-98E9-50C351878AF2}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 624,
+    "from_code1": "mg06_316",
+    "from_guid": "{8c1d7924-4208-41dc-8518-168d3289e690}",
+    "from_name": "Кловська",
+    "to_code1": "a9642",
+    "to_guid": "{8EFE8849-096E-4102-AF19-1D6A738DFA9D}",
+    "to_name": "ст. м. «Кловська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 625,
+    "from_code1": "mg06_316",
+    "from_guid": "{8c1d7924-4208-41dc-8518-168d3289e690}",
+    "from_name": "Кловська",
+    "to_code1": "a9643",
+    "to_guid": "{AAD87E83-C77F-4224-AEFE-DA03943A5182}",
+    "to_name": "ст. м. «Кловська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 626,
+    "from_code1": "mr11_120",
+    "from_guid": "{318177c9-7653-48d7-a6f6-a5a2ae32aea0}",
+    "from_name": "Хрещатик",
+    "to_code1": "a8772",
+    "to_guid": "{12011DFA-EF26-4488-8827-99A8D4077653}",
+    "to_name": "ст. м. «Хрещатик»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 627,
+    "from_code1": "mr11_120",
+    "from_guid": "{318177c9-7653-48d7-a6f6-a5a2ae32aea0}",
+    "from_name": "Хрещатик",
+    "to_code1": "a8773",
+    "to_guid": "{B60F6C88-A796-4005-94D8-9339311873FF}",
+    "to_name": "ст. м. «Хрещатик»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 628,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a2745",
+    "to_guid": "{4731FD3F-FB24-4EAA-BAE2-B9A7D26AD438}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 629,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a2746",
+    "to_guid": "{8DD8DBC6-1699-418E-B4D0-6D14F6FA7196}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 630,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a2747",
+    "to_guid": "{B83B4F44-19D5-4B18-A5F1-9D82EDF9DFFE}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 631,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a75",
+    "to_guid": "{82D26397-31D2-4413-892A-D8E327586621}",
+    "to_name": "вул. Дегтярівська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 632,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a82",
+    "to_guid": "{0102541F-4FAC-4C33-896B-F888ABDF6FF8}",
+    "to_name": "пл. Лук'янівська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 633,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a77",
+    "to_guid": "{3039AC8C-5D86-41D0-853C-BC82F8536C02}",
+    "to_name": "пл. Лук'янівська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 634,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a4756",
+    "to_guid": "{9E922358-E543-4ADF-A4BD-5B74AE4B485F}",
+    "to_name": "пл. Лук'янівська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 635,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a4757",
+    "to_guid": "{F0BC7F1A-8BBF-43B1-8876-02451B01D29C}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 636,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a4758",
+    "to_guid": "{DC3060EA-699B-4997-B8D5-B7709BB7C4BF}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 637,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a20432",
+    "to_guid": "{9a22d652-a3d9-4f37-9788-db89061916e7}",
+    "to_name": "пл. Лук'янівська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 638,
+    "from_code1": "mb08_217",
+    "from_guid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "from_name": "Майдан Незалежності",
+    "to_code1": "a2729",
+    "to_guid": "{7E7866B1-4782-4739-90FE-9C17A353E658}",
+    "to_name": "Майдан Незалежності",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 639,
+    "from_code1": "mb08_217",
+    "from_guid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "from_name": "Майдан Незалежності",
+    "to_code1": "a8768",
+    "to_guid": "{6DC98D7B-9136-4A8C-89EE-4E3B3B2ABFB3}",
+    "to_name": "Готель «Хрещатик»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 641,
+    "from_code1": "mb08_217",
+    "from_guid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "from_name": "Майдан Незалежності",
+    "to_code1": "a8770",
+    "to_guid": "{E16A2BC9-1219-42BA-B974-0A61BB024B37}",
+    "to_name": "Майдан Незалежності",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 642,
+    "from_code1": "mb08_217",
+    "from_guid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "from_name": "Майдан Незалежності",
+    "to_code1": "a8771",
+    "to_guid": "{68313892-1843-404D-9A8B-CD3B4FEDC962}",
+    "to_name": "Майдан Незалежності",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 643,
+    "from_code1": "mb08_217",
+    "from_guid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "from_name": "Майдан Незалежності",
+    "to_code1": "a15558",
+    "to_guid": "{9D4AF344-B6C7-4327-B92E-D4D77FDC6046}",
+    "to_name": "Майдан Незалежності",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 644,
+    "from_code1": "mb08_217",
+    "from_guid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "from_name": "Майдан Незалежності",
+    "to_code1": "a15559",
+    "to_guid": "{A6037D0D-D45B-444E-8867-0EA7CBCAE6F2}",
+    "to_name": "Майдан Незалежності",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 645,
+    "from_code1": "mr09_118",
+    "from_guid": "{9100122b-e375-4656-b1ba-9dbff148e5a7}",
+    "from_name": "Університет",
+    "to_code1": "a4342",
+    "to_guid": "{5144A004-E875-436B-BBE1-5558494092C5}",
+    "to_name": "ст. м. «Університет»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 646,
+    "from_code1": "mr09_118",
+    "from_guid": "{9100122b-e375-4656-b1ba-9dbff148e5a7}",
+    "from_name": "Університет",
+    "to_code1": "a4343",
+    "to_guid": "{C63FAEFE-DEDB-41F7-A330-D08C48CC16EA}",
+    "to_name": "вул. Івана Франка",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 647,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a11667",
+    "to_guid": "{31B5B316-F08D-4442-8B4E-52A8CD5110C1}",
+    "to_name": "Ринок",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 648,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a11668",
+    "to_guid": "{AAF7D756-2FD5-447C-8A08-90E51F081592}",
+    "to_name": "ст. м. «Харківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 649,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a12797",
+    "to_guid": "{4AC6AF69-F894-4CDC-9A03-911A6EC6EF79}",
+    "to_name": "ст. м. «Харківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 650,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a15166",
+    "to_guid": "{A725A74E-F4B9-48C8-B80F-8E9719085447}",
+    "to_name": "ст. м. «Харківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 651,
+    "from_code1": "mg09_319",
+    "from_guid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "from_name": "Видубичі",
+    "to_code1": "a2374",
+    "to_guid": "{706F0F44-D330-4340-A206-C415644B1BEB}",
+    "to_name": "ст. м. «Видубичі»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 652,
+    "from_code1": "mg09_319",
+    "from_guid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "from_name": "Видубичі",
+    "to_code1": "a13958",
+    "to_guid": "{C5A0D66A-DAB1-43A8-8F29-B967FFD32097}",
+    "to_name": "ст. м. «Видубичі»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 653,
+    "from_code1": "mg09_319",
+    "from_guid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "from_name": "Видубичі",
+    "to_code1": "a13959",
+    "to_guid": "{84EA1DE2-30FF-490E-AACB-1F7E8428E500}",
+    "to_name": "ТЕЦ-5",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 654,
+    "from_code1": "mg09_319",
+    "from_guid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "from_name": "Видубичі",
+    "to_code1": "a14807",
+    "to_guid": "{81CBC629-7B0D-4CAC-AF5A-8FBA59716D3D}",
+    "to_name": "ст. м. «Видубичі» (для висадки пасажирів)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 655,
+    "from_code1": "mg09_319",
+    "from_guid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "from_name": "Видубичі",
+    "to_code1": "a14808",
+    "to_guid": "{69F8D40F-9D2C-457B-AC1D-B0945AC4B7FC}",
+    "to_name": "ст. м. «Видубичі»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 656,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "01_00",
+    "to_guid": "{7c619751-0f6f-47bf-9c4d-684a13e49f08}",
+    "to_name": "Святошин",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 657,
+    "from_code1": "mr06_115",
+    "from_guid": "{2ec76936-19ff-49af-a897-07b830dde005}",
+    "from_name": "Шулявська",
+    "to_code1": "a5192",
+    "to_guid": "{3FC0DC9F-1A7C-4030-88CC-53B8AA426526}",
+    "to_name": "ст. м. «Шулявська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 658,
+    "from_code1": "mr06_115",
+    "from_guid": "{2ec76936-19ff-49af-a897-07b830dde005}",
+    "from_name": "Шулявська",
+    "to_code1": "a4324",
+    "to_guid": "{130C288D-A881-4F35-A107-08C0D087627A}",
+    "to_name": "ст. м. «Шулявська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 659,
+    "from_code1": "mr06_115",
+    "from_guid": "{2ec76936-19ff-49af-a897-07b830dde005}",
+    "from_name": "Шулявська",
+    "to_code1": "a5191",
+    "to_guid": "{A07E49AB-7E16-4F21-A0E1-45A92DF2F4CF}",
+    "to_name": "ст. м. «Шулявська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 660,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a6394",
+    "to_guid": "{4BB466BE-9F44-4B36-9F9D-6AF89B9C15A5}",
+    "to_name": "ст. «Старовокзальна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 661,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a35",
+    "to_guid": "{1F927171-2F9C-4E61-85ED-0C8AFD2F8B2D}",
+    "to_name": "вул. Старовокзальна",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 662,
+    "from_code1": "mr10_119",
+    "from_guid": "{3bfbcac5-3dc7-4712-a556-2e8f4155d415}",
+    "from_name": "Театральна",
+    "to_code1": "a8774",
+    "to_guid": "{45E7F7A1-9E32-4829-A00E-BE83015CD9CA}",
+    "to_name": "Центральний універмаг",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 663,
+    "from_code1": "mr10_119",
+    "from_guid": "{3bfbcac5-3dc7-4712-a556-2e8f4155d415}",
+    "from_name": "Театральна",
+    "to_code1": "a8776",
+    "to_guid": "{C511A544-D63A-49A8-8DCA-5E90DF7EA5AD}",
+    "to_name": "бульв. Тараса Шевченка",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 664,
+    "from_code1": "mr10_119",
+    "from_guid": "{3bfbcac5-3dc7-4712-a556-2e8f4155d415}",
+    "from_name": "Театральна",
+    "to_code1": "a8775",
+    "to_guid": "{8CC7463A-92EA-4C44-B337-B86D27D20AF2}",
+    "to_name": "Центральний універмаг",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 665,
+    "from_code1": "mr12_121",
+    "from_guid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "from_name": "Арсенальна",
+    "to_code1": "a9164",
+    "to_guid": "{38AE323F-0067-405F-8057-0B964012111F}",
+    "to_name": "Стадіон «Арсенал»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 666,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "17_E1",
+    "to_guid": "{d6d7a7e6-c030-498b-9bbf-cffd009bb0da}",
+    "to_name": "Вокзальна",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 667,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "17_E2",
+    "to_guid": "{f02e82af-c74b-4c27-8303-2f1000ee0e1d}",
+    "to_name": "Вокзальна",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 668,
+    "from_code1": "mg01_310",
+    "from_guid": "{9233b80a-b40c-467c-b693-766b41fefb51}",
+    "from_name": "Сирець",
+    "to_code1": "03_E2",
+    "to_guid": "{9a0a007f-20e3-47ae-b1c7-63e621a3c7c3}",
+    "to_name": "Сирець",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 669,
+    "from_code1": "mg01_310",
+    "from_guid": "{9233b80a-b40c-467c-b693-766b41fefb51}",
+    "from_name": "Сирець",
+    "to_code1": "03_E1",
+    "to_guid": "{6dd0c281-c61c-4fc7-91da-c615520cf2ec}",
+    "to_name": "Сирець",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 670,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "06_00",
+    "to_guid": "{5173408c-aae1-47bc-b2cb-ec8dac51507a}",
+    "to_name": "Почайна",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 671,
+    "from_code1": "mg09_319",
+    "from_guid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "from_name": "Видубичі",
+    "to_code1": "14_E1",
+    "to_guid": "{3ff81369-e1e1-4fde-a5e5-6e5de9f4f389}",
+    "to_name": "Видубичі",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 672,
+    "from_code1": "mg09_319",
+    "from_guid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "from_name": "Видубичі",
+    "to_code1": "14_E2",
+    "to_guid": "{7a254f32-677e-40b6-bed2-195c70cc2904}",
+    "to_name": "Видубичі",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 673,
+    "from_code1": "mr13_122",
+    "from_guid": "{d5db8459-5150-4631-8db6-b1e635b77f46}",
+    "from_name": "Дніпро",
+    "to_code1": "a12423",
+    "to_guid": "{BAAFDA0D-2780-4BB9-84B0-B61E4E23D1F1}",
+    "to_name": "ст. м. «Дніпро»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 674,
+    "from_code1": "mr13_122",
+    "from_guid": "{d5db8459-5150-4631-8db6-b1e635b77f46}",
+    "from_name": "Дніпро",
+    "to_code1": "a12424",
+    "to_guid": "{DFE138C9-1BED-49E8-B826-93E9B8B8C3EA}",
+    "to_name": "ст. м. «Дніпро»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 675,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a7650",
+    "to_guid": "{AE6D27E4-516A-4C02-BD19-99246997CF30}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 676,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a34",
+    "to_guid": "{0B43437F-D8FD-485A-8E4B-55FFA833FD88}",
+    "to_name": "вул. Коперника",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 677,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a12773",
+    "to_guid": "{395CFEBE-AFBF-41BB-844F-4D814A1BDA9C}",
+    "to_name": "ст. м. «Харківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 678,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a11666",
+    "to_guid": "{247E0441-7CB1-4605-BEEB-4E8793E06C41}",
+    "to_name": "ст. м. «Харківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 679,
+    "from_code1": "mb01_210",
+    "from_guid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "from_name": "Героїв Дніпра",
+    "to_code1": "a7173",
+    "to_guid": "{152232DE-B70B-42A6-9118-18F3487899A1}",
+    "to_name": "просп. Оболонський",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 680,
+    "from_code1": "mb05_214",
+    "from_guid": "{efd663ad-266a-45e9-8a46-8632b0fa912e}",
+    "from_name": "Тараса Шевченка",
+    "to_code1": "a9577",
+    "to_guid": "{5B827DDA-151C-4CC4-AEFF-2208E5C9E9AB}",
+    "to_name": "вул. Оленівська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 681,
+    "from_code1": "mb13_222",
+    "from_guid": "{7b6d81a2-6cb6-4b48-842b-5a5201f8e2bc}",
+    "from_name": "Деміївська",
+    "to_code1": "a5149",
+    "to_guid": "{C6EE01D0-ED23-4896-B16C-9AFD04D228C5}",
+    "to_name": "просп. Валерія Лобановського",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 682,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "10_E2",
+    "to_guid": "{cb423b79-7687-4726-b7c6-0c48dc9f181e}",
+    "to_name": "Лівобережна",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 683,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "10_E1",
+    "to_guid": "{69bd153d-1cab-41cb-8878-56f4cc81cde7}",
+    "to_name": "Лівобережна",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 684,
+    "from_code1": "mr05_114",
+    "from_guid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "from_name": "Берестейська",
+    "to_code1": "02_E2",
+    "to_guid": "{10f5a856-46ba-4328-b5e0-01e15118dd32}",
+    "to_name": "Берестейська",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 685,
+    "from_code1": "mr05_114",
+    "from_guid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "from_name": "Берестейська",
+    "to_code1": "02_E1",
+    "to_guid": "{23252d75-d99f-4a56-8c83-4a57da2d13e1}",
+    "to_name": "Берестейська",
+    "comment": "кільцева електричка"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 686,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a3550",
+    "to_guid": "{220F0BF1-B3A8-48A0-803E-EB9B016BBECE}",
+    "to_name": "Завод «Промзв'язок»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 687,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a7237",
+    "to_guid": "{96B4099E-2D07-47D4-84B9-8356A543C673}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 688,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a6395",
+    "to_guid": "{D19DE3EF-92F8-473D-BFDB-B01202B6B4C9}",
+    "to_name": "ст. «Старовокзальна» (для висадки)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 689,
+    "from_code1": "mb07_216",
+    "from_guid": "{badf8bd0-4d9d-4134-905b-bc6dcca6942f}",
+    "from_name": "Поштова площа",
+    "to_code1": "fn02",
+    "to_guid": "{ef2dd01e-d929-45c1-8a8a-a7f1b44a6a95}",
+    "to_name": "Фунікулер. Нижня станція",
+    "comment": "фунікулер"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 690,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a20490",
+    "to_guid": "{17e03078-991c-40cd-9c8e-dffb3dc22037}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 691,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a20495",
+    "to_guid": "{def6d29b-2775-4b05-ab7d-8b26779a90a3}",
+    "to_name": "ст. м. «Контрактова площа»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 692,
+    "from_code1": "mr07_116",
+    "from_guid": "{f6d8fbff-a9f8-4c19-b289-4d4db7ff0000}",
+    "from_name": "Політехнічний інститут",
+    "to_code1": "a20711",
+    "to_guid": "{ab5e4e3c-4587-4678-ab27-0ad0d4e81608}",
+    "to_name": "ст. м. «Політехнічний інститут»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 693,
+    "from_code1": "mr07_116",
+    "from_guid": "{f6d8fbff-a9f8-4c19-b289-4d4db7ff0000}",
+    "from_name": "Політехнічний інститут",
+    "to_code1": "a20713",
+    "to_guid": "{ba2073be-3c9d-49a8-b8f8-d6fe47821ad5}",
+    "to_name": "ст. м. «Політехнічний інститут»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 694,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a20714",
+    "to_guid": "{54767f1e-4615-44fe-a454-6540e0737fa7}",
+    "to_name": "ст. м. «Святошин»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 695,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a20715",
+    "to_guid": "{56f21919-38c0-4bbc-9f47-2ad68e599a06}",
+    "to_name": "ст. м. «Святошин»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 696,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a20716",
+    "to_guid": "{c20c5b2b-9c56-4e6c-a394-efd32d186a23}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 697,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a20717",
+    "to_guid": "{ecec8ec0-f7ba-4dbd-95d6-e3a1aefb30e1}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 698,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a20730",
+    "to_guid": "{f6b7821b-e835-4f90-b94c-e8220f2f6bb9}",
+    "to_name": "ст. м. «Харківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 699,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a20735",
+    "to_guid": "{b985ea2e-ff45-4240-82bf-28788777cdfe}",
+    "to_name": "Універмаг «Дитячий світ»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 700,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a20748",
+    "to_guid": "{8b485c73-ec25-4381-b521-e5451ed0d34e}",
+    "to_name": "ст. м. «Лівобережна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 701,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a20749",
+    "to_guid": "{34fc3e29-3e83-4e57-8f48-86d285ba55a5}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 702,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a20750",
+    "to_guid": "{2c86b1db-9dbd-4a6c-a0e7-1fbc706d72d0}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 703,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a20752",
+    "to_guid": "{a27371e8-c495-40f9-926c-60e103cfb182}",
+    "to_name": "Княжий затон",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 704,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a20758",
+    "to_guid": "{391149ae-8965-4c7e-83f0-29cb538bd318}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 705,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a20761",
+    "to_guid": "{a3a72a8a-8048-45ec-bfd7-19dbd93b8511}",
+    "to_name": "Універмаг «Дитячий світ»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 706,
+    "from_code1": "mr01_110",
+    "from_guid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "from_name": "Академмістечко",
+    "to_code1": "a20772",
+    "to_guid": "{c27575cc-870e-456a-9412-e591a8488383}",
+    "to_name": "ст. м. «Академмістечко»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 707,
+    "from_code1": "mg05_315",
+    "from_guid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "from_name": "Палац спорту",
+    "to_code1": "a20785",
+    "to_guid": "{3f87c46d-16ca-4de3-9bd2-cbc075854e75}",
+    "to_name": "ст. м. «Палац Спорту»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 708,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a20788",
+    "to_guid": "{7e8e5636-420f-4e6a-a844-7e6cc27df3cd}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 709,
+    "from_code1": "mr04_113",
+    "from_guid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "from_name": "Нивки",
+    "to_code1": "a20789",
+    "to_guid": "{6c096977-d396-44f9-8a93-e7cdf75a9b17}",
+    "to_name": "ст. м. «Нивки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 710,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a20792",
+    "to_guid": "{6daca56d-a770-4ae1-9e5e-9eb4fe332267}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 711,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a20793",
+    "to_guid": "{2d2d51f7-b583-4bdf-8cdd-39141df4a00a}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 712,
+    "from_code1": "mg05_315",
+    "from_guid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "from_name": "Палац спорту",
+    "to_code1": "a20795",
+    "to_guid": "{57d3ed8d-0044-4bba-b89c-e5fa5ce9df78}",
+    "to_name": "ст. м. «Палац Спорту»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 713,
+    "from_code1": "mb06_215",
+    "from_guid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "from_name": "Контрактова площа",
+    "to_code1": "a20807",
+    "to_guid": "{2e489a6e-64d9-4054-b065-5c6e7d326c49}",
+    "to_name": "пл. Контрактова",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 714,
+    "from_code1": "mb02_211",
+    "from_guid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "from_name": "Мінська",
+    "to_code1": "a20811",
+    "to_guid": "{209f6ac1-6bc7-47f2-9c21-b7016494af39}",
+    "to_name": "ст. м. «Мінська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 715,
+    "from_code1": "mr06_115",
+    "from_guid": "{2ec76936-19ff-49af-a897-07b830dde005}",
+    "from_name": "Шулявська",
+    "to_code1": "a20844",
+    "to_guid": "{ef0c345c-0a0e-445b-afd5-966fa33a61fc}",
+    "to_name": "ст. м. «Шулявська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 716,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a20838",
+    "to_guid": "{e9880337-b5cf-4bfc-b1ef-d21fce79519f}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 717,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a20837",
+    "to_guid": "{4ca29f6d-6bfe-4acd-b51b-68bc3ccfc258}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 718,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a20836",
+    "to_guid": "{baaf443d-4e71-4ad1-b6d1-d4c279e16776}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 719,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a20835",
+    "to_guid": "{edb8e2c5-2644-49bb-9f84-98f901d38c60}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 720,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a20894",
+    "to_guid": "{7e77681b-45d7-43c4-b3bc-ff271d483948}",
+    "to_name": "ст. м. «Лівобережна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 721,
+    "from_code1": "mr15_124",
+    "from_guid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "from_name": "Лівобережна",
+    "to_code1": "a20895",
+    "to_guid": "{8386e1a4-a6f9-4728-a5b1-72f4368170db}",
+    "to_name": "ст. м. «Лівобережна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 722,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a20873",
+    "to_guid": "{f0c1853a-0f2d-4726-a9f2-45f73def9d61}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 723,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a20872",
+    "to_guid": "{66b15553-7a3d-475d-85d6-643cd44bde78}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 724,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a20871",
+    "to_guid": "{3a6cae8a-8a55-414e-8119-b58cbcb836c3}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 725,
+    "from_code1": "mr17_126",
+    "from_guid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "from_name": "Чернігівська",
+    "to_code1": "a20908",
+    "to_guid": "{1032a03c-2124-429f-84fa-25bc72b78728}",
+    "to_name": "ст. м. «Чернігівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 726,
+    "from_code1": "mr17_126",
+    "from_guid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "from_name": "Чернігівська",
+    "to_code1": "a20909",
+    "to_guid": "{72795dd1-73de-40ba-b3e9-71c45c751432}",
+    "to_name": "ст. м. «Чернігівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 727,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a20892",
+    "to_guid": "{c565bccf-aace-44b1-b530-d74f32fd7969}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 728,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a20882",
+    "to_guid": "{16dbf368-ea61-48bc-8fa2-4f16d7c6ff14}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 729,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a20878",
+    "to_guid": "{b50168b5-c9c0-4cdc-a298-17415a785e8e}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 730,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a20893",
+    "to_guid": "{a6d84252-e3eb-45ff-8547-fb4c5c8b5c6b}",
+    "to_name": "ст. м. «Лісова»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 731,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a20874",
+    "to_guid": "{78206e5c-f9b3-4820-a58f-aee83b1975d9}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 732,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a20876",
+    "to_guid": "{0e5e69da-50af-4bcc-80c3-ce50534e9f63}",
+    "to_name": "ст. м. «Почайна»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 733,
+    "from_code1": "mb04_213",
+    "from_guid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "from_name": "Почайна",
+    "to_code1": "a20754",
+    "to_guid": "{d7f8f4e6-1516-4bea-86f4-8be17deac4e0}",
+    "to_name": "просп. Степана Бандери",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 734,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a20823",
+    "to_guid": "{4ed02c8e-59b1-45f4-a3d5-c4688bd37130}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 735,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a20824",
+    "to_guid": "{509cfd54-c93e-4f47-8606-637e279b6105}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 736,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a20825",
+    "to_guid": "{36edd412-ae72-483b-b705-1df31648910a}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 737,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a20845",
+    "to_guid": "{ead87d9f-173b-4ff8-83b4-9237ec1dc87a}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 738,
+    "from_code1": "mb12_221",
+    "from_guid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "from_name": "Либідська",
+    "to_code1": "a20881",
+    "to_guid": "{9ad6c771-fea4-4e72-9063-51ca21f873bb}",
+    "to_name": "ст. м. «Либідська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 739,
+    "from_code1": "mb15_224",
+    "from_guid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "from_name": "Васильківська",
+    "to_code1": "a20863",
+    "to_guid": "{3b7497c4-ced5-44a2-b4b6-f0bbff09e242}",
+    "to_name": "ст. м. «Васильківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 740,
+    "from_code1": "mb16_225",
+    "from_guid": "{95410970-a9c3-49a9-a872-9df9ab5e0839}",
+    "from_name": "Виставковий центр",
+    "to_code1": "a20853",
+    "to_guid": "{a11cca90-e5a9-43db-87ca-3a7cf4932ff6}",
+    "to_name": "ст. м. «Виставковий центр»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 741,
+    "from_code1": "mg09_319",
+    "from_guid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "from_name": "Видубичі",
+    "to_code1": "a20851",
+    "to_guid": "{11751d53-8c42-420c-9125-4548d5dda82e}",
+    "to_name": "ст. м. «Видубичі»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 742,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a20900",
+    "to_guid": "{51a20f47-fa28-4187-9d53-26dad2370f7f}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 743,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a20899",
+    "to_guid": "{7b7174a5-c9c8-49d0-8d4c-f3d04d3ca29d}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 744,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a20898",
+    "to_guid": "{5b384f4b-6b9f-4481-a94d-f8fd9823ed79}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 745,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a20897",
+    "to_guid": "{d794fc9b-27b6-4db3-99e7-50c2285f41d7}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 746,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a20751",
+    "to_guid": "{4c8ce224-429d-43f9-880a-fd42b216214a}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 747,
+    "from_code1": "mg12_323",
+    "from_guid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "from_name": "Позняки",
+    "to_code1": "a20725",
+    "to_guid": "{5a1633d8-e9ce-40ca-878b-938c48678d3f}",
+    "to_name": "ст. м. «Позняки»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 748,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a20924",
+    "to_guid": "{ab019caa-b60b-4298-ab4b-6a4df00e5072}",
+    "to_name": "На вимогу",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 749,
+    "from_code1": "mg13_324",
+    "from_guid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "from_name": "Харківська",
+    "to_code1": "a20925",
+    "to_guid": "{844ed505-bef4-43a0-82d0-3a0ff28cd217}",
+    "to_name": "ст. м. «Харківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 750,
+    "from_code1": "mg15_326",
+    "from_guid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "from_name": "Бориспільська",
+    "to_code1": "a20920",
+    "to_guid": "{46d4c0e1-78ea-49f8-a05e-4148aa8f32c1}",
+    "to_name": "ст. м. «Бориспільська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 751,
+    "from_code1": "mg16_327",
+    "from_guid": "{16048cd2-361b-48f3-a3b5-2c08de8810a2}",
+    "from_name": "Червоний хутір",
+    "to_code1": "a20912",
+    "to_guid": "{73596b5c-3b81-4d0d-b8ac-6e228c4cfb76}",
+    "to_name": "ст. м. «Червоний хутір»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 640,
+    "from_code1": "mb08_217",
+    "from_guid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "from_name": "Майдан Незалежності",
+    "to_code1": "a8769",
+    "to_guid": "{27768AB5-FD9B-4BF3-B345-8E6E911347EC}",
+    "to_name": "Алея Героїв Небесної Сотні",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 458,
+    "from_code1": "mr03_112",
+    "from_guid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "from_name": "Святошин",
+    "to_code1": "a10374",
+    "to_guid": "{A6D08C33-AD1A-43D6-B912-90F542168FC0}",
+    "to_name": "пл. Чорнобаївська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 513,
+    "from_code1": "mg10_321",
+    "from_guid": "{bd37e469-380b-4853-a0e7-7e6c018f12c3}",
+    "from_name": "Славутич",
+    "to_code1": "a12758",
+    "to_guid": "{090AE3AD-4735-4DE8-AAD2-DBBAA0EAF7A5}",
+    "to_name": "ст. м. «Славутич»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 752,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a30000",
+    "to_guid": "{6671d51c-31af-442a-b1a2-9b9ef503e859}",
+    "to_name": "Реабілітаційний центр «Трініті ХАБ»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 753,
+    "from_code1": "mr18_127",
+    "from_guid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "from_name": "Лісова",
+    "to_code1": "a30001",
+    "to_guid": "{bf496698-3958-4b83-9a24-9b05090122e4}",
+    "to_name": "ст. м. Лісова (Реабілітаційний центр «Трініті ХАБ»)",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 754,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a20866",
+    "to_guid": "{969349b5-3a31-4b3e-970e-cb4acaa3d065}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 755,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a20842",
+    "to_guid": "{fa22cf45-ebb8-43a1-a656-d7d2e7cfd2f0}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 756,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a20932",
+    "to_guid": "{077adf5d-8895-4d44-a2a6-4e1accadbf70}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 757,
+    "from_code1": "mg03_312",
+    "from_guid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "from_name": "Лук'янівська",
+    "to_code1": "a30019",
+    "to_guid": "{163e44b5-62dd-43c7-9ea1-1e99b7993035}",
+    "to_name": "ст. м. «Лук'янівська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 758,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a30027",
+    "to_guid": "{61407a1f-57a3-4190-a68e-e9fb7a69d1c6}",
+    "to_name": "Універмаг «Дитячий світ»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 759,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a30026",
+    "to_guid": "{7ad76bec-d804-486a-bdb2-a2c22479a0ca}",
+    "to_name": "Універмаг «Дитячий світ»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 760,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a30025",
+    "to_guid": "{b5262b50-a78c-4c84-b6ea-3ce1f827eadf}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 761,
+    "from_code1": "mr16_125",
+    "from_guid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "from_name": "Дарниця",
+    "to_code1": "a20964",
+    "to_guid": "{8ba854c8-a3d8-46bb-ac91-6b6ff3541841}",
+    "to_name": "ст. м. «Дарниця»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 762,
+    "from_code1": "mb15_224",
+    "from_guid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "from_name": "Васильківська",
+    "to_code1": "a30051",
+    "to_guid": "{7abb09df-9eab-4107-80e2-72d32f1a9807}",
+    "to_name": "ст. м. «Васильківська»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 763,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a30031",
+    "to_guid": "{30334206-da5e-4e12-a224-82867967e9ee}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 764,
+    "from_code1": "mr08_117",
+    "from_guid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "from_name": "Вокзальна",
+    "to_code1": "a30032",
+    "to_guid": "{12f376a4-5788-428a-913d-820b2775e530}",
+    "to_name": "Залізничний вокзал «Центральний»",
+    "comment": "наземний транспорт"
+   }
+  }
+ ]
+}

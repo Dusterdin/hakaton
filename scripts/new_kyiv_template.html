@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>«Новий Київ» — мережа, згенерована алгоритмом</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; display:flex; flex-direction:column; }
+  header { padding:14px 20px 8px; text-align:center; }
+  .badge { display:inline-block; background:#1f2937; border:1px solid #374151; color:#9ca3af; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+  h1 { font-size:clamp(15px,2.6vw,22px); font-weight:700; background:linear-gradient(135deg,#5eead4,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .sub { color:#9ca3af; font-size:12px; margin-top:4px; max-width:800px; margin-left:auto; margin-right:auto; line-height:1.5; }
+  .warn { color:#fbbf24; }
+  .stat-row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; padding:8px 20px 10px; }
+  .stat { background:#161b22; border:1px solid rgba(255,255,255,.07); border-radius:9px; padding:7px 16px; text-align:center; }
+  .stat-val { font-size:17px; font-weight:700; color:#5eead4; }
+  .stat-lbl { font-size:10px; color:#6b7280; margin-top:1px; }
+  #map { flex:1; min-height:0; }
+  .panel { position:absolute; top:10px; right:10px; z-index:1000; background:rgba(13,17,23,.93); border:1px solid rgba(255,255,255,.12); border-radius:11px; padding:11px 13px; font-size:12px; width:220px; }
+  .panel label { display:flex; align-items:center; gap:7px; padding:3px 0; cursor:pointer; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .hint { color:#6b7280; font-size:10px; margin-top:7px; line-height:1.5; border-top:1px solid rgba(255,255,255,.08); padding-top:6px; }
+  .leaflet-popup-content-wrapper { background:#161b22; color:#e6edf3; border-radius:9px; border:1px solid rgba(255,255,255,.15); }
+  .leaflet-popup-tip { background:#161b22; }
+  .leaflet-popup-content { font-size:12px; line-height:1.55; margin:10px 13px; }
+  .rt { font-weight:700; font-size:13px; }
+  .muted { color:#8b949e; }
+  footer { text-align:center; color:#4b5563; font-size:10px; padding:6px; }
+  footer a { color:#60a5fa; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Прототип · Жадібна оптимізація · аналог «New London»</div>
+  <h1>«Новий Київ» — мережа, спроєктована алгоритмом з нуля</h1>
+  <div class="sub">Станції розставлені жадібним алгоритмом по максимуму непокритого попиту
+  (мешканці з забудови OSM × офіційне населення + точки тяжіння), потім з'єднані в лінії коридорами.
+  <span class="warn">Розумовий експеримент, як «New London» у лондонському проєкті.</span></div>
+</header>
+<div class="stat-row" id="stats"></div>
+<div id="map"></div>
+<footer>Забудова й точки тяжіння: © OpenStreetMap · населення районів: <a href="https://kyivcity.gov.ua/kyiv_ta_miska_vlada/pro_kyiv/raiony_kyieva/">портал Києва</a> · Мапа: © OpenStreetMap, © CARTO</footer>
+
+<script>
+const LINES = __LINES__;
+const STATIONS = __STATIONS__;
+const METRO = __METRO__;
+const STATS = __STATS__;
+
+document.getElementById("stats").innerHTML = [
+  [STATS.stations, "станцій (алгоритм)"],
+  [STATS.lines, "ліній"],
+  [STATS.cov_opt + "%", `попиту ≤${STATS.r_cover} км від станції`],
+  [STATS.cov_real + "%", `покриття реальної мережі (${STATS.real_stops.toLocaleString("uk-UA")} зупинок)`],
+].map(([v,l]) => `<div class="stat"><div class="stat-val">${v}</div><div class="stat-lbl">${l}</div></div>`).join("");
+
+const map = L.map("map").setView([50.4501, 30.5334], 11);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  { attribution:"© OpenStreetMap © CARTO", maxZoom:19 }).addTo(map);
+
+const metroLayer = L.layerGroup();
+for (const s of METRO) L.polyline(s.path, { color:s.c, weight:2, opacity:.4 }).addTo(metroLayer);
+
+const lineLayer = L.layerGroup().addTo(map);
+LINES.forEach((l, i) => {
+  L.polyline(l.path, { color:l.c, weight:3, opacity:.85 })
+    .bindPopup(`<div class="rt" style="color:${l.c}">Лінія ${i+1}</div>
+      <span class="muted">Станцій:</span> ${l.n}`)
+    .addTo(lineLayer);
+});
+
+const stLayer = L.layerGroup().addTo(map);
+const maxM = Math.max(...STATIONS.map(s => s.m));
+for (const s of STATIONS) {
+  L.circleMarker([s.lat, s.lon], { radius:3 + 4*Math.sqrt(s.m/maxM),
+      color:"#e6edf3", weight:1, fillColor:"#5eead4", fillOpacity:.85 })
+    .bindPopup(`<div class="rt">Станція (алгоритм)</div>
+      <span class="muted">Маса попиту клітинки:</span> ${s.m.toLocaleString("uk-UA")}`)
+    .addTo(stLayer);
+}
+
+const panel = L.control({ position:"topright" });
+panel.onAdd = () => {
+  const d = L.DomUtil.create("div", "panel");
+  d.innerHTML = `
+    <label><input type="checkbox" checked id="ln"><span class="dot" style="background:#60a5fa"></span>Лінії (алгоритм)</label>
+    <label><input type="checkbox" checked id="st"><span class="dot" style="background:#5eead4"></span>Станції</label>
+    <label><input type="checkbox" id="mt"><span class="dot" style="background:#E4222C"></span>Реальне метро (порівняти)</label>
+    <div class="hint">${STATS.on_lines} із ${STATS.stations} станцій увійшли в лінії ·
+    станція «покриває» ${STATS.r_cover} км · порівнюй траси алгоритму з реальним метро —
+    збіги показують, де місто вже все зробило правильно</div>`;
+  L.DomEvent.disableClickPropagation(d);
+  const wire = (id, layer) => d.querySelector(id).addEventListener("change", e =>
+    e.target.checked ? layer.addTo(map) : map.removeLayer(layer));
+  wire("#ln", lineLayer); wire("#st", stLayer); wire("#mt", metroLayer);
+  return d;
+};
+panel.addTo(map);
+</script>
+</body>
+</html>

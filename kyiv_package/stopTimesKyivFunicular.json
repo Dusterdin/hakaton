@@ -1,0 +1,106 @@
+{
+ "displayFieldName": "name",
+ "fieldAliases": {
+  "objectid": "OBJECTID",
+  "code1": "Код станції",
+  "name": "Назва станції",
+  "globalid": "globalid станції",
+  "line": "Лінія",
+  "napryamok": "Напрямок маршруту",
+  "first_trn1": "Перший поїзд, відправлення. v1",
+  "first_trn2": "Перший поїзд, відправлення. v2",
+  "last_trn1": "Останній поїзд, відправлення. v1",
+  "last_trn2": "Останній поїзд, відправлення. v2"
+ },
+ "fields": [
+  {
+   "name": "objectid",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID"
+  },
+  {
+   "name": "code1",
+   "type": "esriFieldTypeString",
+   "alias": "Код станції",
+   "length": 10
+  },
+  {
+   "name": "name",
+   "type": "esriFieldTypeString",
+   "alias": "Назва станції",
+   "length": 254
+  },
+  {
+   "name": "globalid",
+   "type": "esriFieldTypeString",
+   "alias": "globalid станції",
+   "length": 38
+  },
+  {
+   "name": "line",
+   "type": "esriFieldTypeString",
+   "alias": "Лінія",
+   "length": 254
+  },
+  {
+   "name": "napryamok",
+   "type": "esriFieldTypeString",
+   "alias": "Напрямок маршруту",
+   "length": 50
+  },
+  {
+   "name": "first_trn1",
+   "type": "esriFieldTypeString",
+   "alias": "Перший поїзд, відправлення. v1",
+   "length": 10
+  },
+  {
+   "name": "first_trn2",
+   "type": "esriFieldTypeString",
+   "alias": "Перший поїзд, відправлення. v2",
+   "length": 10
+  },
+  {
+   "name": "last_trn1",
+   "type": "esriFieldTypeString",
+   "alias": "Останній поїзд, відправлення. v1",
+   "length": 10
+  },
+  {
+   "name": "last_trn2",
+   "type": "esriFieldTypeString",
+   "alias": "Останній поїзд, відправлення. v2",
+   "length": 10
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "objectid": 1,
+    "code1": "fn01",
+    "name": "Фунікулер. Верхня станція",
+    "globalid": "{dd942bf8-32be-4c46-9787-bb573accb8ea}",
+    "line": "Київський фунікулер",
+    "napryamok": "Донизу",
+    "first_trn1": "07:00",
+    "first_trn2": "07:00:00",
+    "last_trn1": "21:45",
+    "last_trn2": "21:45:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 4,
+    "code1": "fn02",
+    "name": "Фунікулер. Нижня станція",
+    "globalid": "{ef2dd01e-d929-45c1-8a8a-a7f1b44a6a95}",
+    "line": "Київський фунікулер",
+    "napryamok": "Вверх",
+    "first_trn1": "07:00",
+    "first_trn2": "07:00:00",
+    "last_trn1": "21:45",
+    "last_trn2": "21:45:00"
+   }
+  }
+ ]
+}

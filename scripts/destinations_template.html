@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Київ — куди їдуть люди: точки тяжіння (OSM)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; display:flex; flex-direction:column; }
+  header { padding:14px 20px 8px; text-align:center; }
+  .badge { display:inline-block; background:#1f2937; border:1px solid #374151; color:#9ca3af; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+  h1 { font-size:clamp(15px,2.6vw,22px); font-weight:700; background:linear-gradient(135deg,#5eead4,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .sub { color:#9ca3af; font-size:12px; margin-top:4px; max-width:780px; margin-left:auto; margin-right:auto; line-height:1.5; }
+  #map { flex:1; min-height:0; }
+  .controls { position:absolute; top:10px; right:10px; z-index:1000; background:rgba(13,17,23,.93); border:1px solid rgba(255,255,255,.12); border-radius:11px; padding:12px 14px; font-size:12px; width:230px; }
+  .controls label { display:flex; align-items:center; gap:7px; padding:3px 0; cursor:pointer; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .cnt { margin-left:auto; color:#6b7280; }
+  .hint { color:#6b7280; font-size:10px; margin-top:7px; line-height:1.5; border-top:1px solid rgba(255,255,255,.08); padding-top:7px; }
+  .leaflet-popup-content-wrapper { background:#161b22; color:#e6edf3; border-radius:9px; border:1px solid rgba(255,255,255,.15); }
+  .leaflet-popup-tip { background:#161b22; }
+  .leaflet-popup-content { font-size:12px; line-height:1.55; margin:10px 13px; }
+  .rt { font-weight:700; font-size:13px; }
+  .muted { color:#8b949e; }
+  footer { text-align:center; color:#4b5563; font-size:10px; padding:6px; }
+  footer a { color:#60a5fa; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Прототип · Точки тяжіння · дані OpenStreetMap</div>
+  <h1>Київ — куди їдуть люди</h1>
+  <div class="sub">Місця, що притягують поїздки: університети, офіси, ТРЦ, лікарні, промзони, вокзали й пам'ятки.
+  Розмір крапки — умовна «вага тяжіння» (припущення моделі). Аналог destinations_osm із лондонського проєкту.</div>
+</header>
+<div id="map"></div>
+<footer>Дані: © учасники <a href="https://www.openstreetmap.org/">OpenStreetMap</a> (Overpass API) · Мапа: © OpenStreetMap, © CARTO</footer>
+
+<script>
+const DESTS = __DESTS__;
+const STATS = __STATS__;
+
+const CATS = {
+  university:   { c:"#60a5fa", ua:"Університети" },
+  college:      { c:"#93c5fd", ua:"Коледжі" },
+  office:       { c:"#a78bfa", ua:"Офіси" },
+  mall:         { c:"#f472b6", ua:"ТРЦ" },
+  hospital:     { c:"#4ade80", ua:"Лікарні" },
+  industrial:   { c:"#fbbf24", ua:"Промзони" },
+  attraction:   { c:"#5eead4", ua:"Пам'ятки/музеї" },
+  transport_hub:{ c:"#fb7185", ua:"Вокзали/аеропорти" },
+};
+
+const map = L.map("map").setView([50.4501, 30.5334], 11);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  { attribution:"© OpenStreetMap © CARTO", maxZoom:19 }).addTo(map);
+
+const maxW = Math.max(...DESTS.map(d => d.w));
+const layers = {};
+for (const k of Object.keys(CATS)) layers[k] = L.layerGroup().addTo(map);
+for (const d of DESTS) {
+  const cat = CATS[d.cat]; if (!cat) continue;
+  const r = 2 + 9 * Math.sqrt(d.w / maxW);
+  L.circleMarker([d.lat, d.lon], { radius:r, color:cat.c, weight:.8,
+      fillColor:cat.c, fillOpacity:.55 })
+    .bindPopup(`<div class="rt" style="color:${cat.c}">${d.name}</div>
+      <span class="muted">${cat.ua} · вага тяжіння:</span> ${d.w.toLocaleString("uk-UA")}`)
+    .addTo(layers[d.cat]);
+}
+
+const ctrl = L.control({ position:"topright" });
+ctrl.onAdd = () => {
+  const d = L.DomUtil.create("div", "controls");
+  d.innerHTML = Object.entries(CATS).map(([k,v]) =>
+    `<label><input type="checkbox" checked data-c="${k}"><span class="dot" style="background:${v.c}"></span>${v.ua}<span class="cnt">${STATS.by_cat[k]||0}</span></label>`).join("") +
+    `<div class="hint">Всього: ${STATS.total.toLocaleString("uk-UA")} точок.<br>
+    Ваги (осіб/день, припущення): університет 4000, вокзал/аеропорт 3000, ТРЦ 2500, лікарня 1500, коледж 1200, промзона 700, пам'ятка 400, офіс 250.</div>`;
+  L.DomEvent.disableClickPropagation(d);
+  d.querySelectorAll("input").forEach(cb => cb.addEventListener("change", e => {
+    const l = layers[e.target.dataset.c];
+    e.target.checked ? l.addTo(map) : map.removeLayer(l);
+  }));
+  return d;
+};
+ctrl.addTo(map);
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Київ — до/після: сценарій підсилення маршрутів + 24-годинний потік</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; padding:28px 20px 40px; }
+  .wrap { max-width:1080px; margin:0 auto; }
+  header { text-align:center; margin-bottom:22px; }
+  .badge { display:inline-block; background:#1f2937; border:1px solid #374151; color:#9ca3af; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+  h1 { font-size:clamp(17px,3vw,26px); font-weight:700; background:linear-gradient(135deg,#4ade80,#fbbf24); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .sub { color:#9ca3af; font-size:12px; margin-top:6px; max-width:800px; margin-left:auto; margin-right:auto; line-height:1.6; }
+  .warn { color:#fbbf24; }
+  h2 { font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#6b7280; margin:30px 0 12px; border-left:3px solid #374151; padding-left:10px; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; }
+  .kpi { background:#161b22; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:14px 16px; text-align:center; }
+  .kpi .val { font-size:22px; font-weight:700; }
+  .kpi .lbl { font-size:11px; color:#6b7280; margin-top:3px; line-height:1.4; }
+  .good { color:#4ade80; } .bad { color:#fb7185; } .neut { color:#60a5fa; }
+  .card { background:#161b22; border:1px solid rgba(255,255,255,.07); border-radius:13px; padding:18px; }
+  .note { color:#6b7280; font-size:11px; margin-top:8px; line-height:1.5; }
+  footer { text-align:center; color:#4b5563; font-size:10px; margin-top:34px; line-height:1.8; }
+  footer a { color:#60a5fa; text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="badge">Прототип · Сценарій «до/після» · модельні дані</div>
+  <h1>Що якщо підсилити перевантажені маршрути?</h1>
+  <div class="sub">Кожен маршрут із модельним навантаженням ≥×1.5 отримує додаткові рейси
+  (частота × навантаження/1.2, максимум ×2). Потім увесь розподіл потоків перераховується —
+  пасажири «перетікають» на підсилені маршрути, тож розвантаження виникає з моделі, а не задане вручну.
+  <span class="warn">Ілюстративна модель на гравітаційному попиті.</span></div>
+</header>
+
+<h2>Ключові показники</h2>
+<div class="kpis" id="kpis"></div>
+
+<h2>Топ-25 маршрутів: навантаження до і після</h2>
+<div class="card"><canvas id="bars" height="520"></canvas>
+<div class="note">Індекс ×1.0 = середнє навантаження мережі до втручання. Обидва стовпчики на одній шкалі.
+Зелена риска — цільовий рівень ×1.2.</div></div>
+
+<h2>24-годинний потік: пропозиція проти попиту</h2>
+<div class="card"><canvas id="flow" height="300"></canvas>
+<div class="note">Стовпчики — рейси, що СТАРТУЮТЬ у кожну годину (з розкладу GTFS, будній день).
+Рожева лінія — припущений профіль попиту (частка доби, %), той самий, що керує симуляцією.
+Видно, наскільки графік руху збігається з піками попиту.</div></div>
+
+<footer>Дані: GTFS <a href="https://data.kyivcity.gov.ua/">data.kyivcity.gov.ua</a> · попит: гравітаційна модель (населення районів × точки тяжіння OSM) · місткість: автобус 100, тролейбус 110, трамвай 180</footer>
+</div>
+
+<script>
+const D = __DATA__;
+
+const kpis = [
+  [D.kpi_before.over15 + " → " + D.kpi_after.over15, "маршрутів ≥×1.5", D.kpi_after.over15 < D.kpi_before.over15 ? "good" : "bad"],
+  [D.kpi_before.over2 + " → " + D.kpi_after.over2, "маршрутів ≥×2.0", D.kpi_after.over2 < D.kpi_before.over2 ? "good" : "bad"],
+  ["×" + D.kpi_before.top_decile + " → ×" + D.kpi_after.top_decile, "середнє топ-10% навантажених", "good"],
+  ["×" + D.kpi_before.max + " → ×" + D.kpi_after.max, "найгірший маршрут", "good"],
+  [D.n_upgraded, "маршрутів підсилено", "neut"],
+  ["+" + D.added_trips.toLocaleString("uk-UA"), "додаткових рейсів/день (ціна сценарію)", "neut"],
+];
+document.getElementById("kpis").innerHTML = kpis.map(([v,l,c]) =>
+  `<div class="kpi"><div class="val ${c}">${v}</div><div class="lbl">${l}</div></div>`).join("");
+
+Chart.defaults.color = "#9ca3af";
+Chart.defaults.borderColor = "rgba(255,255,255,.07)";
+
+const rows = D.rows;
+new Chart(document.getElementById("bars"), {
+  type: "bar",
+  data: {
+    labels: rows.map(r => (r.mode === "tram" ? "Т" : r.mode === "trolleybus" ? "Тр" : "А") + " " + r.name + (r.upgraded ? " ⬆" : "")),
+    datasets: [
+      { label: "До", data: rows.map(r => r.before), backgroundColor: "#fb7185" },
+      { label: "Після", data: rows.map(r => r.after), backgroundColor: "#4ade80" },
+    ],
+  },
+  options: {
+    indexAxis: "y", responsive: true,
+    plugins: { legend: { labels: { color: "#e6edf3" } } },
+    scales: { x: { title: { display: true, text: "індекс навантаження (×середнього до втручання)" } } },
+  },
+});
+
+const hours = [...Array(24).keys()].map(h => String(h).padStart(2,"0"));
+new Chart(document.getElementById("flow"), {
+  data: {
+    labels: hours,
+    datasets: [
+      { type: "bar", label: "Автобуси", data: D.hourly.bus, backgroundColor: "#9ca3af", stack: "s" },
+      { type: "bar", label: "Тролейбуси", data: D.hourly.trolleybus, backgroundColor: "#60a5fa", stack: "s" },
+      { type: "bar", label: "Трамваї", data: D.hourly.tram, backgroundColor: "#fbbf24", stack: "s" },
+      { type: "line", label: "Профіль попиту (% доби, припущення)", data: D.demand_curve,
+        borderColor: "#f472b6", backgroundColor: "#f472b6", yAxisID: "y2", tension: .35, pointRadius: 2 },
+    ],
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { labels: { color: "#e6edf3" } } },
+    scales: {
+      y: { stacked: true, title: { display: true, text: "рейсів стартує за годину" } },
+      y2: { position: "right", grid: { drawOnChartArea: false }, title: { display: true, text: "попит, % доби" } },
+    },
+  },
+});
+</script>
+</body>
+</html>

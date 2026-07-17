@@ -1,0 +1,618 @@
+{
+ "displayFieldName": "line",
+ "fieldAliases": {
+  "objectid": "OBJECTID",
+  "line": "Лінія",
+  "timeperiod": "Період (год:хв)",
+  "st_weekday": "Робочі дні (прямий, хв:сек)",
+  "rv_weekday": "Робочі дні (зворотній, хв:сек)",
+  "st_holiday": "Вихідні дні (прямий, хв:сек)",
+  "rv_holiday": "Вихідні дні (зворотній, хв:сек)"
+ },
+ "fields": [
+  {
+   "name": "objectid",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID"
+  },
+  {
+   "name": "line",
+   "type": "esriFieldTypeString",
+   "alias": "Лінія",
+   "length": 254
+  },
+  {
+   "name": "timeperiod",
+   "type": "esriFieldTypeString",
+   "alias": "Період (год:хв)",
+   "length": 50
+  },
+  {
+   "name": "st_weekday",
+   "type": "esriFieldTypeString",
+   "alias": "Робочі дні (прямий, хв:сек)",
+   "length": 50
+  },
+  {
+   "name": "rv_weekday",
+   "type": "esriFieldTypeString",
+   "alias": "Робочі дні (зворотній, хв:сек)",
+   "length": 50
+  },
+  {
+   "name": "st_holiday",
+   "type": "esriFieldTypeString",
+   "alias": "Вихідні дні (прямий, хв:сек)",
+   "length": 50
+  },
+  {
+   "name": "rv_holiday",
+   "type": "esriFieldTypeString",
+   "alias": "Вихідні дні (зворотній, хв:сек)",
+   "length": 50
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "objectid": 1112,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "06:00-07:00",
+    "st_weekday": "7:30-5:30",
+    "rv_weekday": "8:45-3:45",
+    "st_holiday": "9:15-6:30",
+    "rv_holiday": "11:00-7:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1113,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "07:00-08:00",
+    "st_weekday": "6:00-3:30",
+    "rv_weekday": "4:30-3:00",
+    "st_holiday": "7:30-7:00",
+    "rv_holiday": "7:30-7:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1114,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "08:00-09:00",
+    "st_weekday": "3:45-2:45",
+    "rv_weekday": "2:45-3:30",
+    "st_holiday": "7:30-7:00",
+    "rv_holiday": "7:00-7:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1115,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "09:00-10:00",
+    "st_weekday": "2:45-4:00",
+    "rv_weekday": "3:00-4:45",
+    "st_holiday": "7:00-7:30",
+    "rv_holiday": "7:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1116,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "10:00-11:00",
+    "st_weekday": "3:30-6:00",
+    "rv_weekday": "4:30-6:00",
+    "st_holiday": "7:30-7:00",
+    "rv_holiday": "7:30-5:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1117,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "11:00-12:00",
+    "st_weekday": "4:30-6:00",
+    "rv_weekday": "5:30-6:00",
+    "st_holiday": "7:30-5:30",
+    "rv_holiday": "6:00-5:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1118,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "12:00-13:00",
+    "st_weekday": "6:00-5:30",
+    "rv_weekday": "6:00-5:30",
+    "st_holiday": "5:30-6:00",
+    "rv_holiday": "6:00-5:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1119,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "13:00-14:00",
+    "st_weekday": "5:30-6:00",
+    "rv_weekday": "6:00-5:30",
+    "st_holiday": "6:00-5:30",
+    "rv_holiday": "6:00-5:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1120,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "14:00-15:00",
+    "st_weekday": "6:00-5:30",
+    "rv_weekday": "5:30-6:00",
+    "st_holiday": "5:30-6:00",
+    "rv_holiday": "6:00-5:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1121,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "15:00-16:00",
+    "st_weekday": "5:30-6:00",
+    "rv_weekday": "6:00-4:30",
+    "st_holiday": "6:00-5:30",
+    "rv_holiday": "6:00-5:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1122,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "16:00-17:00",
+    "st_weekday": "6:00-4:00",
+    "rv_weekday": "4:30-3:45",
+    "st_holiday": "6:00-5:30",
+    "rv_holiday": "6:00-5:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1123,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "17:00-18:00",
+    "st_weekday": "4:30-3:00",
+    "rv_weekday": "3:45-3:00",
+    "st_holiday": "6:00-5:30",
+    "rv_holiday": "6:00-5:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1124,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "18:00-19:00",
+    "st_weekday": "3:00-4:00",
+    "rv_weekday": "3:15-5:00",
+    "st_holiday": "5:30-6:00",
+    "rv_holiday": "5:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1125,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "19:00-20:00",
+    "st_weekday": "3:45-5:30",
+    "rv_weekday": "4:15-6:00",
+    "st_holiday": "6:00-7:00",
+    "rv_holiday": "5:30-7:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1126,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "20:00-21:00",
+    "st_weekday": "5:00-7:00",
+    "rv_weekday": "6:00-7:30",
+    "st_holiday": "6:00-7:30",
+    "rv_holiday": "6:00-8:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1127,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "21:00-22:00",
+    "st_weekday": "6:00-7:30",
+    "rv_weekday": "7:30-9:00",
+    "st_holiday": "7:00-8:00",
+    "rv_holiday": "8:00-10:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1128,
+    "line": "Сирецько-Печерська",
+    "timeperiod": "22:00-23:00",
+    "st_weekday": "7:30-9:00",
+    "rv_weekday": "7:30-11:00",
+    "st_holiday": "8:00-10:00",
+    "rv_holiday": "8:00-11:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1129,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "06:00-07:00",
+    "st_weekday": "9:00-4:00",
+    "rv_weekday": "8:15-3:30",
+    "st_holiday": "9:00-7:30",
+    "rv_holiday": "10:00-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1130,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "07:00-08:00",
+    "st_weekday": "5:00-3:00",
+    "rv_weekday": "4:00-2:45",
+    "st_holiday": "7:30-6:00",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1131,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "08:00-09:00",
+    "st_weekday": "3:30-2:45",
+    "rv_weekday": "3:00-2:45",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1132,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "09:00-10:00",
+    "st_weekday": "2:45-3:45",
+    "rv_weekday": "2:45-5:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1133,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "10:00-11:00",
+    "st_weekday": "3:30-5:30",
+    "rv_weekday": "4:00-5:30",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1134,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "11:00-12:00",
+    "st_weekday": "5:00-5:30",
+    "rv_weekday": "5:30-5:00",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1135,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "12:00-13:00",
+    "st_weekday": "5:30-5:00",
+    "rv_weekday": "5:30-5:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1136,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "13:00-14:00",
+    "st_weekday": "5:30-5:00",
+    "rv_weekday": "5:30-5:00",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1137,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "14:00-15:00",
+    "st_weekday": "5:30-4:15",
+    "rv_weekday": "5:30-4:15",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1138,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "15:00-16:00",
+    "st_weekday": "5:30-3:45",
+    "rv_weekday": "4:15-3:45",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1139,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "16:00-17:00",
+    "st_weekday": "4:15-3:30",
+    "rv_weekday": "3:45-3:00",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1140,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "17:00-18:00",
+    "st_weekday": "3:30-3:00",
+    "rv_weekday": "3:30-3:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1141,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "18:00-19:00",
+    "st_weekday": "3:00",
+    "rv_weekday": "3:00-4:00",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1142,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "19:00-20:00",
+    "st_weekday": "3:00-5:30",
+    "rv_weekday": "3:00-6:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1143,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "20:00-21:00",
+    "st_weekday": "5:00-6:30",
+    "rv_weekday": "6:00-6:30",
+    "st_holiday": "6:00-7:00",
+    "rv_holiday": "6:00-7:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1144,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "21:00-22:00",
+    "st_weekday": "6:00-7:00",
+    "rv_weekday": "6:00-7:30",
+    "st_holiday": "6:30-7:30",
+    "rv_holiday": "7:00-9:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1145,
+    "line": "Святошинсько-Броварська",
+    "timeperiod": "22:00-23:00",
+    "st_weekday": "7:00-9:00",
+    "rv_weekday": "6:45-10:00",
+    "st_holiday": "7:30-10:00",
+    "rv_holiday": "8:00-10:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1146,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "06:00-07:00",
+    "st_weekday": "6:30-3:30",
+    "rv_weekday": "7:30-5:00",
+    "st_holiday": "7:00-6:30",
+    "rv_holiday": "7:30-7:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1147,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "07:00-08:00",
+    "st_weekday": "4:30-3:00",
+    "rv_weekday": "6:30-3:30",
+    "st_holiday": "7:00-6:00",
+    "rv_holiday": "7:30-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1148,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "08:00-09:00",
+    "st_weekday": "3:00-2:45",
+    "rv_weekday": "3:30-3:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1149,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "09:00-10:00",
+    "st_weekday": "2:45-4:30",
+    "rv_weekday": "2:45-4:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1150,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "10:00-11:00",
+    "st_weekday": "4:00-5:00",
+    "rv_weekday": "3:30-5:00",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1151,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "11:00-12:00",
+    "st_weekday": "4:30-6:30",
+    "rv_weekday": "4:30-6:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1152,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "12:00-13:00",
+    "st_weekday": "6:00-6:30",
+    "rv_weekday": "5:00-6:30",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1153,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "13:00-14:00",
+    "st_weekday": "6:00-6:30",
+    "rv_weekday": "6:30-6:00",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1154,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "14:00-15:00",
+    "st_weekday": "6:30-4:30",
+    "rv_weekday": "6:30-6:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1155,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "15:00-16:00",
+    "st_weekday": "5:00-4:00",
+    "rv_weekday": "6:00-4:30",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1156,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "16:00-17:00",
+    "st_weekday": "4:00-3:30",
+    "rv_weekday": "5:00-3:45",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1157,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "17:00-18:00",
+    "st_weekday": "3:45-3:00",
+    "rv_weekday": "4:00-3:30",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1158,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "18:00-19:00",
+    "st_weekday": "3:00-4:30",
+    "rv_weekday": "3:45-3:00",
+    "st_holiday": "6:30-6:00",
+    "rv_holiday": "6:30-6:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1159,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "19:00-20:00",
+    "st_weekday": "3:00-6:30",
+    "rv_weekday": "3:00-5:00",
+    "st_holiday": "6:00-6:30",
+    "rv_holiday": "6:00-6:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1160,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "20:00-21:00",
+    "st_weekday": "5:00-7:30",
+    "rv_weekday": "4:30-6:30",
+    "st_holiday": "6:30-7:30",
+    "rv_holiday": "6:30-7:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1161,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "21:00-22:00",
+    "st_weekday": "5:00-8:30",
+    "rv_weekday": "6:30-7:30",
+    "st_holiday": "7:30-10:15",
+    "rv_holiday": "7:00-10:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1162,
+    "line": "Оболонсько-Теремківська",
+    "timeperiod": "22:00-23:00",
+    "st_weekday": "8:30-11:00",
+    "rv_weekday": "7:30-10:15",
+    "st_holiday": "10:15-11:00",
+    "rv_holiday": "10:00-10:15"
+   }
+  }
+ ]
+}

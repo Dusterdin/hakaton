@@ -1,0 +1,148 @@
+{
+ "displayFieldName": "from_name",
+ "fieldAliases": {
+  "objectid": "objectid",
+  "from_code1": "Код станції",
+  "from_guid": "globalid станції",
+  "from_name": "Назва станції",
+  "to_code1": "Код зупинки/станції пересадки",
+  "to_guid": "globalid зупинки/станції пересадки",
+  "to_name": "Назва зупинки/станції пересадки",
+  "comment": "Коментар"
+ },
+ "fields": [
+  {
+   "name": "objectid",
+   "type": "esriFieldTypeOID",
+   "alias": "objectid"
+  },
+  {
+   "name": "from_code1",
+   "type": "esriFieldTypeString",
+   "alias": "Код станції",
+   "length": 10
+  },
+  {
+   "name": "from_guid",
+   "type": "esriFieldTypeString",
+   "alias": "globalid станції",
+   "length": 38
+  },
+  {
+   "name": "from_name",
+   "type": "esriFieldTypeString",
+   "alias": "Назва станції",
+   "length": 254
+  },
+  {
+   "name": "to_code1",
+   "type": "esriFieldTypeString",
+   "alias": "Код зупинки/станції пересадки",
+   "length": 10
+  },
+  {
+   "name": "to_guid",
+   "type": "esriFieldTypeString",
+   "alias": "globalid зупинки/станції пересадки",
+   "length": 38
+  },
+  {
+   "name": "to_name",
+   "type": "esriFieldTypeString",
+   "alias": "Назва зупинки/станції пересадки",
+   "length": 254
+  },
+  {
+   "name": "comment",
+   "type": "esriFieldTypeString",
+   "alias": "Коментар",
+   "length": 254
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "objectid": 7,
+    "from_code1": "fn02",
+    "from_guid": "{ef2dd01e-d929-45c1-8a8a-a7f1b44a6a95}",
+    "from_name": "Фунікулер. Нижня станція",
+    "to_code1": "mb07_216",
+    "to_guid": "{badf8bd0-4d9d-4134-905b-bc6dcca6942f}",
+    "to_name": "Поштова площа",
+    "comment": "станція метрополітену"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 4,
+    "from_code1": "fn02",
+    "from_guid": "{ef2dd01e-d929-45c1-8a8a-a7f1b44a6a95}",
+    "from_name": "Фунікулер. Нижня станція",
+    "to_code1": "a8767",
+    "to_guid": "{74F4F335-BCB0-4BBF-A339-B773F83394ED}",
+    "to_name": "ст. м. «Поштова площа»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 3,
+    "from_code1": "fn02",
+    "from_guid": "{ef2dd01e-d929-45c1-8a8a-a7f1b44a6a95}",
+    "from_name": "Фунікулер. Нижня станція",
+    "to_code1": "a8766",
+    "to_guid": "{0649B3FE-6A11-4A2C-90D0-4523E542694D}",
+    "to_name": "ст. м. «Поштова площа»",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 6,
+    "from_code1": "fn01",
+    "from_guid": "{dd942bf8-32be-4c46-9787-bb573accb8ea}",
+    "from_name": "Фунікулер. Верхня станція",
+    "to_code1": "a15561",
+    "to_guid": "{01E64C86-C95B-4B8F-97C9-F95F34CCF73A}",
+    "to_name": "пл. Софійська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1,
+    "from_code1": "fn01",
+    "from_guid": "{dd942bf8-32be-4c46-9787-bb573accb8ea}",
+    "from_name": "Фунікулер. Верхня станція",
+    "to_code1": "a2730",
+    "to_guid": "{5269B475-F005-412A-B4D8-EE683B3C1312}",
+    "to_name": "пл. Софійська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 2,
+    "from_code1": "fn01",
+    "from_guid": "{dd942bf8-32be-4c46-9787-bb573accb8ea}",
+    "from_name": "Фунікулер. Верхня станція",
+    "to_code1": "a2731",
+    "to_guid": "{72AC5B6C-0211-49E1-8EAB-C0E1F7E653A8}",
+    "to_name": "вул. Володимирська",
+    "comment": "наземний транспорт"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 5,
+    "from_code1": "fn01",
+    "from_guid": "{dd942bf8-32be-4c46-9787-bb573accb8ea}",
+    "from_name": "Фунікулер. Верхня станція",
+    "to_code1": "a15560",
+    "to_guid": "{203E9C53-781A-4004-916D-34EC3131BF85}",
+    "to_name": "пл. Михайлівська",
+    "comment": "наземний транспорт"
+   }
+  }
+ ]
+}

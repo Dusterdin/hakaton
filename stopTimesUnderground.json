@@ -1,0 +1,1534 @@
+{
+ "displayFieldName": "name",
+ "fieldAliases": {
+  "objectid": "OBJECTID",
+  "code1": "Код станції",
+  "name": "Назва станції",
+  "globalid": "globalid станції",
+  "line": "Лінія",
+  "napryamok": "Напрямок маршруту",
+  "first_trn1": "Перший поїзд, відправлення. v1",
+  "first_trn2": "Перший поїзд, відправлення. v2",
+  "last_trn1": "Останній поїзд, відправлення. v1",
+  "last_trn2": "Останній поїзд, відправлення. v2"
+ },
+ "fields": [
+  {
+   "name": "objectid",
+   "type": "esriFieldTypeOID",
+   "alias": "OBJECTID"
+  },
+  {
+   "name": "code1",
+   "type": "esriFieldTypeString",
+   "alias": "Код станції",
+   "length": 10
+  },
+  {
+   "name": "name",
+   "type": "esriFieldTypeString",
+   "alias": "Назва станції",
+   "length": 254
+  },
+  {
+   "name": "globalid",
+   "type": "esriFieldTypeString",
+   "alias": "globalid станції",
+   "length": 38
+  },
+  {
+   "name": "line",
+   "type": "esriFieldTypeString",
+   "alias": "Лінія",
+   "length": 254
+  },
+  {
+   "name": "napryamok",
+   "type": "esriFieldTypeString",
+   "alias": "Напрямок маршруту",
+   "length": 50
+  },
+  {
+   "name": "first_trn1",
+   "type": "esriFieldTypeString",
+   "alias": "Перший поїзд, відправлення. v1",
+   "length": 10
+  },
+  {
+   "name": "first_trn2",
+   "type": "esriFieldTypeString",
+   "alias": "Перший поїзд, відправлення. v2",
+   "length": 10
+  },
+  {
+   "name": "last_trn1",
+   "type": "esriFieldTypeString",
+   "alias": "Останній поїзд, відправлення. v1",
+   "length": 10
+  },
+  {
+   "name": "last_trn2",
+   "type": "esriFieldTypeString",
+   "alias": "Останній поїзд, відправлення. v2",
+   "length": 10
+  }
+ ],
+ "features": [
+  {
+   "attributes": {
+    "objectid": 997,
+    "code1": "mb01_210",
+    "name": "Героїв Дніпра",
+    "globalid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:30",
+    "first_trn2": "05:30:00",
+    "last_trn1": "22:30",
+    "last_trn2": "22:30:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 998,
+    "code1": "mb02_211",
+    "name": "Мінська",
+    "globalid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:32",
+    "first_trn2": "05:32:20",
+    "last_trn1": "22:32",
+    "last_trn2": "22:32:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 999,
+    "code1": "mb03_212",
+    "name": "Оболонь",
+    "globalid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:34",
+    "first_trn2": "05:34:25",
+    "last_trn1": "22:34",
+    "last_trn2": "22:34:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1000,
+    "code1": "mb04_213",
+    "name": "Почайна",
+    "globalid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:37",
+    "first_trn2": "05:37:05",
+    "last_trn1": "22:36",
+    "last_trn2": "22:36:45"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1001,
+    "code1": "mb05_214",
+    "name": "Тараса Шевченка",
+    "globalid": "{efd663ad-266a-45e9-8a46-8632b0fa912e}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:40",
+    "first_trn2": "05:40:15",
+    "last_trn1": "22:39",
+    "last_trn2": "22:39:45"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1002,
+    "code1": "mb06_215",
+    "name": "Контрактова площа",
+    "globalid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:42",
+    "first_trn2": "05:42:20",
+    "last_trn1": "22:41",
+    "last_trn2": "22:41:45"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1003,
+    "code1": "mb07_216",
+    "name": "Поштова площа",
+    "globalid": "{badf8bd0-4d9d-4134-905b-bc6dcca6942f}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:44",
+    "first_trn2": "05:44:05",
+    "last_trn1": "22:43",
+    "last_trn2": "22:43:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1004,
+    "code1": "mb08_217",
+    "name": "Майдан Незалежності",
+    "globalid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:46",
+    "first_trn2": "05:46:45",
+    "last_trn1": "22:45",
+    "last_trn2": "22:45:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1005,
+    "code1": "mb09_218",
+    "name": "Площа Українських Героїв",
+    "globalid": "{f54ca771-e70f-4bd2-80fd-e454729be7b2}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:48",
+    "first_trn2": "05:48:40",
+    "last_trn1": "22:47",
+    "last_trn2": "22:47:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1006,
+    "code1": "mb10_219",
+    "name": "Олімпійська",
+    "globalid": "{e4ca329c-019b-4042-90c3-c1924ac237c9}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:50",
+    "first_trn2": "05:50:30",
+    "last_trn1": "22:49",
+    "last_trn2": "22:49:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1007,
+    "code1": "mb11_220",
+    "name": "Палац «Україна»",
+    "globalid": "{82e72f9c-d253-4709-8b61-2783dd567bb9}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:52",
+    "first_trn2": "05:52:25",
+    "last_trn1": "22:51",
+    "last_trn2": "22:51:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1008,
+    "code1": "mb12_221",
+    "name": "Либідська",
+    "globalid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:54",
+    "first_trn2": "05:54:10",
+    "last_trn1": "22:52",
+    "last_trn2": "22:52:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1009,
+    "code1": "mb13_222",
+    "name": "Деміївська",
+    "globalid": "{7b6d81a2-6cb6-4b48-842b-5a5201f8e2bc}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:56",
+    "first_trn2": "05:56:00",
+    "last_trn1": "22:54",
+    "last_trn2": "22:54:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1010,
+    "code1": "mb14_223",
+    "name": "Голосіївська",
+    "globalid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:57",
+    "first_trn2": "05:57:40",
+    "last_trn1": "22:56",
+    "last_trn2": "22:56:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1011,
+    "code1": "mb15_224",
+    "name": "Васильківська",
+    "globalid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:00",
+    "first_trn2": "06:00:15",
+    "last_trn1": "22:58",
+    "last_trn2": "22:58:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1012,
+    "code1": "mb16_225",
+    "name": "Виставковий центр",
+    "globalid": "{95410970-a9c3-49a9-a872-9df9ab5e0839}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:03",
+    "first_trn2": "06:03:30",
+    "last_trn1": "23:01",
+    "last_trn2": "23:01:45"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1013,
+    "code1": "mb17_226",
+    "name": "Іподром",
+    "globalid": "{2cd14ab2-b74c-4650-a597-a9c638059d25}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:05",
+    "first_trn2": "06:05:15",
+    "last_trn1": "23:03",
+    "last_trn2": "23:03:20"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1014,
+    "code1": "mb18_227",
+    "name": "Теремки",
+    "globalid": "{f0005dd0-8e02-4523-a495-d29e7e56ae8e}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Прямий",
+    "first_trn1": null,
+    "first_trn2": null,
+    "last_trn1": null,
+    "last_trn2": null
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1015,
+    "code1": "mg01_310",
+    "name": "Сирець",
+    "globalid": "{9233b80a-b40c-467c-b693-766b41fefb51}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:00",
+    "first_trn2": "06:00:00",
+    "last_trn1": "22:30",
+    "last_trn2": "22:30:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1016,
+    "code1": "mg02_311",
+    "name": "Дорогожичі",
+    "globalid": "{84ada966-ff1d-4139-b2b6-2f0d759d4bbf}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:39",
+    "first_trn2": "05:39:45",
+    "last_trn1": "22:32",
+    "last_trn2": "22:32:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1017,
+    "code1": "mg03_312",
+    "name": "Лук'янівська",
+    "globalid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:43",
+    "first_trn2": "05:43:30",
+    "last_trn1": "22:36",
+    "last_trn2": "22:36:05"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1018,
+    "code1": "mg04_314",
+    "name": "Золоті Ворота",
+    "globalid": "{6c243faf-8a61-4102-8e1f-4b292a49142a}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:49",
+    "first_trn2": "05:49:00",
+    "last_trn1": "22:41",
+    "last_trn2": "22:41:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1019,
+    "code1": "mg05_315",
+    "name": "Палац спорту",
+    "globalid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:51",
+    "first_trn2": "05:51:20",
+    "last_trn1": "22:43",
+    "last_trn2": "22:43:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1020,
+    "code1": "mg06_316",
+    "name": "Кловська",
+    "globalid": "{8c1d7924-4208-41dc-8518-168d3289e690}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:53",
+    "first_trn2": "05:53:20",
+    "last_trn1": "22:45",
+    "last_trn2": "22:45:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1021,
+    "code1": "mg07_317",
+    "name": "Печерська",
+    "globalid": "{8ca71d40-5de0-45bf-a101-494d4e93e49f}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:55",
+    "first_trn2": "05:55:35",
+    "last_trn1": "22:47",
+    "last_trn2": "22:47:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1022,
+    "code1": "mg08_318",
+    "name": "Звіринецька",
+    "globalid": "{f8940903-aca5-47a8-8938-42268515426d}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:57",
+    "first_trn2": "05:57:45",
+    "last_trn1": "22:49",
+    "last_trn2": "22:49:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1023,
+    "code1": "mg09_319",
+    "name": "Видубичі",
+    "globalid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:00",
+    "first_trn2": "06:00:30",
+    "last_trn1": "22:52",
+    "last_trn2": "22:52:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1024,
+    "code1": "mg10_321",
+    "name": "Славутич",
+    "globalid": "{bd37e469-380b-4853-a0e7-7e6c018f12c3}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:05",
+    "first_trn2": "06:05:25",
+    "last_trn1": "22:57",
+    "last_trn2": "22:57:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1025,
+    "code1": "mg11_322",
+    "name": "Осокорки",
+    "globalid": "{dbc2817a-1957-4f4e-a749-2a1813853d07}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:07",
+    "first_trn2": "06:07:15",
+    "last_trn1": "22:58",
+    "last_trn2": "22:58:45"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1026,
+    "code1": "mg12_323",
+    "name": "Позняки",
+    "globalid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:10",
+    "first_trn2": "06:10:30",
+    "last_trn1": "23:01",
+    "last_trn2": "23:01:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1027,
+    "code1": "mg13_324",
+    "name": "Харківська",
+    "globalid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:14",
+    "first_trn2": "06:14:25",
+    "last_trn1": "23:05",
+    "last_trn2": "23:05:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1028,
+    "code1": "mg14_325",
+    "name": "Вирлиця",
+    "globalid": "{689d2828-851a-43bb-b5d1-3391850eb43a}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:16",
+    "first_trn2": "06:16:55",
+    "last_trn1": "23:07",
+    "last_trn2": "23:07:55"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1029,
+    "code1": "mg15_326",
+    "name": "Бориспільська",
+    "globalid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:20",
+    "first_trn2": "06:20:15",
+    "last_trn1": "23:11",
+    "last_trn2": "23:11:05"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1030,
+    "code1": "mg16_327",
+    "name": "Червоний хутір",
+    "globalid": "{16048cd2-361b-48f3-a3b5-2c08de8810a2}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Прямий",
+    "first_trn1": null,
+    "first_trn2": null,
+    "last_trn1": null,
+    "last_trn2": null
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1031,
+    "code1": "mr01_110",
+    "name": "Академмістечко",
+    "globalid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:51",
+    "first_trn2": "05:51:00",
+    "last_trn1": "22:30",
+    "last_trn2": "22:30:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1032,
+    "code1": "mr02_111",
+    "name": "Житомирська",
+    "globalid": "{c3a1cb27-d237-486e-90a5-8e4353b6af87}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:53",
+    "first_trn2": "05:53:25",
+    "last_trn1": "22:32",
+    "last_trn2": "22:32:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1033,
+    "code1": "mr03_112",
+    "name": "Святошин",
+    "globalid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:40",
+    "first_trn2": "05:40:15",
+    "last_trn1": "22:35",
+    "last_trn2": "22:35:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1034,
+    "code1": "mr04_113",
+    "name": "Нивки",
+    "globalid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:42",
+    "first_trn2": "05:42:05",
+    "last_trn1": "22:36",
+    "last_trn2": "22:36:45"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1035,
+    "code1": "mr05_114",
+    "name": "Берестейська",
+    "globalid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:43",
+    "first_trn2": "05:43:50",
+    "last_trn1": "22:38",
+    "last_trn2": "22:38:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1036,
+    "code1": "mr06_115",
+    "name": "Шулявська",
+    "globalid": "{2ec76936-19ff-49af-a897-07b830dde005}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:47",
+    "first_trn2": "05:47:00",
+    "last_trn1": "22:41",
+    "last_trn2": "22:41:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1037,
+    "code1": "mr07_116",
+    "name": "Політехнічний інститут",
+    "globalid": "{f6d8fbff-a9f8-4c19-b289-4d4db7ff0000}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:49",
+    "first_trn2": "05:49:00",
+    "last_trn1": "22:43",
+    "last_trn2": "22:43:20"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1038,
+    "code1": "mr08_117",
+    "name": "Вокзальна",
+    "globalid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:52",
+    "first_trn2": "05:52:10",
+    "last_trn1": "22:46",
+    "last_trn2": "22:46:20"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1039,
+    "code1": "mr09_118",
+    "name": "Університет",
+    "globalid": "{9100122b-e375-4656-b1ba-9dbff148e5a7}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:54",
+    "first_trn2": "05:54:10",
+    "last_trn1": "22:48",
+    "last_trn2": "22:48:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1040,
+    "code1": "mr10_119",
+    "name": "Театральна",
+    "globalid": "{3bfbcac5-3dc7-4712-a556-2e8f4155d415}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:56",
+    "first_trn2": "05:56:10",
+    "last_trn1": "22:50",
+    "last_trn2": "22:50:10"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1041,
+    "code1": "mr11_120",
+    "name": "Хрещатик",
+    "globalid": "{318177c9-7653-48d7-a6f6-a5a2ae32aea0}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:58",
+    "first_trn2": "05:58:15",
+    "last_trn1": "22:52",
+    "last_trn2": "22:52:05"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1042,
+    "code1": "mr12_121",
+    "name": "Арсенальна",
+    "globalid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:00",
+    "first_trn2": "06:00:50",
+    "last_trn1": "22:54",
+    "last_trn2": "22:54:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1043,
+    "code1": "mr13_122",
+    "name": "Дніпро",
+    "globalid": "{d5db8459-5150-4631-8db6-b1e635b77f46}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:02",
+    "first_trn2": "06:02:45",
+    "last_trn1": "22:56",
+    "last_trn2": "22:56:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1044,
+    "code1": "mr14_123",
+    "name": "Гідропарк",
+    "globalid": "{a3dbd9c9-fe09-4894-a54e-94d87133df8c}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:05",
+    "first_trn2": "06:05:40",
+    "last_trn1": "22:59",
+    "last_trn2": "22:59:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1045,
+    "code1": "mr15_124",
+    "name": "Лівобережна",
+    "globalid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "06:08",
+    "first_trn2": "06:08:30",
+    "last_trn1": "23:01",
+    "last_trn2": "23:01:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1046,
+    "code1": "mr16_125",
+    "name": "Дарниця",
+    "globalid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:51",
+    "first_trn2": "05:51:00",
+    "last_trn1": "23:04",
+    "last_trn2": "23:04:10"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1047,
+    "code1": "mr17_126",
+    "name": "Чернігівська",
+    "globalid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": "05:53",
+    "first_trn2": "05:53:25",
+    "last_trn1": "23:06",
+    "last_trn2": "23:06:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1048,
+    "code1": "mr18_127",
+    "name": "Лісова",
+    "globalid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Прямий",
+    "first_trn1": null,
+    "first_trn2": null,
+    "last_trn1": null,
+    "last_trn2": null
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1049,
+    "code1": "mb01_210",
+    "name": "Героїв Дніпра",
+    "globalid": "{4db72bbe-bf13-4692-be67-159457124c5c}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": null,
+    "first_trn2": null,
+    "last_trn1": null,
+    "last_trn2": null
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1050,
+    "code1": "mb02_211",
+    "name": "Мінська",
+    "globalid": "{3dda7595-ff10-4eb9-a698-7b2b07c457ae}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:02",
+    "first_trn2": "06:02:25",
+    "last_trn1": "23:03",
+    "last_trn2": "23:03:55"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1051,
+    "code1": "mb03_212",
+    "name": "Оболонь",
+    "globalid": "{49343200-4a54-48b4-bdda-6d38da698e7d}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:00",
+    "first_trn2": "06:00:30",
+    "last_trn1": "23:02",
+    "last_trn2": "23:02:05"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1052,
+    "code1": "mb04_213",
+    "name": "Почайна",
+    "globalid": "{b15b1b17-c633-4c31-9e32-3977ac619946}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:57",
+    "first_trn2": "05:57:55",
+    "last_trn1": "22:59",
+    "last_trn2": "22:59:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1053,
+    "code1": "mb05_214",
+    "name": "Тараса Шевченка",
+    "globalid": "{efd663ad-266a-45e9-8a46-8632b0fa912e}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:54",
+    "first_trn2": "05:54:25",
+    "last_trn1": "22:56",
+    "last_trn2": "22:56:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1054,
+    "code1": "mb06_215",
+    "name": "Контрактова площа",
+    "globalid": "{0ec8f6ca-1f83-4d77-9fe1-9990f6fa9565}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:51",
+    "first_trn2": "05:51:50",
+    "last_trn1": "22:54",
+    "last_trn2": "22:54:10"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1055,
+    "code1": "mb07_216",
+    "name": "Поштова площа",
+    "globalid": "{badf8bd0-4d9d-4134-905b-bc6dcca6942f}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:49",
+    "first_trn2": "05:49:50",
+    "last_trn1": "22:52",
+    "last_trn2": "22:52:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1056,
+    "code1": "mb08_217",
+    "name": "Майдан Незалежності",
+    "globalid": "{0d6587f3-9c3f-4d24-8c5f-14d30689c099}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:47",
+    "first_trn2": "05:47:45",
+    "last_trn1": "22:50",
+    "last_trn2": "22:50:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1057,
+    "code1": "mb09_218",
+    "name": "Площа Українських Героїв",
+    "globalid": "{f54ca771-e70f-4bd2-80fd-e454729be7b2}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:45",
+    "first_trn2": "05:45:35",
+    "last_trn1": "22:48",
+    "last_trn2": "22:48:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1058,
+    "code1": "mb10_219",
+    "name": "Олімпійська",
+    "globalid": "{e4ca329c-019b-4042-90c3-c1924ac237c9}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:43",
+    "first_trn2": "05:43:35",
+    "last_trn1": "22:46",
+    "last_trn2": "22:46:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1059,
+    "code1": "mb11_220",
+    "name": "Палац «Україна»",
+    "globalid": "{82e72f9c-d253-4709-8b61-2783dd567bb9}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:41",
+    "first_trn2": "05:41:35",
+    "last_trn1": "22:44",
+    "last_trn2": "22:44:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1060,
+    "code1": "mb12_221",
+    "name": "Либідська",
+    "globalid": "{9bbe7d05-ac6d-46eb-a9e2-d0a1b743e85d}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:57",
+    "first_trn2": "05:57:00",
+    "last_trn1": "22:43",
+    "last_trn2": "22:43:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1061,
+    "code1": "mb13_222",
+    "name": "Деміївська",
+    "globalid": "{7b6d81a2-6cb6-4b48-842b-5a5201f8e2bc}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:02",
+    "first_trn2": "06:02:00",
+    "last_trn1": "22:41",
+    "last_trn2": "22:41:10"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1062,
+    "code1": "mb14_223",
+    "name": "Голосіївська",
+    "globalid": "{cfb590bc-880d-477e-bb0a-d3d127203737}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:00",
+    "first_trn2": "06:00:15",
+    "last_trn1": "22:39",
+    "last_trn2": "22:39:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1063,
+    "code1": "mb15_224",
+    "name": "Васильківська",
+    "globalid": "{5fd2a74d-7ef6-4d9f-881c-64c5e9f3f377}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:58",
+    "first_trn2": "05:58:00",
+    "last_trn1": "22:37",
+    "last_trn2": "22:37:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1064,
+    "code1": "mb16_225",
+    "name": "Виставковий центр",
+    "globalid": "{95410970-a9c3-49a9-a872-9df9ab5e0839}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:01",
+    "first_trn2": "06:01:30",
+    "last_trn1": "22:33",
+    "last_trn2": "22:33:55"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1065,
+    "code1": "mb17_226",
+    "name": "Іподром",
+    "globalid": "{2cd14ab2-b74c-4650-a597-a9c638059d25}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:59",
+    "first_trn2": "05:59:50",
+    "last_trn1": "22:32",
+    "last_trn2": "22:32:20"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1066,
+    "code1": "mb18_227",
+    "name": "Теремки",
+    "globalid": "{f0005dd0-8e02-4523-a495-d29e7e56ae8e}",
+    "line": "Оболонсько-Теремківська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:57",
+    "first_trn2": "05:57:30",
+    "last_trn1": "22:30",
+    "last_trn2": "22:30:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1067,
+    "code1": "mg01_310",
+    "name": "Сирець",
+    "globalid": "{9233b80a-b40c-467c-b693-766b41fefb51}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": null,
+    "first_trn2": null,
+    "last_trn1": null,
+    "last_trn2": null
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1068,
+    "code1": "mg02_311",
+    "name": "Дорогожичі",
+    "globalid": "{84ada966-ff1d-4139-b2b6-2f0d759d4bbf}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:09",
+    "first_trn2": "06:09:15",
+    "last_trn1": "23:04",
+    "last_trn2": "23:04:20"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1069,
+    "code1": "mg03_312",
+    "name": "Лук'янівська",
+    "globalid": "{e59a7deb-ac79-4d53-bbde-f8515f63d91c}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:05",
+    "first_trn2": "06:05:45",
+    "last_trn1": "23:01",
+    "last_trn2": "23:01:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1070,
+    "code1": "mg04_314",
+    "name": "Золоті Ворота",
+    "globalid": "{6c243faf-8a61-4102-8e1f-4b292a49142a}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:00",
+    "first_trn2": "06:00:30",
+    "last_trn1": "22:56",
+    "last_trn2": "22:56:05"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1071,
+    "code1": "mg05_315",
+    "name": "Палац спорту",
+    "globalid": "{bdbd274b-d2c4-4e71-89fb-b5d7766dff8c}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:58",
+    "first_trn2": "05:58:35",
+    "last_trn1": "22:54",
+    "last_trn2": "22:54:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1072,
+    "code1": "mg06_316",
+    "name": "Кловська",
+    "globalid": "{8c1d7924-4208-41dc-8518-168d3289e690}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:56",
+    "first_trn2": "05:56:20",
+    "last_trn1": "22:52",
+    "last_trn2": "22:52:05"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1073,
+    "code1": "mg07_317",
+    "name": "Печерська",
+    "globalid": "{8ca71d40-5de0-45bf-a101-494d4e93e49f}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:54",
+    "first_trn2": "05:54:10",
+    "last_trn1": "22:50",
+    "last_trn2": "22:50:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1074,
+    "code1": "mg08_318",
+    "name": "Звіринецька",
+    "globalid": "{f8940903-aca5-47a8-8938-42268515426d}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:52",
+    "first_trn2": "05:52:15",
+    "last_trn1": "22:48",
+    "last_trn2": "22:48:10"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1075,
+    "code1": "mg09_319",
+    "name": "Видубичі",
+    "globalid": "{d97f8e9f-d7f7-4b38-80d1-aa67fc0fcc38}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:49",
+    "first_trn2": "05:49:25",
+    "last_trn1": "22:45",
+    "last_trn2": "22:45:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1076,
+    "code1": "mg10_321",
+    "name": "Славутич",
+    "globalid": "{bd37e469-380b-4853-a0e7-7e6c018f12c3}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:44",
+    "first_trn2": "05:44:05",
+    "last_trn1": "22:40",
+    "last_trn2": "22:40:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1077,
+    "code1": "mg11_322",
+    "name": "Осокорки",
+    "globalid": "{dbc2817a-1957-4f4e-a749-2a1813853d07}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:42",
+    "first_trn2": "05:42:30",
+    "last_trn1": "22:38",
+    "last_trn2": "22:38:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1078,
+    "code1": "mg12_323",
+    "name": "Позняки",
+    "globalid": "{ceba1322-a7af-4ea7-8d96-1e6d07d16822}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:39",
+    "first_trn2": "05:39:30",
+    "last_trn1": "22:36",
+    "last_trn2": "22:36:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1079,
+    "code1": "mg13_324",
+    "name": "Харківська",
+    "globalid": "{ec490b67-b709-4071-8935-19311ffb5896}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:35",
+    "first_trn2": "05:35:55",
+    "last_trn1": "22:32",
+    "last_trn2": "22:32:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1080,
+    "code1": "mg14_325",
+    "name": "Вирлиця",
+    "globalid": "{689d2828-851a-43bb-b5d1-3391850eb43a}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:33",
+    "first_trn2": "05:33:40",
+    "last_trn1": "22:30",
+    "last_trn2": "22:30:30"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1081,
+    "code1": "mg15_326",
+    "name": "Бориспільська",
+    "globalid": "{e97f18e5-986f-4c38-88c0-a27688417a33}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:31",
+    "first_trn2": "05:31:00",
+    "last_trn1": "22:27",
+    "last_trn2": "22:27:55"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1082,
+    "code1": "mg16_327",
+    "name": "Червоний хутір",
+    "globalid": "{16048cd2-361b-48f3-a3b5-2c08de8810a2}",
+    "line": "Сирецько-Печерська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:57",
+    "first_trn2": "05:57:00",
+    "last_trn1": "22:25",
+    "last_trn2": "22:25:00"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1083,
+    "code1": "mr01_110",
+    "name": "Академмістечко",
+    "globalid": "{dc971f06-65e7-493d-adaa-8cb423106531}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": null,
+    "first_trn2": null,
+    "last_trn1": null,
+    "last_trn2": null
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1084,
+    "code1": "mr02_111",
+    "name": "Житомирська",
+    "globalid": "{c3a1cb27-d237-486e-90a5-8e4353b6af87}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:13",
+    "first_trn2": "06:13:00",
+    "last_trn1": "23:06",
+    "last_trn2": "23:06:10"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1085,
+    "code1": "mr03_112",
+    "name": "Святошин",
+    "globalid": "{0ea9d453-acaf-4fcf-acf5-26bbab1e7bbd}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:10",
+    "first_trn2": "06:10:10",
+    "last_trn1": "23:03",
+    "last_trn2": "23:03:25"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1086,
+    "code1": "mr04_113",
+    "name": "Нивки",
+    "globalid": "{ae2b319a-be30-4eb0-afd2-635312e9a264}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:08",
+    "first_trn2": "06:08:10",
+    "last_trn1": "23:01",
+    "last_trn2": "23:01:35"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1087,
+    "code1": "mr05_114",
+    "name": "Берестейська",
+    "globalid": "{3b9c034f-441f-411a-be69-4dd2f3e85acd}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:06",
+    "first_trn2": "06:06:15",
+    "last_trn1": "22:59",
+    "last_trn2": "22:59:45"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1088,
+    "code1": "mr06_115",
+    "name": "Шулявська",
+    "globalid": "{2ec76936-19ff-49af-a897-07b830dde005}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:03",
+    "first_trn2": "06:03:10",
+    "last_trn1": "22:56",
+    "last_trn2": "22:56:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1089,
+    "code1": "mr07_116",
+    "name": "Політехнічний інститут",
+    "globalid": "{f6d8fbff-a9f8-4c19-b289-4d4db7ff0000}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "06:01",
+    "first_trn2": "06:01:10",
+    "last_trn1": "22:54",
+    "last_trn2": "22:54:55"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1090,
+    "code1": "mr08_117",
+    "name": "Вокзальна",
+    "globalid": "{0157f63d-5969-49ce-a8c6-91cbcbae4166}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:57",
+    "first_trn2": "05:57:50",
+    "last_trn1": "22:51",
+    "last_trn2": "22:51:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1091,
+    "code1": "mr09_118",
+    "name": "Університет",
+    "globalid": "{9100122b-e375-4656-b1ba-9dbff148e5a7}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:55",
+    "first_trn2": "05:55:50",
+    "last_trn1": "22:49",
+    "last_trn2": "22:49:55"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1092,
+    "code1": "mr10_119",
+    "name": "Театральна",
+    "globalid": "{3bfbcac5-3dc7-4712-a556-2e8f4155d415}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:54",
+    "first_trn2": "05:54:00",
+    "last_trn1": "22:48",
+    "last_trn2": "22:48:10"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1093,
+    "code1": "mr11_120",
+    "name": "Хрещатик",
+    "globalid": "{318177c9-7653-48d7-a6f6-a5a2ae32aea0}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:52",
+    "first_trn2": "05:52:05",
+    "last_trn1": "22:46",
+    "last_trn2": "22:46:20"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1094,
+    "code1": "mr12_121",
+    "name": "Арсенальна",
+    "globalid": "{82d70efd-c26c-493f-aca3-ed6773503118}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:49",
+    "first_trn2": "05:49:10",
+    "last_trn1": "22:43",
+    "last_trn2": "22:43:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1095,
+    "code1": "mr13_122",
+    "name": "Дніпро",
+    "globalid": "{d5db8459-5150-4631-8db6-b1e635b77f46}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:47",
+    "first_trn2": "05:47:15",
+    "last_trn1": "22:41",
+    "last_trn2": "22:41:50"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1096,
+    "code1": "mr14_123",
+    "name": "Гідропарк",
+    "globalid": "{a3dbd9c9-fe09-4894-a54e-94d87133df8c}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:44",
+    "first_trn2": "05:44:30",
+    "last_trn1": "22:39",
+    "last_trn2": "22:39:15"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1097,
+    "code1": "mr15_124",
+    "name": "Лівобережна",
+    "globalid": "{935a5d71-4476-4bae-ad9e-c20c466aadd9}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:41",
+    "first_trn2": "05:41:50",
+    "last_trn1": "22:36",
+    "last_trn2": "22:36:40"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1098,
+    "code1": "mr16_125",
+    "name": "Дарниця",
+    "globalid": "{a5d54315-66a5-4877-bf6d-9e7402839fc8}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:39",
+    "first_trn2": "05:39:15",
+    "last_trn1": "22:34",
+    "last_trn2": "22:34:20"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1099,
+    "code1": "mr17_126",
+    "name": "Чернігівська",
+    "globalid": "{47210b25-ef89-4d93-b7c9-5586a20e91bf}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:36",
+    "first_trn2": "05:36:55",
+    "last_trn1": "22:32",
+    "last_trn2": "22:32:05"
+   }
+  },
+  {
+   "attributes": {
+    "objectid": 1100,
+    "code1": "mr18_127",
+    "name": "Лісова",
+    "globalid": "{48c6ff70-a456-4f16-8bb3-32ed54438970}",
+    "line": "Святошинсько-Броварська",
+    "napryamok": "Зворотній",
+    "first_trn1": "05:34",
+    "first_trn2": "05:34:45",
+    "last_trn1": "22:30",
+    "last_trn2": "22:30:00"
+   }
+  }
+ ]
+}

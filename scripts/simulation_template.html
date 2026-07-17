@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Київ — симуляція руху наземного транспорту</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; display:flex; flex-direction:column; }
+  header { padding:12px 20px 6px; text-align:center; }
+  .badge { display:inline-block; background:#1f2937; border:1px solid #374151; color:#9ca3af; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:6px; }
+  h1 { font-size:clamp(15px,2.6vw,22px); font-weight:700; background:linear-gradient(135deg,#60a5fa,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .sub { color:#9ca3af; font-size:11px; margin-top:3px; max-width:820px; margin-left:auto; margin-right:auto; line-height:1.5; }
+  .warn { color:#fbbf24; }
+  #map { flex:1; min-height:0; }
+  .bar { display:flex; align-items:center; gap:12px; padding:8px 16px; background:#161b22; border-top:1px solid rgba(255,255,255,.08); flex-wrap:wrap; }
+  .clock { font-size:22px; font-weight:700; color:#60a5fa; font-variant-numeric:tabular-nums; min-width:86px; }
+  button { background:#1f2937; color:#e6edf3; border:1px solid #374151; border-radius:8px; padding:6px 14px; font-size:13px; cursor:pointer; }
+  button:hover { border-color:#60a5fa; }
+  input[type=range] { flex:1; min-width:160px; }
+  select { background:#1f2937; color:#e6edf3; border:1px solid #374151; border-radius:8px; padding:5px 8px; font-size:12px; }
+  .counter { font-size:12px; color:#9ca3af; white-space:nowrap; }
+  .counter b { color:#e6edf3; }
+  .panel { position:absolute; top:10px; right:10px; z-index:1000; background:rgba(13,17,23,.93); border:1px solid rgba(255,255,255,.12); border-radius:11px; padding:11px 13px; font-size:12px; width:200px; }
+  .panel label { display:flex; align-items:center; gap:7px; padding:2px 0; cursor:pointer; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .legend { display:flex; align-items:center; gap:4px; margin-top:7px; font-size:10px; color:#9ca3af; }
+  .grad { flex:1; height:8px; border-radius:4px; background:linear-gradient(90deg,#22c55e,#fbbf24,#ef4444); }
+  .hint { color:#6b7280; font-size:10px; margin-top:7px; line-height:1.5; border-top:1px solid rgba(255,255,255,.08); padding-top:6px; }
+  footer { text-align:center; color:#4b5563; font-size:10px; padding:4px; }
+  footer a { color:#60a5fa; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Прототип · Симуляція потоків · GTFS Київпастранс</div>
+  <h1>Київ — симуляція руху наземного транспорту</h1>
+  <div class="sub">Кожен рейс буднього дня рухається своїм маршрутом за розкладом GTFS.
+  Колір = модельне навантаження (гравітаційний попит район → точка тяжіння, розподілений за годинами).
+  <span class="warn">Навантаження — ілюстративна модель, не виміряні пасажиропотоки.</span></div>
+</header>
+<div id="map"></div>
+<div class="bar">
+  <button id="play">⏸ Пауза</button>
+  <span class="clock" id="clock">07:30</span>
+  <input type="range" id="time" min="240" max="1620" step="1" value="450">
+  <select id="speed">
+    <option value="30">×30</option>
+    <option value="60" selected>×60</option>
+    <option value="120">×120</option>
+    <option value="300">×300</option>
+  </select>
+  <span class="counter">На лінії: <b id="cActive">0</b></span>
+  <span class="counter">Середнє навантаження: <b id="cLoad">—</b></span>
+</div>
+<footer>Дані: GTFS <a href="https://data.kyivcity.gov.ua/">data.kyivcity.gov.ua</a> · точки тяжіння: © OpenStreetMap · Мапа: © OpenStreetMap, © CARTO</footer>
+
+<script>
+const ROUTES = __ROUTES__;
+const SHAPES = __SHAPES__;
+const TRIPS = __TRIPS__;
+const METRO = __METRO__;
+const STATS = __STATS__;
+
+const map = L.map("map", { preferCanvas:true }).setView([50.4501, 30.5334], 11);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  { attribution:"© OpenStreetMap © CARTO", maxZoom:19 }).addTo(map);
+
+const metroLayer = L.layerGroup().addTo(map);
+for (const s of METRO) L.polyline(s.path, { color:s.c, weight:2, opacity:.35 }).addTo(metroLayer);
+
+// faint route network backdrop (one line per shape)
+const netLayer = L.layerGroup().addTo(map);
+for (const sh of SHAPES) L.polyline(sh, { color:"#3b4654", weight:1, opacity:.5, interactive:false }).addTo(netLayer);
+
+// precompute cumulative fractions along each shape
+const SHAPE_CUM = SHAPES.map(pts => {
+  const cum = [0];
+  let total = 0;
+  for (let i = 1; i < pts.length; i++) {
+    const dLat = (pts[i][0]-pts[i-1][0]) * 111.32;
+    const dLon = (pts[i][1]-pts[i-1][1]) * 70.9;
+    total += Math.hypot(dLat, dLon);
+    cum.push(total);
+  }
+  return cum.map(c => total > 0 ? c/total : 0);
+});
+
+// sort trips by start for fast active-window queries
+TRIPS.sort((a,b) => a.t0 - b.t0);
+const T0 = TRIPS.map(t => t.t0), T1 = TRIPS.map(t => t.t0 + t.d);
+
+function posAt(trip, frac) {
+  const pts = SHAPES[trip.s], cum = SHAPE_CUM[trip.s];
+  const f = frac;   // GTFS shapes are per-direction: each trip's shape already runs its way
+  let lo = 0, hi = cum.length - 1;
+  while (lo < hi - 1) { const mid = (lo+hi) >> 1; cum[mid] <= f ? lo = mid : hi = mid; }
+  const span = cum[hi] - cum[lo] || 1;
+  const u = (f - cum[lo]) / span;
+  return [pts[lo][0] + (pts[hi][0]-pts[lo][0])*u, pts[lo][1] + (pts[hi][1]-pts[lo][1])*u];
+}
+
+function loadColor(l) {
+  if (l === null || l === undefined) return "#6b7280";
+  const t = Math.min(l / 2.5, 1);
+  const stops = [[34,197,94],[251,191,36],[239,68,68]];
+  const seg = t < .5 ? 0 : 1, u = (t - seg*.5)*2;
+  const a = stops[seg], b = stops[seg+1];
+  return `rgb(${a.map((v,k)=>Math.round(v+(b[k]-v)*u)).join(",")})`;
+}
+
+// simulation state — declared before the layer, whose first redraw fires on addLayer
+let simT = 450, playing = true, speed = 60, last = performance.now();
+const modeOn = { bus:true, trolleybus:true, tram:true };
+
+// custom canvas overlay for vehicles
+const VehicleLayer = L.Layer.extend({
+  onAdd(m) {
+    this._m = m;
+    this._c = L.DomUtil.create("canvas");
+    this._c.style.position = "absolute";
+    this._c.style.pointerEvents = "none";
+    m.getPanes().overlayPane.appendChild(this._c);
+    m.on("move zoom resize", this._reset, this);
+    this._reset();
+  },
+  onRemove(m) { m.off("move zoom resize", this._reset, this); this._c.remove(); },
+  _reset() {
+    const size = this._m.getSize();
+    const tl = this._m.containerPointToLayerPoint([0,0]);
+    L.DomUtil.setPosition(this._c, tl);
+    if (this._c.width !== size.x || this._c.height !== size.y) {  // realloc only on real resize
+      this._c.width = size.x; this._c.height = size.y;
+    }
+    this.redraw();
+  },
+  redraw() {
+    if (!this._m) return;
+    const ctx = this._c.getContext("2d");
+    ctx.clearRect(0, 0, this._c.width, this._c.height);
+    const zr = Math.max(2, Math.min(5, this._m.getZoom() - 8.5));
+    let active = 0, loadSum = 0, loadN = 0;
+    for (let i = 0; i < TRIPS.length; i++) {
+      if (T0[i] > simT) break;
+      if (T1[i] < simT) continue;
+      const tr = TRIPS[i];
+      const rt = ROUTES[tr.r];
+      if (!modeOn[rt.mode]) continue;
+      active++;
+      if (tr.l !== null) { loadSum += tr.l; loadN++; }
+      const frac = (simT - tr.t0) / tr.d;
+      const p = posAt(tr, frac);
+      const pt = this._m.latLngToContainerPoint(p);
+      if (pt.x < -10 || pt.y < -10 || pt.x > this._c.width+10 || pt.y > this._c.height+10) continue;
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, rt.mode === "tram" ? zr+1 : zr, 0, 6.283);
+      ctx.fillStyle = loadColor(tr.l);
+      ctx.fill();
+      if (rt.mode !== "bus") {   // ring marks electric modes
+        ctx.strokeStyle = rt.mode === "tram" ? "#fbbf24" : "#60a5fa";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+    document.getElementById("cActive").textContent = active;
+    document.getElementById("cLoad").textContent = loadN ? "×" + (loadSum/loadN).toFixed(2) : "—";
+  },
+});
+const vehicles = new VehicleLayer();
+map.addLayer(vehicles);
+
+// simulation clock
+const slider = document.getElementById("time");
+function fmt(t) {
+  const h = Math.floor(t/60) % 24, m = Math.floor(t % 60);
+  return String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0");
+}
+function tick(now) {
+  if (playing) {
+    simT += Math.min(now - last, 100)/1000 * speed / 60;  // clamp: hidden-tab rAF gaps must not jump the clock
+    if (simT > 1620) simT = 240 + (simT - 240) % 1380;
+    slider.value = simT;
+  }
+  last = now;
+  document.getElementById("clock").textContent = fmt(simT);
+  vehicles.redraw();
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+document.getElementById("play").addEventListener("click", e => {
+  playing = !playing;
+  e.target.textContent = playing ? "⏸ Пауза" : "▶ Грати";
+});
+slider.addEventListener("input", e => { simT = +e.target.value; });
+document.getElementById("speed").addEventListener("change", e => { speed = +e.target.value; });
+
+const panel = L.control({ position:"topright" });
+panel.onAdd = () => {
+  const d = L.DomUtil.create("div", "panel");
+  d.innerHTML = `
+    <label><input type="checkbox" checked data-m="bus"><span class="dot" style="background:#9ca3af"></span>Автобуси</label>
+    <label><input type="checkbox" checked data-m="trolleybus"><span class="dot" style="background:#60a5fa"></span>Тролейбуси (синє кільце)</label>
+    <label><input type="checkbox" checked data-m="tram"><span class="dot" style="background:#fbbf24"></span>Трамваї (жовте кільце)</label>
+    <label><input type="checkbox" checked id="net"><span class="dot" style="background:#3b4654"></span>Мережа маршрутів</label>
+    <label><input type="checkbox" checked id="mt2"><span class="dot" style="background:#E4222C"></span>Метро (контекст)</label>
+    <div class="legend"><span>×0</span><div class="grad"></div><span>×2.5+</span></div>
+    <div class="hint">${STATS.trips.toLocaleString("uk-UA")} рейсів/будній день ·
+    ${STATS.routes} маршрутів · сірий = поза моделлю попиту ·
+    рух рівномірний між кінцями рейсу (у GTFS ~4 контрольні точки) ·
+    погодинний профіль попиту (піки 7–9 та 17–19) — припущення моделі, не з GTFS ·
+    попит маршрутів уже зменшений на частку метро (−60% для пар, що дублюють метро)</div>`;
+  L.DomEvent.disableClickPropagation(d);
+  d.querySelectorAll("input[data-m]").forEach(cb => cb.addEventListener("change", e => {
+    modeOn[e.target.dataset.m] = e.target.checked;
+  }));
+  d.querySelector("#net").addEventListener("change", e =>
+    e.target.checked ? netLayer.addTo(map) : map.removeLayer(netLayer));
+  d.querySelector("#mt2").addEventListener("change", e =>
+    e.target.checked ? metroLayer.addTo(map) : map.removeLayer(metroLayer));
+  return d;
+};
+panel.addTo(map);
+</script>
+</body>
+</html>

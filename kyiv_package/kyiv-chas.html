@@ -1588,10 +1588,6 @@ document.getElementById('finishBtn').addEventListener('click', ()=>{
   const line = {type:state.drawType, pts:cleanPts};
   Object.assign(line, precomputeLine(line.pts));
   state.newLines.push(line);
-  fetch('http://localhost:8000/custom-lines', {
-  method:'POST', headers:{'Content-Type':'application/json'},
-  body: JSON.stringify({type: line.type, points: line.pts})
-  }).catch(()=>{}); // якщо бекенд недоступний — просто не збережеться, JS-симуляція й так працює
   const col = getLineColor(line.type);
   L.polyline(line.pts, {color:col, weight:4}).addTo(newLinesLayer);
   if(draftLayer){ map.removeLayer(draftLayer); draftLayer=null; }

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Київ — гравітаційна модель потоків між районами</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; display:flex; flex-direction:column; }
+  header { padding:14px 20px 10px; text-align:center; }
+  .badge { display:inline-block; background:#1f2937; border:1px solid #374151; color:#9ca3af; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+  h1 { font-size:clamp(16px,3vw,24px); font-weight:700; background:linear-gradient(135deg,#a78bfa,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .sub { color:#9ca3af; font-size:12px; margin-top:4px; max-width:760px; margin-left:auto; margin-right:auto; line-height:1.5; }
+  .warn { color:#fbbf24; }
+  #map { flex:1; min-height:0; }
+  .controls { position:absolute; top:10px; right:10px; z-index:1000; background:rgba(13,17,23,.92); border:1px solid rgba(255,255,255,.12); border-radius:11px; padding:12px 14px; font-size:12px; width:220px; }
+  .controls label { display:block; padding:3px 0; cursor:pointer; }
+  .controls input[type=range] { width:100%; }
+  .hint { color:#6b7280; font-size:10px; margin-top:7px; line-height:1.5; border-top:1px solid rgba(255,255,255,.08); padding-top:7px; }
+  .leaflet-popup-content-wrapper { background:#161b22; color:#e6edf3; border-radius:9px; border:1px solid rgba(255,255,255,.15); }
+  .leaflet-popup-tip { background:#161b22; }
+  .leaflet-popup-content { font-size:12px; line-height:1.55; margin:10px 13px; }
+  .rt { font-weight:700; font-size:14px; }
+  .muted { color:#8b949e; }
+  footer { text-align:center; color:#4b5563; font-size:10px; padding:6px; }
+  footer a { color:#60a5fa; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Прототип · Гравітаційна модель · населення: kyivcity.gov.ua</div>
+  <h1>Київ — гравітаційна модель потоків між районами</h1>
+  <div class="sub">T = P₁ × P₂ / d² — потенціал поїздок пропорційний населенню районів і обернений до квадрата відстані.
+  <span class="warn">Ілюстративна модель, а не виміряні потоки</span> — як gravity flow map у лондонському проєкті.</div>
+</header>
+<div id="map"></div>
+<footer>Населення районів: <a href="https://kyivcity.gov.ua/kyiv_ta_miska_vlada/pro_kyiv/raiony_kyieva/">офіційний портал Києва</a> · Лінії метро: <a href="https://data.kyivcity.gov.ua/">Портал відкритих даних Києва</a> · Центроїди районів — приблизні</footer>
+
+<script>
+const NODES = __NODES__;
+const FLOWS = __FLOWS__;
+const METRO = __METRO__;
+
+const map = L.map("map").setView([50.4501, 30.5334], 11);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  { attribution:"© OpenStreetMap © CARTO", maxZoom:19 }).addTo(map);
+
+// metro backdrop
+const metroLayer = L.layerGroup();
+for (const s of METRO) L.polyline(s.path, { color:s.c, weight:2, opacity:.45 }).addTo(metroLayer);
+metroLayer.addTo(map);
+
+// curved arc between two points (perpendicular midpoint offset)
+function arc(a, b) {
+  const mLat = (a[0]+b[0])/2, mLon = (a[1]+b[1])/2;
+  const dLat = b[0]-a[0], dLon = b[1]-a[1];
+  const mid = [mLat + dLon*0.15, mLon - dLat*0.15];
+  const pts = [];
+  for (let t = 0; t <= 1; t += 0.05) {
+    pts.push([ (1-t)*(1-t)*a[0] + 2*(1-t)*t*mid[0] + t*t*b[0],
+               (1-t)*(1-t)*a[1] + 2*(1-t)*t*mid[1] + t*t*b[1] ]);
+  }
+  return pts;
+}
+
+const flowLayer = L.layerGroup().addTo(map);
+let minW = 0.12;
+function drawFlows() {
+  flowLayer.clearLayers();
+  for (const f of FLOWS) {
+    if (f.w < minW) continue;
+    const line = L.polyline(arc(f.pa, f.pb), {
+      color:"#f472b6", weight:1 + 9*f.w, opacity:.35 + .45*f.w });
+    line.bindPopup(`<div class="rt">${f.a} ⇄ ${f.b}</div>
+      <span class="muted">Відстань:</span> ${f.d_km} км<br>
+      <span class="muted">Відносний потенціал потоку:</span> <b>${(100*f.w).toFixed(0)}%</b> від максимального`);
+    line.on("mouseover", e => e.target.setStyle({ color:"#fb7185", opacity:1 }));
+    line.on("mouseout",  e => e.target.setStyle({ color:"#f472b6", opacity:.35 + .45*f.w }));
+    line.addTo(flowLayer);
+  }
+}
+drawFlows();
+
+const maxPop = Math.max(...NODES.map(n => n.pop));
+for (const n of NODES) {
+  const r = 8 + 22 * Math.sqrt(n.pop / maxPop);
+  const c = L.circleMarker([n.lat, n.lon], { radius:r, color:"#a78bfa", weight:2,
+    fillColor:"#a78bfa", fillOpacity:.30 });
+  c.bindPopup(`<div class="rt">${n.name} район</div>
+    <span class="muted">Населення:</span> <b>${n.pop.toLocaleString("uk-UA")}</b> осіб`);
+  c.bindTooltip(n.name, { permanent:true, direction:"center",
+    className:"", opacity:.85 });
+  c.addTo(map);
+}
+
+const ctrl = L.control({ position:"topright" });
+ctrl.onAdd = () => {
+  const d = L.DomUtil.create("div", "controls");
+  d.innerHTML = `<label>Поріг потоку: <span id="thv">12%</span>
+      <input type="range" id="th" min="0" max="60" value="12"></label>
+    <label><input type="checkbox" id="mt" checked> Лінії метро (контекст)</label>
+    <div class="hint">Товщина дуги — відносний потенціал потоку між районами.
+    Розмір кола — населення району.<br>Формула: T = P₁×P₂/d².</div>`;
+  L.DomEvent.disableClickPropagation(d);
+  d.querySelector("#th").addEventListener("input", e => {
+    minW = e.target.value / 100;
+    d.querySelector("#thv").textContent = e.target.value + "%";
+    drawFlows();
+  });
+  d.querySelector("#mt").addEventListener("change", e =>
+    e.target.checked ? metroLayer.addTo(map) : map.removeLayer(metroLayer));
+  return d;
+};
+ctrl.addTo(map);
+</script>
+</body>
+</html>

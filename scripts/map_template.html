@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Київ — наземний транспорт: маршрути та інтенсивність руху</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; display:flex; flex-direction:column; }
+  header { padding:14px 20px 10px; text-align:center; }
+  .badge { display:inline-block; background:#1f2937; border:1px solid #374151; color:#9ca3af; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+  h1 { font-size:clamp(16px,3vw,24px); font-weight:700; background:linear-gradient(135deg,#60a5fa,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .sub { color:#9ca3af; font-size:12px; margin-top:4px; }
+  .stat-row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; padding:8px 20px 12px; }
+  .stat { background:#161b22; border:1px solid rgba(255,255,255,.07); border-radius:9px; padding:7px 16px; text-align:center; }
+  .stat-val { font-size:17px; font-weight:700; color:#60a5fa; }
+  .stat-lbl { font-size:10px; color:#6b7280; margin-top:1px; }
+  #map { flex:1; min-height:0; }
+  .controls { position:absolute; top:10px; right:10px; z-index:1000; background:rgba(13,17,23,.92); border:1px solid rgba(255,255,255,.12); border-radius:11px; padding:12px 14px; font-size:12px; min-width:170px; }
+  .controls label { display:flex; align-items:center; gap:7px; padding:3px 0; cursor:pointer; color:#e6edf3; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .controls .hint { color:#6b7280; font-size:10px; margin-top:7px; line-height:1.5; border-top:1px solid rgba(255,255,255,.08); padding-top:7px; }
+  .leaflet-popup-content-wrapper { background:#161b22; color:#e6edf3; border-radius:9px; border:1px solid rgba(255,255,255,.15); }
+  .leaflet-popup-tip { background:#161b22; }
+  .leaflet-popup-content { font-size:12px; line-height:1.55; margin:10px 13px; }
+  .rt { font-weight:700; font-size:14px; }
+  .muted { color:#8b949e; }
+  footer { text-align:center; color:#4b5563; font-size:10px; padding:6px; }
+  footer a { color:#60a5fa; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Прототип · GTFS Київпастранс · дані data.kyivcity.gov.ua</div>
+  <h1>Київ — наземний транспорт: маршрути та інтенсивність руху</h1>
+  <div class="sub">Товщина лінії = кількість рейсів у будній день · клік на маршрут або зупинку — деталі</div>
+</header>
+<div class="stat-row" id="stats"></div>
+<div id="map"></div>
+<footer>Дані: <a href="https://data.kyivcity.gov.ua/">Портал відкритих даних Києва</a> (КП «Київпастранс», GTFS Static) · Мапа: © OpenStreetMap, © CARTO</footer>
+
+<script>
+const ROUTES = __ROUTES__;
+const STOPS = __STOPS__;
+const ALLSTOPS = __ALLSTOPS__;
+const METROLINES = __METROLINES__;
+const METROSTATIONS = __METROSTATIONS__;
+const STATS = __STATS__;
+
+const COLORS = { bus:"#60a5fa", trolleybus:"#4ade80", tram:"#fbbf24" };
+const UA = { bus:"Автобуси", trolleybus:"Тролейбуси", tram:"Трамваї" };
+
+const statRow = document.getElementById("stats");
+const items = [
+  [STATS.routes, "маршрутів"],
+  [STATS.by_mode.bus||0, "автобусних"],
+  [STATS.by_mode.trolleybus||0, "тролейбусних"],
+  [STATS.by_mode.tram||0, "трамвайних"],
+  [STATS.stops.toLocaleString("uk-UA"), "зупинок"],
+  [STATS.metro, "станцій метро"],
+  [STATS.trips.toLocaleString("uk-UA"), "рейсів/будній день"],
+];
+for (const [v,l] of items) statRow.insertAdjacentHTML("beforeend",
+  `<div class="stat"><div class="stat-val">${v}</div><div class="stat-lbl">${l}</div></div>`);
+
+const map = L.map("map", { zoomControl:true }).setView([50.4501, 30.5234], 11);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+  { attribution:"© OpenStreetMap © CARTO", maxZoom:19 }).addTo(map);
+
+const maxTrips = Math.max(...ROUTES.map(r => r.trips));
+const layers = { bus:L.layerGroup(), trolleybus:L.layerGroup(), tram:L.layerGroup() };
+const modeUA = { bus:"Автобус", trolleybus:"Тролейбус", tram:"Трамвай" };
+
+for (const r of ROUTES) {
+  const w = 1 + 5 * Math.sqrt(r.trips / maxTrips);
+  const line = L.polyline(r.path, { color:COLORS[r.mode], weight:w, opacity:.75 });
+  line.bindPopup(`<div class="rt" style="color:${COLORS[r.mode]}">${modeUA[r.mode]} ${r.name}</div>
+    ${r.long}<br>
+    <span class="muted">Рейсів/будній день:</span> <b>${r.trips}</b><br>
+    <span class="muted">Інтервал (офіційний):</span> <b>${r.headway}</b><br>
+    <span class="muted">Працює:</span> ${r.span}`);
+  line.on("mouseover", e => e.target.setStyle({ opacity:1, weight:w+2 }));
+  line.on("mouseout",  e => e.target.setStyle({ opacity:.75, weight:w }));
+  line.addTo(layers[r.mode]);
+}
+Object.values(layers).forEach(l => l.addTo(map));
+
+const stopLayer = L.layerGroup();
+const maxDeps = Math.max(...STOPS.map(s => s.deps));
+for (const s of STOPS) {
+  const rad = 2 + 8 * Math.sqrt(s.deps / maxDeps);
+  const c = L.circleMarker([s.lat, s.lon], { radius:rad, color:"#e6edf3", weight:.6,
+    fillColor:"#a78bfa", fillOpacity:.75 });
+  c.bindPopup(`<div class="rt">${s.name}</div>
+    <span class="muted">Відправлень/будній день (контрольна точка):</span> <b>${s.deps}</b><br>
+    <span class="muted">Маршрути:</span> ${s.routes}`);
+  c.addTo(stopLayer);
+}
+
+// all 3,236 surface stops (city GIS layer) — tiny dots
+const allStopsLayer = L.layerGroup();
+for (const s of ALLSTOPS) {
+  L.circleMarker([s.lat, s.lon], { radius:1.7, color:"#8b949e", weight:0,
+    fillColor:"#8b949e", fillOpacity:.65 })
+    .bindPopup(`<div class="rt">${s.name}</div><span class="muted">зупинка наземного транспорту</span>`)
+    .addTo(allStopsLayer);
+}
+
+// metro: lines + stations
+const metroLayer = L.layerGroup();
+for (const m of METROLINES)
+  L.polyline(m.path, { color:m.c, weight:4, opacity:.9 }).addTo(metroLayer);
+for (const s of METROSTATIONS) {
+  const c = L.circleMarker([s.lat, s.lon], { radius:5, color:s.c, weight:2.5,
+    fillColor:"#0d1117", fillOpacity:1 });
+  c.bindPopup(`<div class="rt" style="color:${s.c}">Ⓜ ${s.name}</div>
+    <span class="muted">Лінія:</span> ${s.line}`);
+  c.addTo(metroLayer);
+}
+metroLayer.addTo(map);
+
+const ctrl = L.control({ position:"topright" });
+ctrl.onAdd = () => {
+  const d = L.DomUtil.create("div", "controls");
+  d.innerHTML = Object.keys(layers).map(m =>
+    `<label><input type="checkbox" checked data-m="${m}"><span class="dot" style="background:${COLORS[m]}"></span>${UA[m]}</label>`).join("") +
+    `<label><input type="checkbox" checked data-m="metro"><span class="dot" style="background:#E4222C"></span>Метро (лінії + станції)</label>` +
+    `<label><input type="checkbox" data-m="allstops"><span class="dot" style="background:#8b949e"></span>Всі зупинки (${ALLSTOPS.length.toLocaleString("uk-UA")})</label>` +
+    `<label><input type="checkbox" data-m="stops"><span class="dot" style="background:#a78bfa"></span>Інтенсивність (контр. точки)</label>` +
+    `<div class="hint">Товщина лінії — рейси/день.<br>Розмір фіолетових кіл — відправлення/день (контрольні точки GTFS).</div>`;
+  L.DomEvent.disableClickPropagation(d);
+  const extra = { stops: stopLayer, allstops: allStopsLayer, metro: metroLayer };
+  d.querySelectorAll("input").forEach(cb => cb.addEventListener("change", e => {
+    const m = e.target.dataset.m;
+    const layer = extra[m] || layers[m];
+    e.target.checked ? layer.addTo(map) : map.removeLayer(layer);
+  }));
+  return d;
+};
+ctrl.addTo(map);
+</script>
+</body>
+</html>
