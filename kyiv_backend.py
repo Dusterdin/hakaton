@@ -18,9 +18,12 @@ CityTwin — РОБОЧИЙ бекенд для реальних ізохрон 
   4. Рахує ізохрону алгоритмом Дейкстри від будь-якої точки.
   5. Віддає результат як GeoJSON через FastAPI — фронтенд (index.html)
      може запитувати цей ендпоінт замість локальної JS-симуляції.
+  6. Рахує citywide-мозаїку доступності (/accessibility-grid) — одна Дейкстра
+     від центру + KD-дерево для швидкого призначення часу кожній клітинці
+     решітки, і Gini-індекс нерівності доступності по місту.
 
 ЯК ЗАПУСТИТИ (на своїй машині чи сервері з інтернетом):
-  pip install osmnx networkx fastapi uvicorn shapely
+  pip install osmnx networkx fastapi uvicorn shapely scipy numpy
   1. Заповни GTFS_ZIP_PATH нижче (завантаж вручну з data.kyivcity.gov.ua —
      шукай набір "Розклад руху міського електричного та автомобільного
      транспорту", ресурс GTFSStatic; я не зміг перевірити точний ID
@@ -28,15 +31,18 @@ CityTwin — РОБОЧИЙ бекенд для реальних ізохрон 
      фетчу не рендерить).
   2. python kyiv_backend.py   # перший запуск ~5-15 хв: тягне граф вулиць
   3. Ендпоінт: GET /isochrone?lat=50.45&lng=30.52&mode=transit&minutes=45
+  4. Ендпоінт: GET /accessibility-grid?nx=60&ny=48&minutes=90
 
 Я протестував весь алгоритмічний код нижче (build_multimodal_graph,
-compute_isochrone, GTFS-парсер) на синтетичному графі-макеті — логіка
-робоча. Єдине, що не могло бути перевірено в цій сесії — фактичне
-завантаження реальних даних Києва (немає мережі в пісочниці).
+compute_isochrone, GTFS-парсер, compute_accessibility_grid) на синтетичному
+графі-макеті — логіка робоча. Єдине, що не могло бути перевірено в цій
+сесії — фактичне завантаження реальних даних Києва (немає мережі в
+пісочниці).
 """
 
 import csv
 import io
+import math
 import zipfile
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -51,6 +57,15 @@ GTFS_ZIP_PATH = "kyivpastrans_gtfs.zip"   # заповнити після руч
 PLACE = "Kyiv, Ukraine"
 WALK_SPEED_KMH = 4.5
 TRANSFER_WALK_RADIUS_M = 400  # максимальна пішохідна пересадка зупинка<->вулиця
+
+# Центр — площа Незалежності, узгоджений "вузол робочих місць" для
+# citywide-індексу нерівності доступності (accessibility Gini). Якщо
+# хочеш іншу опорну точку (наприклад, центр ваги реальних робочих
+# місць, а не географічний центр) — зміни тут, це вплине лише на
+# /accessibility-grid, не на /isochrone (там центр — параметр запиту).
+ACCESSIBILITY_CENTER_LAT = 50.4501
+ACCESSIBILITY_CENTER_LNG = 30.5234
+ACCESSIBILITY_CAP_MINUTES = 90.0  # та сама "стеля" запасу доступності, що на фронтенді
 
 # Метро й міська електричка НЕ входять у GTFS-архів Київпастрансу — це окремі
 # набори ресурсів у ТОМУ Ж датасеті на data.kyivcity.gov.ua. Шукай на сторінці
@@ -552,6 +567,15 @@ def compute_isochrone_realtime(static_graph: nx.DiGraph, feed: GtfsFeed, dep_ind
     Тому тут ручна реалізація Дейкстри (heap), де для зупинок вага ребра
     рахується "ліниво", у момент обробки вузла — так і працюють реальні
     транзитні роутери (ідея з Connection Scan Algorithm / RAPTOR).
+
+    ВАЖЛИВЕ СПРОЩЕННЯ (стосується і /accessibility-grid нижче): ця функція
+    рахує час "ЗВІДТИ (origin_node) ДО кожної точки", а не навпаки. Для
+    /isochrone це саме те, що треба (людина стоїть в origin_node і хоче
+    знати, куди встигне). Але коли її викликають "від центру назовні"
+    для accessibility-grid, отриманий час — це "від центру до точки",
+    що для транзиту з розкладом НЕ обов'язково дорівнює "від точки до
+    центру" (інтервали й час очікування залежать від напрямку і моменту
+    приходу на зупинку). Це задокументовано в compute_accessibility_grid.
     """
     import heapq
     from bisect import bisect_left
@@ -629,7 +653,155 @@ def nodes_to_polygon_geojson(reachable_points: list, buffer_m: float = 150.0) ->
 
 
 # ---------------------------------------------------------------------------
-# КРОК 4b. Власна база — кешування, щоб не перебудовувати граф щоразу
+# КРОК 4a. Gini-індекс нерівності доступності (accessibility Gini)
+# ---------------------------------------------------------------------------
+def gini_coefficient_from_values(values: list) -> float:
+    """
+    Той самий алгоритм, що й giniCoefficient() у фронтенді (citytwin.html) —
+    скопійовано 1:1, щоб бекенд і JS-симуляція рахували Gini однаково і
+    цифри не "стрибали" при перемиканні режимів.
+    0 = доступність усюди однакова, 1 = гранична нерівність (весь "запас
+    доступності" сконцентрований в одній точці, решта — 0).
+    """
+    if not values:
+        return 0.0
+    sorted_vals = sorted(values)
+    n = len(sorted_vals)
+    total = sum(sorted_vals)
+    if total <= 0:
+        return 0.0
+    cum_weighted = 0.0
+    for i, v in enumerate(sorted_vals):
+        cum_weighted += (i + 1) * v
+    g = (2.0 * cum_weighted) / (n * total) - (n + 1) / n
+    return max(0.0, min(1.0, g))
+
+
+# ---------------------------------------------------------------------------
+# КРОК 4b. Citywide-мозаїка доступності — /accessibility-grid
+# ---------------------------------------------------------------------------
+def compute_accessibility_grid(static_graph: nx.DiGraph, feed: GtfsFeed, dep_index: dict,
+                                street_graph, center_lat: float, center_lng: float,
+                                query_time_s: int, nx_cells: int = 44, ny_cells: int = 36,
+                                max_minutes: int = 90, bbox: Optional[dict] = None,
+                                max_snap_m: float = 700.0, k_nearest: int = 4) -> dict:
+    """
+    Рахує "поле часу" для ВСЬОГО міста ОДНІЄЮ Дейкстрою (а не N Дейкстрами
+    з кожної клітинки решітки — це було б N повних обходів графу і займало
+    б хвилини замість секунд), а тоді призначає кожній клітинці решітки
+    оцінку часу через просторовий пошук найближчих досяжних вузлів
+    (scipy.spatial.cKDTree, inverse-distance-weighted по k_nearest вузлах).
+
+    ⚠️ ВАЖЛИВЕ СПРОЩЕННЯ, чесно задокументоване (не видаємо за 100% точну
+    "туди-назад" відстань):
+    Дейкстра тут рахується "ВІД ЦЕНТРУ НАЗОВНІ" — тобто отриманий для
+    кожного вузла час це "скільки їхати З ЦЕНТРУ ДО цього вузла", а не
+    "З цього вузла ДО центру". Для пішого графу це симетрично, але для
+    транзиту з розкладом (реальні інтервали руху, час очікування, що
+    залежить від напрямку і моменту приходу на зупинку) ці два напрямки
+    в загальному випадку НЕ співпадають. Для citywide-індексу нерівності
+    доступності це прийнятне й типове спрощення — так само роблять у
+    реальних дослідженнях accessibility, коли не рахують обидва напрямки
+    окремо (це вдвічі дорожче). Якщо потрібна вища точність — можна
+    порахувати ДРУГУ Дейкстру на графі з інвертованими ребрами (from<->to)
+    і взяти середнє чи максимум із цим результатом; усе одно дешевше за
+    N окремих Дейкстр з кожної клітинки.
+
+    Ще одне чесне обмеження: ця функція (як і решта бекенду) НЕ фільтрує
+    рейси за calendar.txt (немає розрізнення будній/вихідний на рівні
+    GTFS-сервісів) — вона просто використовує всі stop_times, що є у
+    feed. Тобто параметр dayType з фронтенду тут ні на що не впливає;
+    впливає лише query_time_s (час доби). Якщо GTFS-архів має
+    calendar.txt/calendar_dates.txt і потрібне розрізнення будній/
+    вихідний — це окрема доробка parse_gtfs(), яку варто зробити перед
+    хакатон-презентацією, якщо є час, але поки що чесно про це попереджаємо,
+    а не вдаємо, що воно вже враховане.
+    """
+    import osmnx as ox
+    from scipy.spatial import cKDTree
+    import numpy as np
+
+    if bbox is None:
+        bbox = {"south": 50.335, "north": 50.560, "west": 30.310, "east": 30.740}
+
+    cw = (bbox["east"] - bbox["west"]) / nx_cells
+    ch = (bbox["north"] - bbox["south"]) / ny_cells
+
+    origin_node = ox.distance.nearest_nodes(street_graph, center_lng, center_lat)
+    result = compute_isochrone_realtime(static_graph, feed, dep_index, origin_node,
+                                         query_time_s, max_minutes)
+    reachable = result["reachable_nodes"]
+
+    assumption_note = (
+        "Дейкстра рахувалась ОДИН РАЗ від центру (ACCESSIBILITY_CENTER_LAT/LNG) "
+        "назовні — це час 'з центру до точки', що для транзиту з розкладом не "
+        "завжди симетрично напряму 'з точки до центру'. calendar.txt "
+        "(будній/вихідний) не враховується — лише час доби (at)."
+    )
+
+    if not reachable:
+        # Чесно: якщо немає GTFS/графу, немає й досяжних вузлів — не
+        # вигадуємо числа, позначаємо все як недосяжне.
+        cells = []
+        for j in range(ny_cells):
+            lat = bbox["north"] - (j + 0.5) * ch
+            for i in range(nx_cells):
+                lng = bbox["west"] + (i + 0.5) * cw
+                cells.append({"i": i, "j": j, "lat": lat, "lng": lng, "minutes": None, "reachable": False})
+        return {
+            "cell_width_deg": cw, "cell_height_deg": ch, "bbox": bbox, "cells": cells,
+            "gini": 0.0, "n_reachable": 0, "n_total": len(cells), "assumption": assumption_note,
+        }
+
+    # Приблизна метрична проекція — та сама формула, що в JS (proj() у
+    # citytwin.html): lng*cos(lat_ref)*111.32, lat*111.32. lat_ref фіксований,
+    # щоб не спотворювати відстані по-різному в різних кінцях міста.
+    lat_ref = math.radians(50.45)
+    cos_ref = math.cos(lat_ref)
+
+    def proj(lat, lng):
+        return (lng * cos_ref * 111.32, lat * 111.32)
+
+    pts = np.array([proj(p["lat"], p["lng"]) for p in reachable])
+    minutes_arr = np.array([p["minutes"] for p in reachable])
+    tree = cKDTree(pts)
+    k = min(k_nearest, len(reachable))
+    max_snap_km = max_snap_m / 1000.0
+
+    cells = []
+    access_values = []
+    n_reachable = 0
+
+    for j in range(ny_cells):
+        lat = bbox["north"] - (j + 0.5) * ch
+        for i in range(nx_cells):
+            lng = bbox["west"] + (i + 0.5) * cw
+            qx, qy = proj(lat, lng)
+            dists, idxs = tree.query([qx, qy], k=k)
+            if k == 1:
+                dists = np.array([dists])
+                idxs = np.array([idxs])
+            nearest_dist_km = float(np.min(dists))
+            if nearest_dist_km > max_snap_km:
+                cells.append({"i": i, "j": j, "lat": lat, "lng": lng, "minutes": None, "reachable": False})
+                access_values.append(0.0)
+                continue
+            weights = 1.0 / np.maximum(dists, 0.01)
+            est_minutes = float(np.sum(weights * minutes_arr[idxs]) / np.sum(weights))
+            cells.append({"i": i, "j": j, "lat": lat, "lng": lng, "minutes": round(est_minutes, 1), "reachable": True})
+            access_values.append(max(0.0, ACCESSIBILITY_CAP_MINUTES - min(est_minutes, ACCESSIBILITY_CAP_MINUTES)))
+            n_reachable += 1
+
+    gini = gini_coefficient_from_values(access_values)
+    return {
+        "cell_width_deg": cw, "cell_height_deg": ch, "bbox": bbox, "cells": cells,
+        "gini": round(gini, 3), "n_reachable": n_reachable, "n_total": len(cells),
+        "assumption": assumption_note,
+    }
+
+
+# ---------------------------------------------------------------------------
+# КРОК 4c. Власна база — кешування, щоб не перебудовувати граф щоразу
 # ---------------------------------------------------------------------------
 import json
 import os
@@ -702,7 +874,7 @@ def get_or_build_street_graph(place: str = PLACE, network_type: str = "walk"):
 
 
 # ---------------------------------------------------------------------------
-# КРОК 4c. Реальна геометрія маршрутів (для показу справжніх ліній на карті,
+# КРОК 4d. Реальна геометрія маршрутів (для показу справжніх ліній на карті,
 # а не намальованих вручну наближень)
 # ---------------------------------------------------------------------------
 # ВИПРАВЛЕНО за реальними даними (діагностика при старті сервера показала
@@ -1005,7 +1177,7 @@ def create_app():
             state["stop_node"] = {}
             state["dep_index"] = {}
         state["routes_geojson"] = build_routes_geojson(state["feed"])
-        print("[ready] сервер готовий приймати запити на /isochrone і /routes")
+        print("[ready] сервер готовий приймати запити на /isochrone, /routes, /accessibility-grid")
 
     @app.get("/routes")
     def routes():
@@ -1032,6 +1204,37 @@ def create_app():
         geojson = nodes_to_polygon_geojson(result["reachable_nodes"])
         cache_set(state["db"], cache_key, geojson)
         return geojson
+
+    @app.get("/accessibility-grid")
+    def accessibility_grid(nx: int = Query(44, ge=8, le=160),
+                            ny: int = Query(36, ge=8, le=160),
+                            minutes: int = Query(90, ge=15, le=180),
+                            at: Optional[str] = None):
+        """
+        Citywide-мозаїка доступності + Gini-індекс нерівності. Одна Дейкстра
+        від ACCESSIBILITY_CENTER_LAT/LNG (не N Дейкстр по клітинках) + KD-дерево
+        для швидкого призначення часу кожній клітинці. Див. докстрінг
+        compute_accessibility_grid() щодо спрощення "з центру, а не до центру"
+        і про відсутність фільтрації за calendar.txt (будній/вихідний).
+        Округляємо query_time_s до 30-хвилинного слоту в ключі кешу — інакше
+        кеш майже завжди miss через секундну різницю в часі запиту.
+        """
+        query_time_s = _time_to_seconds(at) if at else (
+            datetime.now().hour * 3600 + datetime.now().minute * 60
+        )
+        slot = query_time_s // 1800
+        cache_key = f"grid:{nx}:{ny}:{minutes}:{slot}"
+        cached = cache_get(state["db"], cache_key)
+        if cached:
+            return cached
+
+        result = compute_accessibility_grid(
+            state["static_graph"], state["feed"], state["dep_index"], state["street_graph"],
+            ACCESSIBILITY_CENTER_LAT, ACCESSIBILITY_CENTER_LNG, query_time_s,
+            nx_cells=nx, ny_cells=ny, max_minutes=minutes,
+        )
+        cache_set(state["db"], cache_key, result)
+        return result
 
     return app
 
