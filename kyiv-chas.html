@@ -187,12 +187,68 @@
     border:2px solid currentColor;}
   @media (max-width:1100px){ .map-legend{left:22px;right:22px;bottom:auto;top:calc(96px + 1px);position:relative;margin:12px 22px;} }
 
+  .panel-handle{
+    display:none;flex-direction:column;align-items:center;gap:6px;
+    padding:10px 0 8px;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent;
+  }
+  .panel-handle .grabber{width:38px;height:4px;border-radius:2px;background:var(--line);}
+  .panel-handle .handle-label{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--gold-soft);letter-spacing:0.5px;}
+
+  .hud-fab{
+    display:none;position:fixed;right:16px;z-index:960;width:50px;height:50px;border-radius:50%;
+    background:var(--gold);color:#181206;border:none;align-items:center;justify-content:center;
+    font-size:19px;box-shadow:0 6px 18px rgba(0,0,0,0.4);cursor:pointer;-webkit-tap-highlight-color:transparent;
+  }
+
   @media (max-width:760px){
-    .panel{width:calc(100% - 44px);bottom:auto;max-height:52vh;}
-    .hud{left:22px;right:22px;width:auto;bottom:auto;top:calc(96px + 52vh + 12px);}
-    .hero{padding:16px 18px;}
-    .wordmark h1{font-size:16px;}
+    body{overflow:hidden;}
+    .hero{padding:14px 14px;flex-wrap:wrap;gap:8px;}
+    .wordmark h1{font-size:15.5px;}
     .wordmark p{display:none;}
+    .badge{font-size:9.5px;padding:5px 8px;}
+    .theme-btn{font-size:10px;padding:6px 9px;}
+
+    .map-legend{display:none;}
+
+    /* Bottom-sheet panel: collapsed by default to a short peek (role
+       switcher + hint stay reachable without opening), tap the handle
+       to slide up to near-full-height with the rest scrollable inside. */
+    .panel{
+      left:0;right:0;width:100%;bottom:0;top:auto;z-index:920;
+      max-height:82vh;border-radius:18px 18px 0 0;
+      transform:translateY(calc(100% - 232px));
+      transition:transform .3s cubic-bezier(.2,.8,.2,1);
+      box-shadow:0 -8px 30px rgba(0,0,0,0.45);
+      padding-bottom:env(safe-area-inset-bottom, 0);
+    }
+    .panel.expanded{transform:translateY(0);}
+    .panel-handle{display:flex;}
+    .panel-scroll{padding:6px 18px 22px;}
+
+    /* Touch targets */
+    .role-tab{padding:13px 12px;}
+    .btn{padding:13px 12px;font-size:13.5px;min-height:46px;}
+    .type-toggle .btn{min-height:44px;}
+    .layer-item{padding:10px 4px;}
+    .layer-item input{width:18px;height:18px;}
+    input[type=range]{height:28px;}
+
+    /* HUD becomes an on-demand card triggered by a floating button,
+       so it never fights the bottom sheet for screen space. */
+    .hud{
+      display:none;position:fixed;left:16px;right:16px;bottom:calc(232px + 14px);
+      width:auto;z-index:930;max-height:50vh;overflow-y:auto;
+    }
+    .hud.hud-open{display:block;}
+    .hud-fab{display:flex;bottom:calc(232px + 14px);}
+    body.panel-expanded .hud-fab{display:none;}
+    body.panel-expanded .hud.hud-open{display:none;}
+  }
+
+  @media (max-width:400px){
+    .panel{transform:translateY(calc(100% - 208px));}
+    .hud{bottom:calc(208px + 14px);}
+    .hud-fab{bottom:calc(208px + 14px);}
   }
 </style>
 </head>
@@ -211,7 +267,11 @@
   </div>
 </div>
 
-<div class="panel">
+<div class="panel" id="mainPanel">
+  <div class="panel-handle" id="panelHandle">
+    <div class="grabber"></div>
+    <span class="handle-label" id="panelHandleLabel">Розгорнути ▲</span>
+  </div>
   <div class="panel-scroll">
 
     <div class="section">
@@ -376,7 +436,8 @@
   </div>
 </div>
 
-<div class="hud">
+<button class="hud-fab" id="hudFab" aria-label="Показати статистику доступності">📊</button>
+<div class="hud" id="hudCard">
   <h3>Доступність із цієї точки</h3>
   <div class="stat"><span class="k">Площа охоплення (≤45 хв)</span><span class="v" id="statArea">—</span></div>
   <div class="stat"><span class="k">Орієнтовне населення в зоні</span><span class="v gold" id="statPop">—</span></div>
@@ -1869,6 +1930,39 @@ async function updateGiniLayer(){
 }
 document.getElementById('giniLayerToggle').addEventListener('change', updateGiniLayer);
 /* ============================== /МОЗАЇКА ============================== */
+
+/* ============================== МОБІЛЬНИЙ BOTTOM SHEET ==============================
+   На вузьких екранах .panel керується transform (див. CSS), а не display —
+   це дає плавну анімацію slide-up/slide-down замість миттєвого стрибка. */
+const mainPanel = document.getElementById('mainPanel');
+const panelHandle = document.getElementById('panelHandle');
+const panelHandleLabel = document.getElementById('panelHandleLabel');
+if(panelHandle && mainPanel){
+  panelHandle.addEventListener('click', ()=>{
+    const expanded = mainPanel.classList.toggle('expanded');
+    document.body.classList.toggle('panel-expanded', expanded);
+    panelHandleLabel.textContent = expanded ? 'Згорнути ▼' : 'Розгорнути ▲';
+  });
+}
+const hudFab = document.getElementById('hudFab');
+const hudCard = document.getElementById('hudCard');
+if(hudFab && hudCard){
+  hudFab.addEventListener('click', ()=>{
+    const open = hudCard.classList.toggle('hud-open');
+    hudFab.textContent = open ? '✕' : '📊';
+  });
+}
+/* Клік по карті — природний сигнал "мене цікавить результат": на мобільному
+   згортаємо панель назад, щоб було видно намальовану ізохрону, а не аркуш
+   налаштувань поверх неї. */
+map.on('click', ()=>{
+  if(window.innerWidth<=760 && mainPanel && mainPanel.classList.contains('expanded')){
+    mainPanel.classList.remove('expanded');
+    document.body.classList.remove('panel-expanded');
+    if(panelHandleLabel) panelHandleLabel.textContent = 'Розгорнути ▲';
+  }
+});
+/* ============================== /BOTTOM SHEET ============================== */
 
 (async ()=>{
   updateClockBadge();
